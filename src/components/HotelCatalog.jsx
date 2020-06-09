@@ -19,7 +19,9 @@ const HotelCatalog = (props) => {
             <h6>InterContinental</h6>
             <div className="catalog-list-item-body">
               <span>$1234</span>
-              <button className="btn btn-primary btn-sm">Book</button>
+              <button type="button" className="btn btn-primary btn-sm">
+                Book
+              </button>
             </div>
           </div>
         ))}
