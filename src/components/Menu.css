@@ -1,0 +1,78 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  z-index: 102;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem;
+}
+
+.menu-stats {
+  flex: 1;
+}
+
+.menu-stats .progress {
+  max-width: 360px;
+}
+
+.menu-btns button:first-child {
+  margin-right: 0.5rem;
+}
+
+.catalog {
+  width: 360px;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.catalog-top {
+  padding: 1.25rem;
+}
+
+.catalog-top h3 {
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.catalog-placeholder {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.catalog-placeholder img {
+  max-width: 200px;
+  max-height: 100%;
+}
+
+.catalog-list {
+  flex: 1;
+  overflow: auto;
+}
+
+.catalog-list::-webkit-scrollbar {
+  display: none;
+}
+
+.catalog-list-item {
+  border-bottom: 1px solid #ced4da;
+  padding: 1.25rem;
+}
+
+.catalog-list-item-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
