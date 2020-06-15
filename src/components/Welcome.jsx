@@ -21,7 +21,7 @@ const Welcome = (props) => {
             <div className="card-body">
               <p>
                 Hi, I'm Dave. Welcome to the Traveling Salesman game! In this game, you will travel with me across
-                Europe to get our latest product, the <b>ultimate random thing</b> to the customers. In one week, we
+                Europe to get our latest product, the <strong>ultimate random thing</strong> to the customers. In one week, we
                 will be hopping jets, sleeping in hotels, landing deals along the way like true road warriors!
               </p>
               <p>

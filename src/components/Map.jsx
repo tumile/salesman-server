@@ -108,8 +108,15 @@ export default function Map() {
     },
   ];
 
+  //Icon Randomizer
+  let sourceIcon = function() {
+    let i = Math.floor(Math.random() * 6);
+    let icon = ['businessman2.png','businessman2-folder.png','businesswoman-calling.png','businesswoman2-calling.png','businesswoman2-determined.png','businessman2-pointing.png'];
+    return icon[i];
+  }
+
   return (
-    <LeafletMap center={position} zoom={6} maxZoom={6} minZoom={6} zoomControl={false}>
+    <LeafletMap center={position} zoom={6} maxZoom={7} minZoom={4} zoomControl={false}>
       <TileLayer
         attribution="©OpenStreetMap, ©CartoDB"
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
@@ -119,7 +126,7 @@ export default function Map() {
           <Popup className="leaflet-popup">
             <div className="row">
               <div className="col-4">
-                <img src="/images/checklist.png" className="img-fluid" alt="Customer" />
+                <img src={"images/" + sourceIcon()} className="img-fluid" alt="Customer" />
               </div>
               <div className="col-8">
                 <div>
