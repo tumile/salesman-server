@@ -108,12 +108,10 @@ export default function Map() {
     },
   ];
 
-  //Icon Randomizer
-  let sourceIcon = function() {
+  const random = () => {
     let i = Math.floor(Math.random() * 6);
-    let icon = ['businessman2.png','businessman2-folder.png','businesswoman-calling.png','businesswoman2-calling.png','businesswoman2-determined.png','businessman2-pointing.png'];
-    return icon[i];
-  }
+    return i;
+  };
 
   return (
     <LeafletMap center={position} zoom={6} maxZoom={7} minZoom={4} zoomControl={false}>
@@ -126,12 +124,12 @@ export default function Map() {
           <Popup className="leaflet-popup">
             <div className="row">
               <div className="col-4">
-                <img src={"images/" + sourceIcon()} className="img-fluid" alt="Customer" />
+                <img src={`images/customer${random()}.png`} alt="Customer" />
               </div>
               <div className="col-8">
                 <div>
                   <h6>{c.name}</h6>
-                  <p>Hi, I'm Dave. I'm looking to buy your product for $1000.</p>
+                  <p>Hi, I'm looking to buy your product for $1000.</p>
                   <p className="text-muted">Offer expired in 05:00:00</p>
                   <button className="btn btn-primary btn-sm">Flights</button>
                 </div>

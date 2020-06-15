@@ -17,3 +17,8 @@
   max-width: 800px;
   padding: 1.25rem;
 }
+
+.welcome-content img {
+  height: 350px;
+  width: auto;
+}

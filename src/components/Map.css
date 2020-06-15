@@ -8,8 +8,13 @@
   padding: 0.5rem;
 }
 
+.leaflet-popup-content img {
+  height: 180px;
+  width: auto;
+}
+
 .leaflet-container a.leaflet-popup-close-button {
   top: 5px;
-  right: 5px;
+  right: 10px;
   font-size: 2rem;
 }
