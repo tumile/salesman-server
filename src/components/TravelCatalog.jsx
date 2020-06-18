@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
@@ -31,7 +32,9 @@ const TravelCatalog = (props) => {
               <h6>British Airways</h6>
               <div className="catalog-list-item-body">
                 <span>$1234</span>
-                <button className="btn btn-primary btn-sm">Book</button>
+                <button type="button" className="btn btn-primary btn-sm">
+                  Book
+                </button>
               </div>
             </div>
           ))}
@@ -39,6 +42,10 @@ const TravelCatalog = (props) => {
       )}
     </div>
   );
+};
+
+TravelCatalog.propTypes = {
+  travelCatalogOpen: PropTypes.bool.isRequired,
 };
 
 export default connect(({ menu: { travelCatalogOpen } }) => ({ travelCatalogOpen }))(TravelCatalog);

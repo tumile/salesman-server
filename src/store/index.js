@@ -7,6 +7,4 @@ const rootReducer = combineReducers({ menu, game });
 
 const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
-console.log(store.getState());
-
 export default store;
