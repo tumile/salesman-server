@@ -23,7 +23,7 @@ const TravelCatalog = (props) => {
       </div>
       {!destination ? (
         <div className="catalog-placeholder">
-          <img src="/images/running.png" alt="Travel" />
+          <img src="/images/player/running.png" alt="Travel" />
         </div>
       ) : (
         <div className="catalog-list">

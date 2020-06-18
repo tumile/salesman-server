@@ -16,7 +16,7 @@ const Welcome = (props) => {
       <div className="welcome-content card">
         <div className="row">
           <div className="col-4 text-center">
-            <img src="/images/checklist.png" alt="Customer" />
+            <img src="/images/player/checklist.png" alt="Customer" />
           </div>
           <div className="col-8">
             <div className="card-body">
