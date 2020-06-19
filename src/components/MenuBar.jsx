@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { showHotelCatalog, showTravelCatalog } from "../store/menu";
+import { showHotelCatalog, showTravelCatalog } from "../state/menu";
 
 const MenuBar = (props) => {
   const { money, stamina, travelCatalogOpen, hotelCatalogOpen } = props;

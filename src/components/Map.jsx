@@ -16,13 +16,13 @@ const Map = (props) => {
         attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
         subdomains="abcd"
       />
-      <Curve
+      {/* <Curve
         positions={["M", [52.52, 13.405], "Q", [56.1379, 23.51115], [55.7558, 37.6173]]}
         options={{
           dashArray: 10,
           animate: { duration: 30000, iterations: Infinity },
         }}
-      />
+      /> */}
       <Marker
         position={cities[currentCity].position}
         icon={L.icon({ iconUrl: "images/player/salesman.png", iconSize: [38], iconAnchor: [19, 100] })}

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { startGame } from "../store/game";
+import { startGame } from "../state/game";
 import "./Welcome.css";
 
 const Welcome = (props) => {
