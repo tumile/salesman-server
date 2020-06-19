@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { showHotelCatalog, showTravelCatalog } from "../state/menu";
 
 const MenuBar = (props) => {
-  const { money, stamina, travelCatalogOpen, hotelCatalogOpen } = props;
+  const { money, stamina, timer, travelCatalogOpen, hotelCatalogOpen } = props;
 
   return (
     <div className="menu">
@@ -16,6 +16,7 @@ const MenuBar = (props) => {
         <div className="progress">
           <div style={{ width: `${stamina}%` }} className="progress-bar" role="progressbar" />
         </div>
+        <div>{timer}</div>
       </div>
       <div className="menu-btns">
         <button
@@ -47,9 +48,10 @@ MenuBar.propTypes = {
 };
 
 export default connect(
-  ({ game: { money, stamina }, menu: { travelCatalogOpen, hotelCatalogOpen } }) => ({
+  ({ game: { money, stamina, timer }, menu: { travelCatalogOpen, hotelCatalogOpen } }) => ({
     money,
     stamina,
+    timer,
     travelCatalogOpen,
     hotelCatalogOpen,
   }),
