@@ -4,8 +4,30 @@
   z-index: 100;
 }
 
-.leaflet-popup-content-wrapper {
-  padding: 0.5rem;
+.leaflet-popup-content {
+  margin: 0;
+  width: 400px !important;
+  height: 300px;
+}
+
+.popup-content {
+  height: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 12px;
+  color: black;
+  background-size: 100% 200px;
+  background-repeat: no-repeat;
+}
+
+.popup-content .col-8 {
+  display: flex;
+  align-items: flex-end;
+}
+
+.leaflet-popup-content p {
+  margin: 0 0 0.5rem 0;
 }
 
 .leaflet-popup-content img {

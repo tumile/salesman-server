@@ -11,7 +11,8 @@ const Map = (props) => {
   const { customers, cities, currentCity, destinationCity, setDestinationCity, showTravelCatalog } = props;
   const currentCityPosition = cities.find((c) => c.name === currentCity).position;
 
-  const handleFlightSelect = (city) => {
+  const handleFlightSelect = (e, city) => {
+    e.preventDefault();
     showTravelCatalog(true);
     setDestinationCity(city);
   };
@@ -79,22 +80,16 @@ const Map = (props) => {
             icon={L.icon({ iconUrl: cust.image, iconSize: [43], iconAnchor: [20, 100] })}
           >
             <Popup className="leaflet-popup">
-              <div className="row">
-                <div className="col-4">
-                  <img src={cust.image} alt="Customer" />
-                </div>
-                <div className="col-8">
-                  <div>
-                    <h6>{city.name}</h6>
-                    <p>Hi, I&lsquo;m looking to buy your product for $1000.</p>
-                    <p className="text-muted">Offer expired in 05:00:00</p>
-                    <button
-                      type="button"
-                      className="btn btn-primary btn-sm"
-                      onClick={() => handleFlightSelect(city.name)}
-                    >
-                      Flights
-                    </button>
+              <div className="popup-content" style={{backgroundImage: `url(${city.image})`}}>
+                <div className="row">
+                  <div className="col-4">
+                    <img src={cust.image} alt="Customer" />
+                  </div>
+                  <div className="col-8">
+                    <div>
+                      <a href="#" role="button" onClick={(e) => handleFlightSelect(e, city.name)}><h6>{city.name}</h6></a>
+                      <p>Hi, I&lsquo;m looking to buy your product for $1000.</p>
+                    </div>
                   </div>
                 </div>
               </div>
