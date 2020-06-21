@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { showHotelCatalog, showTravelCatalog } from "../state/menu";
+import { showHotelCatalog, showTravelCatalog } from "../state/game";
 
 const MenuBar = (props) => {
-  const { money, stamina, timer, travelCatalogOpen, hotelCatalogOpen } = props;
+  const { money, stamina, timer, travelCatalogOpen, hotelCatalogOpen, showTravelCatalog, showHotelCatalog } = props;
 
   return (
     <div className="menu">
@@ -22,14 +22,14 @@ const MenuBar = (props) => {
         <button
           type="button"
           className={`btn${travelCatalogOpen ? " btn-primary" : " btn-outline-primary"}`}
-          onClick={() => props.showTravelCatalog(!travelCatalogOpen)}
+          onClick={() => showTravelCatalog(!travelCatalogOpen)}
         >
           <i className="fas fa-plane-departure" />
         </button>
         <button
           type="button"
           className={`btn${hotelCatalogOpen ? " btn-primary" : " btn-outline-primary"}`}
-          onClick={() => props.showHotelCatalog(!hotelCatalogOpen)}
+          onClick={() => showHotelCatalog(!hotelCatalogOpen)}
         >
           <i className="fas fa-hotel" />
         </button>
@@ -41,6 +41,7 @@ const MenuBar = (props) => {
 MenuBar.propTypes = {
   money: PropTypes.number.isRequired,
   stamina: PropTypes.number.isRequired,
+  timer: PropTypes.number.isRequired,
   travelCatalogOpen: PropTypes.bool.isRequired,
   hotelCatalogOpen: PropTypes.bool.isRequired,
   showTravelCatalog: PropTypes.func.isRequired,
@@ -48,7 +49,7 @@ MenuBar.propTypes = {
 };
 
 export default connect(
-  ({ game: { money, stamina, timer }, menu: { travelCatalogOpen, hotelCatalogOpen } }) => ({
+  ({ money, stamina, timer, travelCatalogOpen, hotelCatalogOpen }) => ({
     money,
     stamina,
     timer,

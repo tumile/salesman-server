@@ -3,21 +3,21 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
 import { connect } from "react-redux";
-import { selectCity, showTravelCatalog } from "../state/menu";
+import { setDestinationCity, showTravelCatalog } from "../state/game";
 import Curve from "./Curve";
 import "./Map.css";
 
 const Map = (props) => {
-  const { customers, cities, currentCity, selectedCity, showTravelCatalog, selectCity } = props;
+  const { customers, cities, currentCity, destinationCity, setDestinationCity, showTravelCatalog } = props;
   const currentCityPosition = cities.find((c) => c.name === currentCity).position;
 
   const handleFlightSelect = (city) => {
     showTravelCatalog(true);
-    selectCity(city);
+    setDestinationCity(city);
   };
 
   const renderSalesModal = () => {
-    let customer = customers.find((c) => cities[c.city].name === currentCity);
+    const customer = customers.find((cust) => cust.city === currentCity);
     if (!customer) {
       return null;
     }
@@ -38,17 +38,17 @@ const Map = (props) => {
   };
 
   const renderPath = () => {
-    if (!selectedCity) {
+    if (!destinationCity) {
       return null;
     }
-    const selectedCityPosition = cities.find((c) => c.name === selectedCity).position;
+    const destCityPosition = cities.find((city) => city.name === destinationCity).position;
     const p = [
-      (currentCityPosition[0] + selectedCityPosition[0]) / 2 + 1,
-      (currentCityPosition[1] + selectedCityPosition[1]) / 2 - 1,
+      (currentCityPosition[0] + destCityPosition[0]) / 2 + 1,
+      (currentCityPosition[1] + destCityPosition[1]) / 2 - 1,
     ];
     return (
       <Curve
-        positions={["M", currentCityPosition, "Q", p, selectedCityPosition]}
+        positions={["M", currentCityPosition, "Q", p, destCityPosition]}
         options={{
           dashArray: 10,
           animate: { duration: 30000, iterations: Infinity },
@@ -70,27 +70,28 @@ const Map = (props) => {
         position={currentCityPosition}
         icon={L.icon({ iconUrl: "images/player/salesman.png", iconSize: [38], iconAnchor: [19, 100] })}
       />
-      {customers.map((c) => {
+      {customers.map((cust) => {
+        const city = cities.find((c) => c.name === cust.city);
         return (
           <Marker
-            key={c.name}
-            position={cities[c.city].position}
-            icon={L.icon({ iconUrl: c.image, iconSize: [43], iconAnchor: [20, 100] })}
+            key={cust.name}
+            position={city.position}
+            icon={L.icon({ iconUrl: cust.image, iconSize: [43], iconAnchor: [20, 100] })}
           >
             <Popup className="leaflet-popup">
               <div className="row">
                 <div className="col-4">
-                  <img src={c.image} alt="Customer" />
+                  <img src={cust.image} alt="Customer" />
                 </div>
                 <div className="col-8">
                   <div>
-                    <h6>{cities[c.city].name}</h6>
+                    <h6>{city.name}</h6>
                     <p>Hi, I&lsquo;m looking to buy your product for $1000.</p>
                     <p className="text-muted">Offer expired in 05:00:00</p>
                     <button
                       type="button"
                       className="btn btn-primary btn-sm"
-                      onClick={() => handleFlightSelect(cities[c.city].name)}
+                      onClick={() => handleFlightSelect(city.name)}
                     >
                       Flights
                     </button>
@@ -109,17 +110,17 @@ Map.propTypes = {
   customers: PropTypes.arrayOf(PropTypes.object).isRequired,
   cities: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentCity: PropTypes.string.isRequired,
-  selectedCity: PropTypes.string.isRequired,
-  selectCity: PropTypes.func.isRequired,
+  destinationCity: PropTypes.string.isRequired,
+  setDestinationCity: PropTypes.func.isRequired,
   showTravelCatalog: PropTypes.func.isRequired,
 };
 
 export default connect(
-  ({ game: { customers, currentCity }, menu: { cities, selectedCity } }) => ({
+  ({ customers, cities, currentCity, destinationCity }) => ({
     customers,
     cities,
     currentCity,
-    selectedCity,
+    destinationCity,
   }),
-  { selectCity, showTravelCatalog }
+  { setDestinationCity, showTravelCatalog }
 )(Map);

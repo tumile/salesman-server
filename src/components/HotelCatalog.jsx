@@ -35,4 +35,4 @@ HotelCatalog.propTypes = {
   hotelCatalogOpen: PropTypes.bool.isRequired,
 };
 
-export default connect(({ menu: { hotelCatalogOpen } }) => ({ hotelCatalogOpen }))(HotelCatalog);
+export default connect(({ hotelCatalogOpen }) => ({ hotelCatalogOpen }))(HotelCatalog);

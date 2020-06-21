@@ -48,4 +48,4 @@ Welcome.propTypes = {
   startGame: PropTypes.func.isRequired,
 };
 
-export default connect(({ game: { gameStarted } }) => ({ gameStarted }), { startGame })(Welcome);
+export default connect(({ gameStarted }) => ({ gameStarted }), { startGame })(Welcome);

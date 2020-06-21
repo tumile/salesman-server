@@ -1,19 +1,18 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
-import { bookFlight } from "../state/game";
-import { searchCity, selectCity } from "../state/menu";
+import { searchCity, setDestinationCity, travel } from "../state/game";
 
 const TravelCatalog = (props) => {
   const {
     travelCatalogOpen,
     citySearchKey,
-    citySuggestions,
+    citySearchSuggestions,
     flightInfo,
     flights,
     searchCity,
-    selectCity,
-    bookFlight,
+    setDestinationCity,
+    travel,
   } = props;
 
   if (!travelCatalogOpen) {
@@ -21,7 +20,7 @@ const TravelCatalog = (props) => {
   }
 
   const handleBooking = (price) => {
-    bookFlight(citySearchKey, price);
+    travel(citySearchKey, price);
   };
 
   const renderFlightsOrSuggestions = () => {
@@ -42,15 +41,15 @@ const TravelCatalog = (props) => {
         </div>
       );
     }
-    if (citySuggestions.length > 0) {
+    if (citySearchSuggestions.length > 0) {
       return (
         <div className="list-group px-3">
-          {citySuggestions.map((city) => (
+          {citySearchSuggestions.map((city) => (
             <button
               key={city}
               type="button"
               className="list-group-item list-group-item-action"
-              onClick={() => selectCity(city)}
+              onClick={() => setDestinationCity(city)}
             >
               {city}
             </button>
@@ -73,7 +72,7 @@ const TravelCatalog = (props) => {
           className="form-control"
           placeholder="Where to?"
           value={citySearchKey}
-          onChange={(e) => searchCity(e.target.value)}
+          onChange={(e) => searchCity(e.target.value.trim().toLowerCase())}
         />
         {flightInfo && (
           <div
@@ -85,8 +84,8 @@ const TravelCatalog = (props) => {
               marginTop: "1em",
             }}
           >
-            <p style={{ marginBottom: 0 }}>Distance: {flightInfo.distance}</p>
-            <p style={{ marginBottom: 0 }}>Est. {flightInfo.duration}</p>
+            <p style={{ marginBottom: 0 }}>{`Distance ${flightInfo.distance}`}</p>
+            <p style={{ marginBottom: 0 }}>{`Est. ${flightInfo.duration}`}</p>
           </div>
         )}
       </div>
@@ -98,20 +97,21 @@ const TravelCatalog = (props) => {
 TravelCatalog.propTypes = {
   travelCatalogOpen: PropTypes.bool.isRequired,
   citySearchKey: PropTypes.string.isRequired,
-  citySuggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  citySearchSuggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
   flightInfo: PropTypes.objectOf(PropTypes.string).isRequired,
   flights: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchCity: PropTypes.func.isRequired,
-  selectCity: PropTypes.func.isRequired,
+  setDestinationCity: PropTypes.func.isRequired,
+  travel: PropTypes.func.isRequired,
 };
 
 export default connect(
-  ({ menu: { travelCatalogOpen, citySearchKey, citySuggestions, flightInfo, flights } }) => ({
+  ({ travelCatalogOpen, citySearchKey, citySearchSuggestions, flightInfo, flights }) => ({
     travelCatalogOpen,
     citySearchKey,
-    citySuggestions,
+    citySearchSuggestions,
     flightInfo,
     flights,
   }),
-  { searchCity, selectCity, bookFlight }
+  { searchCity, setDestinationCity, travel }
 )(TravelCatalog);

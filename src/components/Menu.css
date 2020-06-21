@@ -7,7 +7,7 @@
   z-index: 102;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .menu-stats {
@@ -37,13 +37,12 @@
 }
 
 .catalog-top {
-  padding: 1.25rem;
-  padding-top: 2rem;
+  padding: 1rem;
 }
 
 .catalog-top h3 {
-  margin-top: 0.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .catalog-placeholder {
@@ -69,7 +68,7 @@
 
 .catalog-list-item {
   border-bottom: 1px solid #ced4da;
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
 .catalog-list-item-body {
