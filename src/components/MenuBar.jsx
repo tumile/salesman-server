@@ -6,17 +6,30 @@ import { showHotelCatalog, showTravelCatalog } from "../state/game";
 const MenuBar = (props) => {
   const { money, stamina, timer, travelCatalogOpen, hotelCatalogOpen, showTravelCatalog, showHotelCatalog } = props;
 
+  const getTimeString = (timer) => {
+    let hours = Math.floor(timer / 3600);
+    hours = hours < 10 ? `0${hours}` : hours;
+    let minutes = Math.floor(timer / 60) % 60;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    let seconds = timer % 60;
+    seconds = seconds < 10 ? `0${seconds}` : seconds;
+    return ` ${hours}:${minutes}:${seconds}`;
+  };
+
   return (
     <div className="menu">
       <div className="menu-stats">
+        <div>
+          <i className="fas fa-clock" />
+          {getTimeString(timer)}
+        </div>
         <span>
           <i className="fas fa-wallet" />
-          {` $${money}`}
+          {` $${Math.round(money)}`}
         </span>
         <div className="progress">
           <div style={{ width: `${stamina}%` }} className="progress-bar" role="progressbar" />
         </div>
-        <div>{timer}</div>
       </div>
       <div className="menu-btns">
         <button

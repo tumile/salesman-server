@@ -1,4 +1,4 @@
-.welcome {
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,13 +12,16 @@
   overflow: auto;
 }
 
-.welcome-content {
+.modal-content {
   width: 80%;
   max-width: 800px;
-  padding: 1.25rem;
+  padding: 1rem 2rem;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.welcome-content img {
+.modal-content img {
+  text-align: center;
   height: 350px;
   width: auto;
 }

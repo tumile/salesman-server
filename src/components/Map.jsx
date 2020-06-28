@@ -17,27 +17,6 @@ const Map = (props) => {
     setDestinationCity(city);
   };
 
-  const renderSalesModal = () => {
-    const customer = customers.find((cust) => cust.city === currentCity);
-    if (!customer) {
-      return null;
-    }
-    return (
-      <div className="modal" role="dialog" style={{ zIndex: 1000 }}>
-        <div className="modal-dialog">
-          <div className="modal-body">
-            <p>Hey I want to buy your product for $1000!</p>
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-dismiss="modal">
-              Sell
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   const renderPath = () => {
     if (!destinationCity) {
       return null;
@@ -65,7 +44,6 @@ const Map = (props) => {
         attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
         subdomains="abcd"
       />
-      {renderSalesModal()}
       {renderPath()}
       <Marker
         position={currentCityPosition}
@@ -80,15 +58,17 @@ const Map = (props) => {
             icon={L.icon({ iconUrl: cust.image, iconSize: [43], iconAnchor: [20, 100] })}
           >
             <Popup className="leaflet-popup">
-              <div className="popup-content" style={{backgroundImage: `url(${city.image})`}}>
+              <div className="popup-content" style={{ backgroundImage: `url(${city.image})` }}>
                 <div className="row">
                   <div className="col-4">
                     <img src={cust.image} alt="Customer" />
                   </div>
                   <div className="col-8">
                     <div>
-                      <a href="#" role="button" onClick={(e) => handleFlightSelect(e, city.name)}><h6>{city.name}</h6></a>
-                      <p>Hi, I&lsquo;m looking to buy your product for $1000.</p>
+                      <a href="#" role="button" onClick={(e) => handleFlightSelect(e, city.name)}>
+                        <h6>{city.name}</h6>
+                      </a>
+                      <p>Hi, I&lsquo;m looking to buy your product for ${cust.offer}.</p>
                     </div>
                   </div>
                 </div>

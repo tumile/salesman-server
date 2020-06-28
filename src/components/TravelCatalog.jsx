@@ -19,8 +19,14 @@ const TravelCatalog = (props) => {
     return null;
   }
 
+  const toTime = (duration) => {
+    const hours = Math.floor(duration);
+    const minutes = Math.round(duration * 60) % 60;
+    return `${hours}h ${minutes}m`;
+  };
+
   const handleBooking = (price) => {
-    travel(citySearchKey, price);
+    travel(price);
   };
 
   const renderFlightsOrSuggestions = () => {
@@ -29,12 +35,15 @@ const TravelCatalog = (props) => {
         <div className="catalog-list">
           {flights.map((flight) => (
             <div key={flight.name} className="catalog-list-item">
-              <h6>{flight.name}</h6>
+              <img className="img-fluid rounded" src={flight.image} alt={flight.name} />
               <div className="catalog-list-item-body">
-                <span>{`$${flight.price}`}</span>
-                <button type="button" className="btn btn-primary btn-sm" onClick={() => handleBooking(flight.price)}>
-                  Book
-                </button>
+                <h6>{flight.name}</h6>
+                <div>
+                  <span>{`$${flight.price}`}</span>
+                  <button type="button" className="btn btn-primary btn-sm" onClick={() => handleBooking(flight.price)}>
+                    Book
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -84,8 +93,8 @@ const TravelCatalog = (props) => {
               marginTop: "1em",
             }}
           >
-            <p style={{ marginBottom: 0 }}>{`Distance ${flightInfo.distance}`}</p>
-            <p style={{ marginBottom: 0 }}>{`Est. ${flightInfo.duration}`}</p>
+            <p style={{ marginBottom: 0 }}>{`Distance ${flightInfo.distance} mi`}</p>
+            <p style={{ marginBottom: 0 }}>{`Est. ${toTime(flightInfo.duration)}`}</p>
           </div>
         )}
       </div>

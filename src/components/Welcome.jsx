@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { startGame } from "../state/game";
-import "./Welcome.css";
+import "./Modal.css";
 
 const Welcome = (props) => {
   const { gameStarted } = props;
@@ -12,8 +12,8 @@ const Welcome = (props) => {
   }
 
   return (
-    <div className="welcome">
-      <div className="welcome-content card">
+    <div className="modal">
+      <div className="modal-content card">
         <div className="row">
           <div className="col-4 text-center">
             <img src="/images/player/checklist.png" alt="Customer" />
