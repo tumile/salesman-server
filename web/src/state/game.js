@@ -50,37 +50,6 @@ const getFlightInfo = (origin, destination) => {
     });
 };
 
-export const startGame = () => {
-  return (dispatch, getState) => {
-    setInterval(() => {
-      const state = getState();
-      if (state.timer % 3600 === 0) {
-        dispatch(spawnCustomer(state));
-      }
-      dispatch({ type: UPDATE_TIMER, payload: { increment: 1 } });
-    }, 1000);
-    dispatch({ type: START_GAME });
-  };
-};
-
-export const showTravelCatalog = (isOpen) => {
-  return (dispatch) => {
-    dispatch({
-      type: isOpen ? OPEN_CATALOG : CLOSE_CATALOG,
-      payload: { travelCatalogOpen: isOpen, hotelCatalogOpen: false },
-    });
-  };
-};
-
-export const showHotelCatalog = (isOpen) => {
-  return (dispatch) => {
-    dispatch({
-      type: isOpen ? OPEN_CATALOG : CLOSE_CATALOG,
-      payload: { travelCatalogOpen: false, hotelCatalogOpen: isOpen },
-    });
-  };
-};
-
 export const searchCity = (key) => {
   return (dispatch) => {
     dispatch({
@@ -144,10 +113,11 @@ export const sell = (customer) => {
 };
 
 const initialState = {
-  gameStarted: false,
-  timer: 0,
   money: 10000,
   stamina: 100,
+  player: {
+    position: [52.3667, 4.8945],
+  },
   customers: [],
   cities,
   currentCity: "Amsterdam",
