@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 class TrieNode {
   constructor() {
     this.children = Array(26).fill(null);

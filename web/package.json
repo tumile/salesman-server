@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@elfalem/leaflet-curve": "^0.6.0",
+    "jwt-decode": "^2.2.0",
     "leaflet": "^1.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -32,5 +33,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "localhost:8080"
 }

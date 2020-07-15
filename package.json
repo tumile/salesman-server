@@ -4,6 +4,8 @@
   "description": "salesman game",
   "private": true,
   "main": "index.js",
+  "author": "Tuan Le",
+  "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
@@ -14,13 +16,11 @@
     "eslint-plugin-react": "^7.20.3",
     "prettier": "^2.0.5"
   },
-  "scripts": {
-    "fmt": "prettier --check \"**/*.{js,jsx,json,css,md}\"",
-    "lint": "eslint src web/src"
-  },
-  "author": "Tuan Le",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "scripts": {
+    "fmt": "prettier --check src web/src",
+    "lint": "eslint src web/src"
   }
 }

@@ -15,5 +15,9 @@
       "jsx": true
     }
   },
-  "extends": ["plugin:react/recommended"]
+  "extends": ["plugin:react/recommended"],
+  "rules": {
+    "max-classes-per-file": "off",
+    "class-methods-use-this": "off"
+  }
 }

@@ -1,9 +1,10 @@
 import L from "leaflet";
 import PropTypes from "prop-types";
 import React from "react";
+import ReactDOMServer from "react-dom/server";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
-import { connect } from "react-redux";
 import "./Map.css";
+import PlayerIcon from "./PlayerIcon";
 
 const POINTS_OF_INTEREST = [
   {
@@ -15,7 +16,7 @@ const POINTS_OF_INTEREST = [
   },
 ];
 
-class PlayerMap extends React.Component {
+class MainMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,25 +33,30 @@ class PlayerMap extends React.Component {
     const { pois } = this.state;
 
     return (
-      <LeafletMap center={player.position} zoom={13} minZoom={13} maxZoom={14} zoomControl={false}>
+      <LeafletMap className="main-map" center={player.position} zoom={14} minZoom={13} maxZoom={14} zoomControl={false}>
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png"
           attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors &copy; <a href='https://carto.com/attributions'>CARTO</a>"
         />
         <Marker
           position={player.position}
-          icon={L.icon({
-            iconUrl: "images/player/salesman.png",
-            iconSize: [30],
-            iconAnchor: [15, 100],
+          icon={L.divIcon({
+            html: ReactDOMServer.renderToString(<PlayerIcon />),
           })}
         />
-        {pois.map((p) => {
+        {pois.map((point) => {
           return (
-            <Marker key={p.name} position={p.position}>
-              <Popup className="leaflet-popup">
-                <div className="popup-content" style={{ backgroundImage: `url(${p.image})` }}>
-                  <p>{p.description}</p>
+            <Marker
+              key={point.name}
+              position={point.position}
+              icon={L.divIcon({
+                html: ReactDOMServer.renderToString(<PlayerIcon />),
+              })}
+            >
+              <Popup>
+                <div className="popup-content">
+                  <img src={point.image} alt="Point of interest" />
+                  <p>{point.description}</p>
                 </div>
               </Popup>
             </Marker>
@@ -61,8 +67,8 @@ class PlayerMap extends React.Component {
   }
 }
 
-PlayerMap.propTypes = {
-  player: PropTypes.objectOf(PropTypes.string).isRequired,
+MainMap.propTypes = {
+  player: PropTypes.object.isRequired,
 };
 
-export default connect(({ player }) => ({ player }))(PlayerMap);
+export default MainMap;

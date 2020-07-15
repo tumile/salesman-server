@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { connect } from "react-redux";
 
 const HotelCatalog = (props) => {
   const { hotelCatalogOpen } = props;
@@ -35,4 +34,4 @@ HotelCatalog.propTypes = {
   hotelCatalogOpen: PropTypes.bool.isRequired,
 };
 
-export default connect(({ hotelCatalogOpen }) => ({ hotelCatalogOpen }))(HotelCatalog);
+export default HotelCatalog;
