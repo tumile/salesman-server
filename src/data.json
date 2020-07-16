@@ -138,13 +138,125 @@
     "airlines": [
       { "name": "Lufthansa", "image": "https://salesman-public.s3.amazonaws.com/lufthansa.png" },
       { "name": "Eurowings", "image": "https://salesman-public.s3.amazonaws.com/eurowings.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "Brandenburg Gate",
+        "image": "https://salesman-public.s3.amazonaws.com/brandenburg-gate.jpg",
+        "description": "The Brandenburg Gate is an 18th-century neoclassical monument in Berlin, built on the orders of Prussian king Frederick William II after the temporary restoration of order during the Batavian Revolution. One of the best-known landmarks of Germany, it was built on the site of a former city gate that marked the start of the road from Berlin to the town of Brandenburg an der Havel, which used to be capital of the Margraviate of Brandenburg. It is located in the western part of the city centre of Berlin within Mitte, at the junction of Unter den Linden and Ebertstraße, immediately west of the Pariser Platz. One block to the north stands the Reichstag building, which houses the German parliament. The gate is the monumental entry to Unter den Linden, a boulevard of linden trees which led directly to the royal City Palace of the Prussian monarchs. Throughout its existence, the Brandenburg Gate was often a site for major historical events and is today considered not only as a symbol of the tumultuous history of Europe and Germany, but also of European unity and peace.",
+        "coords": [52.516275, 13.377704]
+      },
+      {
+        "name": "Reichstag Building",
+        "image": "https://salesman-public.s3.amazonaws.com/reichstag-building.jpg",
+        "description": "The Reichstag is a historic edifice in Berlin, Germany, constructed to house the Imperial Diet of the German Empire. It was opened in 1894 and housed the Diet until 1933, when it was severely damaged after being set on fire. After World War II, the building fell into disuse; the parliament of the German Democratic Republic met in the Palast der Republik in East Berlin, while the parliament of the Federal Republic of Germany met in the Bundeshaus in Bonn. The ruined building was made safe against the elements and partially refurbished in the 1960s, but no attempt at full restoration was made until after German reunification on 3 October 1990, when it underwent a reconstruction led by architect Norman Foster. After its completion in 1999, it once again became the meeting place of the German parliament: the modern Bundestag. The term Reichstag, when used to connote a diet, dates back to the Holy Roman Empire. The building was built for the Diet of the German Empire, which was succeeded by the Reichstag of the Weimar Republic.",
+        "coords": [52.51862, 13.376187]
+      },
+      {
+        "name": "Berlin Wall Memorial",
+        "image": "https://salesman-public.s3.amazonaws.com/berlin-wall-memorial.jpg",
+        "description": "The Gedenkstätte Berliner Mauer commemorates the division of Berlin by the Berlin Wall and the deaths that occurred there. The monument was created in 1998 by the Federal Republic of Germany and the Federal State of Berlin. It is located on Bernauer Straße at the corner of Ackerstraße and includes a Chapel of Reconciliation, the Berlin Wall Documentation Centre, a 60-metre section of the former border, a window of remembrance and a visitor center.",
+        "coords": [52.535052, 13.39019]
+      },
+      {
+        "name": "East Side Gallery",
+        "image": "https://salesman-public.s3.amazonaws.com/east-side-gallery.jpg",
+        "description": "The East Side Gallery is an open-air gallery in Berlin. It consists of a series of murals painted directly on a 1,316 m long remnant of the Berlin Wall, located near the centre of Berlin, on Mühlenstraße in Friedrichshain-Kreuzberg. The gallery has official status as a Denkmal, or heritage-protected landmark. According to the Künstlerinitiative East Side Gallery e.V., an association of the artists involved in the project, \"The East Side Gallery is understood as a monument to the fall of the Berlin Wall and the peaceful negotiation of borders and conventions between societies and people\", and has more than three million visitors per year.",
+        "coords": [52.505022, 13.439695]
+      },
+      {
+        "name": "Museum Island",
+        "image": "https://salesman-public.s3.amazonaws.com/museum-island.jpg",
+        "description": "The Museum Island is a museum complex on the northern part of the Spree Island in the historic centre of Berlin. It belongs to the most visited sights of Germany's capital and the most important museum sites of Europe. Built from 1830 to 1930 by order of the Prussian Kings according to plans by five architects, the Museum Island was designated a UNESCO World Heritage Site in 1999. It consists of the Altes Museum, the Neues Museum, the Alte Nationalgalerie, the Bode-Museum and the Pergamonmuseum. Since the German reunification, the Museum Island has been rebuilt and extended according to a master plan. In 2019, the James-Simon-Galerie was opened as a new visitor centre.",
+        "coords": [52.516933, 13.4019]
+      },
+      {
+        "name": "Berliner Fernsehturm",
+        "image": "https://salesman-public.s3.amazonaws.com/berliner-fernsehturm.jpg",
+        "description": "The Berliner Fernsehturm or Fernsehturm Berlin is a television tower in central Berlin, Germany. Situated in the Marien quarter, close to Alexanderplatz in the locality and district of Mitte, the tower was constructed between 1965 and 1969 by the government of the German Democratic Republic. It was intended to be both a symbol of Communist power and of the city. It remains a landmark today, visible throughout the central and some suburban districts of Berlin. With its height of 368 metres it is the tallest structure in Germany, and the third-tallest structure in the European Union.",
+        "coords": [52.520815, 13.409419]
+      },
+      {
+        "name": "Pergamonmuseum",
+        "image": "https://salesman-public.s3.amazonaws.com/pergamonmuseum.jpg",
+        "description": "The Pergamon Museum is situated on the Museum Island in Berlin. The building was designed by Alfred Messel and Ludwig Hoffmann and was constructed over a period of twenty years, from 1910 to 1930. The Pergamon Museum houses monumental buildings such as the Pergamon Altar, the Ishtar Gate of Babylon, the Market Gate of Miletus reconstructed from the ruins found in Anatolia, as well as the Mshatta Facade. The museum is subdivided into the antiquity collection, the Middle East museum, and the museum of Islamic art. It is visited by approximately 1,135,000 people every year, making it the most visited art museum in Germany, and is one of the largest in the country.",
+        "coords": [52.521183, 13.3969]
+      },
+      {
+        "name": "Alexanderplatz",
+        "image": "https://salesman-public.s3.amazonaws.com/alexanderplatz.jpg",
+        "description": "Alexanderplatz is a large public square and transport hub in the central Mitte district of Berlin. The square is named after the Russian Tsar Alexander I and is often referred to simply as Alex, which also denotes the larger neighbourhood stretching from Mollstraße in the northeast to Spandauer Straße and the Rotes Rathaus in the southwest. With more than 360,000 visitors daily, Alexanderplatz is, according to one study, the most visited area of Berlin, beating Friedrichstrasse and City West. It is a popular starting point for tourists, with many attractions including the Fernsehturm, the Nikolai Quarter and the Rotes Rathaus situated nearby. Alexanderplatz is still one of Berlin's major commercial areas, housing various shopping malls, department stores and other large retail locations.",
+        "coords": [52.521981, 13.413306]
+      },
+      {
+        "name": "Potsdamer Platz",
+        "image": "https://salesman-public.s3.amazonaws.com/potsdamer-platz.jpg",
+        "description": "Potsdamer Platz is an important public square and traffic intersection in the center of Berlin, Germany, lying about 1 km south of the Brandenburg Gate and the Reichstag, and close to the southeast corner of the Tiergarten park. It is named after the city of Potsdam, some 25 km to the south west, and marks the point where the old road from Potsdam passed through the city wall of Berlin at the Potsdam Gate. After developing within the space of little over a century from an intersection of rural thoroughfares into the most bustling traffic intersection in Europe, it was totally destroyed during World War II and then left desolate during the Cold War era when the Berlin Wall bisected its former location. Since German reunification, Potsdamer Platz has been the site of major redevelopment projects.",
+        "coords": [52.509649, 13.375944]
+      }
     ]
   },
   {
     "name": "Budapest",
     "image": "https://salesman-public.s3.amazonaws.com/budapest.jpg",
     "coords": [47.4979, 19.0402],
-    "airlines": [{ "name": "Wizz Air", "image": "https://salesman-public.s3.amazonaws.com/wizz-air.png" }]
+    "airlines": [{ "name": "Wizz Air", "image": "https://salesman-public.s3.amazonaws.com/wizz-air.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "Buda Castle",
+        "image": "https://salesman-public.s3.amazonaws.com/buda-castle.jpg",
+        "description": "Buda Castle is the historical castle and palace complex of the Hungarian kings in Budapest. It was first completed in 1265, but the massive Baroque palace today occupying most of the site was built between 1749 and 1769. The complex in the past was referred to as either the Royal Palace or the Royal Castle. The castle now houses the Hungarian National Gallery and The Budapest History Museum. Buda Castle sits on the southern tip of Castle Hill, surrounded by the touristic area known as Várnegyed, which is famous for medieval, Baroque and Neoclassical houses, churches, public buildings and monuments. The hill is linked to Clark Ádám Square and the Széchenyi Chain Bridge by the Castle Hill Funicular. The castle is a part of the Budapest World Heritage Site, so declared in 1987. The original Royal palace was ruined during WWII, it was rebuilt in a simplified Stalin Baroque style during the Kádár era.",
+        "coords": [47.496205, 19.039567]
+      },
+      {
+        "name": "Hungarian Parliament Building",
+        "image": "https://salesman-public.s3.amazonaws.com/hungarian-parliament-building.jpg",
+        "description": "The Hungarian Parliament Building, also known as the Parliament of Budapest after its location, is the seat of the National Assembly of Hungary, a notable landmark of Hungary, and a popular tourist destination in Budapest. It is situated on Kossuth Square in the Pest side of the city, on the eastern bank of the Danube. It was designed by Hungarian architect Imre Steindl in neo-Gothic style and opened in 1902. It has been the largest building in Hungary since its completion.",
+        "coords": [47.507121, 19.045669]
+      },
+      {
+        "name": "Fisherman's Bastion",
+        "image": "https://salesman-public.s3.amazonaws.com/fishermans-bastion.jpg",
+        "description": "The Halászbástya or Fisherman's Bastion is one of the best known monuments in Budapest, located in the Buda Castle, in the 1st district of Budapest. It is one of the most important tourist attractions due to the unique panorama of Budapest from the Neo-Romanesque lookout terraces. The Fishermen's Bastion's main façade, parallel to the Danube, is approximately 140 meters long, of which the southern aisle is about 40 meters long, the north is 65 meters long, and the ornate central parapet is 35 meters long. Its seven high-pitched stone towers symbolize the seven chieftains of the Hungarians who founded Hungary in 895. It was built between 1895 and 1902, in Neo-Romanesque style, on the base of a stretch of the Buda Castle walls, by architect Frigyes Schulek, who was also responsible for the restoration of the Matthias Church. Several historians say that in the Middle Ages this part of the castle walls was protected by the guild of fishermen, who lived under the walls in the so-called Fishtown. Since 1987 it has been part of Budapest's World Heritage Sites as part of the Várkerület District.",
+        "coords": [47.502183, 19.034781]
+      },
+      {
+        "name": "St. Stephen's Basilica",
+        "image": "https://salesman-public.s3.amazonaws.com/ststephens-basilica.jpg",
+        "description": "St. Stephen's Basilica is a Roman Catholic basilica in Budapest, Hungary. It is named in honour of Stephen, the first King of Hungary, whose right hand is housed in the reliquary. It was the sixth largest church building in Hungary before 1920. Since the renaming of the primatial see, it's the co-cathedral of the Roman Catholic Archdiocese of Esztergom-Budapest. Today, it is the third largest church building in present-day Hungary.",
+        "coords": [47.50089, 19.053989]
+      },
+      {
+        "name": "Heroes' Square",
+        "image": "https://salesman-public.s3.amazonaws.com/heroes-square.jpg",
+        "description": "Hősök tere is one of the major squares in Budapest, Hungary, noted for its iconic statue complex featuring the Seven chieftains of the Magyars and other important Hungarian national leaders, as well as the Memorial Stone of Heroes, often erroneously referred as the Tomb of the Unknown Soldier. The square lies at the outbound end of Andrássy Avenue next to City Park. It hosts the Museum of Fine Arts and the Műcsarnok. The square has played an important part in contemporary Hungarian history and has been a host to many political events, such as the reburial of Imre Nagy in 1989. The sculptures were made by sculptor Zala György from Lendava.",
+        "coords": [47.514943, 19.077863]
+      },
+      {
+        "name": "Matthias Church",
+        "image": "https://salesman-public.s3.amazonaws.com/matthias-church.jpg",
+        "description": "The Church of the Assumption of the Buda Castle, more commonly known as the Matthias Church, more rarely the Coronation Church of Buda, is a Roman Catholic church located in the Holy Trinity Square, Budapest, Hungary, in front of the Fisherman's Bastion at the heart of Buda's Castle District. According to church tradition, it was originally built in Romanesque style in 1015, although few references exist. The current building was constructed in the florid late Gothic style in the second half of the 14th century and was extensively restored in the late 19th century. It was the second largest church of medieval Buda and the seventh largest church of the medieval Hungarian Kingdom. It is a historic building with an important history. Two Kings of Hungary were crowned within its walls: Franz Joseph I of Hungary and Elisabeth, and Charles IV of Hungary and Zita of Bourbon-Parma. The church was also the location of the \"Mary-wonder.\" In 1686 during the siege of Buda city by the Holy League a wall of the church collapsed due to cannon fire. It turned out that an old votive Madonna statue was hidden behind the wall.",
+        "coords": [47.501954, 19.034162]
+      },
+      {
+        "name": "Széchenyi Chain Bridge",
+        "image": "https://salesman-public.s3.amazonaws.com/szechenyi-chain-bridge.jpg",
+        "description": "The Széchenyi Chain Bridge is a chain bridge that spans the River Danube between Buda and Pest, the western and eastern sides of Budapest, the capital of Hungary. Designed by English engineer William Tierney Clark and built by Scottish engineer Adam Clark, it was the first permanent bridge across the Danube in Hungary. It was opened in 1849. It is anchored on the Pest side of the river to Széchenyi Square, adjacent to the Gresham Palace and the Hungarian Academy of Sciences, and on the Buda side to Adam Clark Square, near the Zero Kilometre Stone and the lower end of the Castle Hill Funicular, leading to Buda Castle. The bridge has the name of István Széchenyi, a major supporter of its construction, attached to it, but is most commonly known as the "Chain Bridge". At the time of its construction, it was regarded as one of the modern world's engineering wonders. It has asserted an enormous significance in the country's economic, social and cultural life, much as the Brooklyn Bridge has in New York and the US. Its decorations made of cast iron, and its construction, radiating calm dignity and balance, have elevated the Chain Bridge to a high stature in Europe.",
+        "coords": [47.498993,19.043699]
+      },
+      {
+        "name": "Central Market Hall",
+        "image": "https://salesman-public.s3.amazonaws.com/central-market-hall.jpg",
+        "description": "The Great Market Hall or Central Market Hall, Market Hall I is the largest and oldest indoor market in Budapest, Hungary. The idea of building such a large market hall arose from the first mayor of Budapest, Károly Kamermayer, and it was his largest investment. He retired in 1896 and participated in the opening ceremony on February 15, 1897. It is located at the end of the famous pedestrian shopping street Váci utca and on the Pest side of the Liberty bridge at Fővám square.",
+        "coords": [47.487085,19.058493]
+      },
+      {
+        "name": "Margaret Island",
+        "image": "https://salesman-public.s3.amazonaws.com/margaret-island.jpg",
+        "description": "Margaret Island is a 2.5 km long island, 500 metres wide, in the middle of the Danube in central Budapest, Hungary. The island is mostly covered by landscape parks, and is a popular recreational area. Its medieval ruins are reminders of its importance in the Middle Ages as a religious centre. The island spans the area between the Margaret Bridge and the Árpád Bridge. Before the 14th century the island was called Insula leporum. Administratively Margaret Island used to belong to the 13th district, but now is directly under the control of the city. Its appearance today was developed through the connection of three separate islands, the Festő, the Fürdő and the Nyulak, during the end of the 19th century, to control the flow of the Danube. Originally, the island was 102.5 metres above sea level, but now has been built up to 104.85 metres above sea level to control flooding.",
+        "coords": [47.526641,19.046394]
+      }
+    ]
   },
   {
     "name": "Copenhagen",
