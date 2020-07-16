@@ -58,6 +58,7 @@ class Auth extends React.Component {
     const { username, password } = this.state;
     return (
       <div className="auth">
+        <img src="images/background/background.png" alt="Background" />
         <form onSubmit={this.handleSignin}>
           <input
             type="text"
@@ -96,6 +97,7 @@ class Auth extends React.Component {
     const { username, password } = this.state;
     return (
       <div className="auth">
+        <img src="images/background/background.png" alt="Background" />
         <form onSubmit={this.handleSignup}>
           <div className="image-input">
             <input type="file" accept="image/*" onChange={this.handleImage} />
