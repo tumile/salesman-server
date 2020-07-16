@@ -241,20 +241,20 @@
       {
         "name": "Széchenyi Chain Bridge",
         "image": "https://salesman-public.s3.amazonaws.com/szechenyi-chain-bridge.jpg",
-        "description": "The Széchenyi Chain Bridge is a chain bridge that spans the River Danube between Buda and Pest, the western and eastern sides of Budapest, the capital of Hungary. Designed by English engineer William Tierney Clark and built by Scottish engineer Adam Clark, it was the first permanent bridge across the Danube in Hungary. It was opened in 1849. It is anchored on the Pest side of the river to Széchenyi Square, adjacent to the Gresham Palace and the Hungarian Academy of Sciences, and on the Buda side to Adam Clark Square, near the Zero Kilometre Stone and the lower end of the Castle Hill Funicular, leading to Buda Castle. The bridge has the name of István Széchenyi, a major supporter of its construction, attached to it, but is most commonly known as the "Chain Bridge". At the time of its construction, it was regarded as one of the modern world's engineering wonders. It has asserted an enormous significance in the country's economic, social and cultural life, much as the Brooklyn Bridge has in New York and the US. Its decorations made of cast iron, and its construction, radiating calm dignity and balance, have elevated the Chain Bridge to a high stature in Europe.",
-        "coords": [47.498993,19.043699]
+        "description": "The Széchenyi Chain Bridge is a chain bridge that spans the River Danube between Buda and Pest, the western and eastern sides of Budapest, the capital of Hungary. Designed by English engineer William Tierney Clark and built by Scottish engineer Adam Clark, it was the first permanent bridge across the Danube in Hungary. It was opened in 1849. It is anchored on the Pest side of the river to Széchenyi Square, adjacent to the Gresham Palace and the Hungarian Academy of Sciences, and on the Buda side to Adam Clark Square, near the Zero Kilometre Stone and the lower end of the Castle Hill Funicular, leading to Buda Castle. The bridge has the name of István Széchenyi, a major supporter of its construction, attached to it, but is most commonly known as the \"Chain Bridge\". At the time of its construction, it was regarded as one of the modern world's engineering wonders. It has asserted an enormous significance in the country's economic, social and cultural life, much as the Brooklyn Bridge has in New York and the US. Its decorations made of cast iron, and its construction, radiating calm dignity and balance, have elevated the Chain Bridge to a high stature in Europe.",
+        "coords": [47.498993, 19.043699]
       },
       {
         "name": "Central Market Hall",
         "image": "https://salesman-public.s3.amazonaws.com/central-market-hall.jpg",
         "description": "The Great Market Hall or Central Market Hall, Market Hall I is the largest and oldest indoor market in Budapest, Hungary. The idea of building such a large market hall arose from the first mayor of Budapest, Károly Kamermayer, and it was his largest investment. He retired in 1896 and participated in the opening ceremony on February 15, 1897. It is located at the end of the famous pedestrian shopping street Váci utca and on the Pest side of the Liberty bridge at Fővám square.",
-        "coords": [47.487085,19.058493]
+        "coords": [47.487085, 19.058493]
       },
       {
         "name": "Margaret Island",
         "image": "https://salesman-public.s3.amazonaws.com/margaret-island.jpg",
         "description": "Margaret Island is a 2.5 km long island, 500 metres wide, in the middle of the Danube in central Budapest, Hungary. The island is mostly covered by landscape parks, and is a popular recreational area. Its medieval ruins are reminders of its importance in the Middle Ages as a religious centre. The island spans the area between the Margaret Bridge and the Árpád Bridge. Before the 14th century the island was called Insula leporum. Administratively Margaret Island used to belong to the 13th district, but now is directly under the control of the city. Its appearance today was developed through the connection of three separate islands, the Festő, the Fürdő and the Nyulak, during the end of the 19th century, to control the flow of the Danube. Originally, the island was 102.5 metres above sea level, but now has been built up to 104.85 metres above sea level to control flooding.",
-        "coords": [47.526641,19.046394]
+        "coords": [47.526641, 19.046394]
       }
     ]
   },
@@ -264,6 +264,62 @@
     "coords": [55.6761, 12.5683],
     "airlines": [
       { "name": "Scandinavian Airlines", "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "Tivoli Gardens",
+        "image": "https://salesman-public.s3.amazonaws.com/tivoli-gardens.jpg",
+        "description": "Tivoli, also known as Tivoli Gardens, is an amusement park and pleasure garden in Copenhagen, Denmark. The park opened on 15 August 1843 and is the second-oldest operating amusement park in the world, after Dyrehavsbakken in nearby Klampenborg, also in Denmark. With 4.6 million visitors in 2017, Tivoli is the second-most popular seasonal theme park in the world after Europa-Park. Tivoli is the fifth-most visited theme park in Europe, behind Disneyland Park, Europa-Park, Walt Disney Studios Park and Efteling. It is located directly in downtown Copenhagen, next to the Central rail station for the city.",
+        "coords": [55.673684, 12.568147]
+      },
+      {
+        "name": "Nyhavn",
+        "image": "https://salesman-public.s3.amazonaws.com/nyhavn.jpg",
+        "description": "Nyhavn is a 17th-century waterfront, canal and entertainment district in Copenhagen, Denmark. Stretching from Kongens Nytorv to the harbour front just south of the Royal Playhouse, it is lined by brightly coloured 17th and early 18th century townhouses and bars, cafes and restaurants. The canal harbours many historical wooden ships.",
+        "coords": [55.679776, 12.591304]
+      },
+      {
+        "name": "The Little Mermaid",
+        "image": "https://salesman-public.s3.amazonaws.com/the-little-mermaid.jpg",
+        "description": "The Little Mermaid is a bronze statue by Edvard Eriksen, depicting a mermaid becoming human. The sculpture is displayed on a rock by the waterside at the Langelinie promenade in Copenhagen, Denmark. It is 1.25 metres tall and weighs 175 kilograms. Based on the 1837 fairy tale of the same name by Danish author Hans Christian Andersen, the small and unimposing statue is a Copenhagen icon and has been a major tourist attraction since its unveiling in 1913. In recent decades it has become a popular target for defacement by vandals and political activists. Mermaid is among iconic statues that symbolize cities; others include: Manneken Pis in Brussels, the Statue of Liberty in New York and Christ the Redeemer in Rio de Janeiro. In several cases, cities have commissioned statues for such a purpose, such as with Singapore's Merlion.",
+        "coords": [55.69286, 12.599283]
+      },
+      {
+        "name": "Amalienborg",
+        "image": "https://salesman-public.s3.amazonaws.com/amalienborg.jpg",
+        "description": "Amalienborg is the home of the Danish royal family, and is located in Copenhagen, Denmark. It consists of four identical classical palace façades with rococo interiors around an octagonal courtyard; in the centre of the square is a monumental equestrian statue of Amalienborg's founder, King Frederick V. Amalienborg was originally built for four noble families; however, when Christiansborg Palace burned on 26 February 1794, the royal family bought the palaces and moved in. Over the years various monarchs and their families have resided in the four different palaces.",
+        "coords": [55.684059, 12.59302]
+      },
+      {
+        "name": "Rosenborg Castle",
+        "image": "https://salesman-public.s3.amazonaws.com/rosenborg-castle.jpg",
+        "description": "Rosenborg Castle is a renaissance castle located in Copenhagen, Denmark. The castle was originally built as a country summerhouse in 1606 and is an example of Christian IV's many architectural projects. It was built in the Dutch Renaissance style, typical of Danish buildings during this period, and has been expanded several times, finally evolving into its present condition by the year 1624. Architects Bertel Lange and Hans van Steenwinckel the Younger are associated with the structural planning of the castle.",
+        "coords": [55.685827, 12.577269]
+      },
+      {
+        "name": "Christiansborg Palace",
+        "image": "https://salesman-public.s3.amazonaws.com/christiansborg-palace.jpg",
+        "description": "Christiansborg Palace is a palace and government building on the islet of Slotsholmen in central Copenhagen, Denmark. It is the seat of the Danish Parliament, the Danish Prime Minister's Office, and the Supreme Court of Denmark. Also, several parts of the palace are used by the Danish monarch, including the Royal Reception Rooms, the Palace Chapel and the Royal Stables. The palace is thus home to the three supreme powers: the executive power, the legislative power, and the judicial power. It is the only building in the world that houses all three of a country's branches of government. The name Christiansborg is thus also frequently used as a metonym for the Danish political system, and colloquially it is often referred to as Rigsborgen or simply Borgen. The present building, the third with this name, is the last in a series of successive castles and palaces constructed on the same site since the erection of the first castle in 1167. Since the early fifteenth century, the various buildings have served as the base of the central administration; until 1794 as the principal residence of the Danish kings and after 1849 as the seat of parliament.",
+        "coords": [55.676232, 12.580514]
+      },
+      {
+        "name": "The Round Tower",
+        "image": "https://salesman-public.s3.amazonaws.com/the-round-tower.jpg",
+        "description": "The Round Tower, formerly Stellaburgis Hafniens, is a 17th-century tower located in central Copenhagen, Denmark, and one of the many architectural projects of Christian IV of Denmark, built as an astronomical observatory. It is most noted for its equestrian staircase, a 7.5-turn helical corridor leading to the platform at the top, and for the expansive views which it affords over Copenhagen. The tower is part of the Trinitatis Complex which also provided the scholars of the time with a university chapel, the Trinitatis Church, and an academic library which were the first facilities of the Copenhagen University Library which had been founded in 1482. Today, the Round Tower serves as an observation tower for views of Copenhagen, a public astronomical observatory, and a historical monument. The Library Hall above the church is only accessible along the tower's ramp and is a venue for exhibitions and concerts.",
+        "coords": [55.681347, 12.57573]
+      },
+      {
+        "name": "Strøget",
+        "image": "https://salesman-public.s3.amazonaws.com/stroget.jpg",
+        "description": "Strøget is a pedestrian, car free shopping area in Copenhagen, Denmark. This popular tourist attraction in the centre of town is one of the longest pedestrian shopping streets in Europe at 1.1 km. Located at the centre of the old city of Copenhagen, it has long been one of the most high-profile streets in the city. The pedestrianisation of Strøget in 1962 marked the beginning of a major change in the approach of Copenhagen to urban life; following the success of the initiative the city moved to place a much greater emphasis on pedestrian and bicycle access to the city at the expense of cars. This approach has in turn become internationally influential.",
+        "coords": [55.678653, 12.57683]
+      },
+      {
+        "name": "Ny Carlsberg Glyptotek",
+        "image": "https://salesman-public.s3.amazonaws.com/ny-carlsberg-glyptotek.jpg",
+        "description": "The Ny Carlsberg Glyptotek is an art museum in Copenhagen, Denmark. The collection is built around the personal collection of Carl Jacobsen, the son of the founder of the Carlsberg Breweries. Primarily a sculpture museum, as indicated by the name, the focal point of the museum is antique sculpture from the ancient cultures around the Mediterranean, including Egypt, Rome and Greece, as well as more modern sculptures such as a collection of Auguste Rodin's works, considered to be the most important outside France. However, the museum is equally noted for its collection of paintings that includes an extensive collection of French impressionists and Post-impressionists as well as Danish Golden Age paintings. The French Collection includes works by painters such as Jacques-Louis David, Monet, Pissarro, Renoir, Degas and Cézanne, as well as those by Post-impressionists such as van Gogh, Toulouse-Lautrec and Bonnard. The museum's collection includes all the bronze sculptures of Degas, including the series of dancers. Numerous works by Norwegian-Danish sculptor Stephan Sinding are featured prominently in various sections of the museum.",
+        "coords": [55.67298, 12.572543]
+      }
     ]
   },
   {
@@ -273,13 +329,125 @@
     "airlines": [
       { "name": "Ryanair", "image": "https://salesman-public.s3.amazonaws.com/ryanair.png" },
       { "name": "Aer Lingus", "image": "https://salesman-public.s3.amazonaws.com/aer-lingus.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "Guinness Storehouse",
+        "image": "https://salesman-public.s3.amazonaws.com/guinness-storehouse.jpg",
+        "description": "Guinness Storehouse is a tourist attraction at St. James's Gate Brewery in Dublin, Ireland. Since opening in 2000, it has received over twenty million visitors. The Storehouse covers seven floors surrounding a glass atrium shaped in the form of a pint of Guinness. The ground floor introduces the beer's four ingredients, and the brewery's founder, Arthur Guinness. Other floors feature the history of Guinness advertising and include an interactive exhibit on responsible drinking. The seventh floor houses the Gravity Bar with views of Dublin and where visitors may drink a pint of Guinness included in the price of admission.",
+        "coords": [53.341978, -6.286711]
+      },
+      {
+        "name": "Temple Bar",
+        "image": "https://salesman-public.s3.amazonaws.com/temple-bar.jpg",
+        "description": "Temple Bar is an area on the south bank of the River Liffey in central Dublin, Ireland. The area is bounded by the Liffey to the north, Dame Street to the south, Westmoreland Street to the east and Fishamble Street to the west. It is promoted as Dublin's 'cultural quarter' and, as a centre of Dublin's city centre's nightlife, is a tourist destination. Temple Bar is in the Dublin 2 postcode.",
+        "coords": [53.344938, -6.267473]
+      },
+      {
+        "name": "Dublin Castle",
+        "image": "https://salesman-public.s3.amazonaws.com/dublin-castle.jpg",
+        "description": "Dublin Castle is a major Irish government complex, conference centre, and tourist attraction. It is located off Dame Street in Dublin. Until 1922 it was the seat of the British government's administration in Ireland. Most of the current construction dates from the 18th century, though a castle has stood on the site since the days of King John, the first Lord of Ireland. The Castle served as the seat of English, then later British, government of Ireland under the Lordship of Ireland, the Kingdom of Ireland, and the United Kingdom of Great Britain and Ireland. After the signing of the Anglo-Irish Treaty in December 1921, the complex was ceremonially handed over to the newly formed Provisional Government led by Michael Collins. It now hosts the inauguration of each President of Ireland and various State receptions. The castle was built by the dark pool which gave Dublin its name. This pool lies on the lower course of the River Poddle before its confluence with the River Liffey; when the castle was built, the Liffey was much wider, and the castle was effectively defended by both rivers. The Poddle today runs under the complex.",
+        "coords": [53.342886, -6.267428]
+      },
+      {
+        "name": "Phoenix Park",
+        "image": "https://salesman-public.s3.amazonaws.com/phoenix-park.jpg",
+        "description": "Phoenix Park is an urban park in Dublin, Ireland, lying 2–4 km west of the city centre, north of the River Liffey. Its 11 km perimeter wall encloses 707 hectares; it is one of the largest enclosed recreational spaces within any European capital city. It includes large areas of grassland and tree-lined avenues, and since the 17th century has been home to a herd of wild fallow deer. The English name comes from the Irish fionn uisce meaning \"clear water\". The Irish Government is lobbying UNESCO to have the park designated as a world heritage site.",
+        "coords": [53.355882, -6.329813]
+      },
+      {
+        "name": "Kilmainham Gaol",
+        "image": "https://salesman-public.s3.amazonaws.com/kilmainham-gaol.jpg",
+        "description": "Kilmainham Gaol is a former prison in Kilmainham, Dublin, Ireland. It is now a museum run by the Office of Public Works, an agency of the Government of Ireland. Many Irish revolutionaries, including the leaders of the 1916 Easter Rising, were imprisoned and executed in the prison by the orders of the UK Government.",
+        "coords": [53.34187, -6.309805]
+      },
+      {
+        "name": "St. Stephen's Green",
+        "image": "https://salesman-public.s3.amazonaws.com/ststephens-green.jpg",
+        "description": "St Stephen's Green is a city centre public park in Dublin, Ireland. The current landscape of the park was designed by William Sheppard. It was officially re-opened to the public on Tuesday, 27 July 1880 by Lord Ardilaun. The park is adjacent to one of Dublin's main shopping streets, Grafton Street, and to a shopping centre named after it, while on its surrounding streets are the offices of a number of public bodies as well as a stop on one of Dublin's Luas tram lines. It is often informally called Stephen's Green. At 22 acres, it is the largest of the parks in Dublin's main Georgian garden squares. Others include nearby Merrion Square and Fitzwilliam Square. The park is rectangular, surrounded by streets that once formed major traffic arteries through Dublin city centre, although traffic management changes implemented in 2004 during the course of the Luas works have greatly reduced the volume of traffic. These four bordering streets are called, respectively, St Stephen's Green North, St Stephen's Green South, St Stephen's Green East and St Stephen's Green West.",
+        "coords": [53.33696, -6.259998]
+      },
+      {
+        "name": "Christ Church Cathedral",
+        "image": "https://salesman-public.s3.amazonaws.com/christ-church-cathedral.jpg",
+        "description": "Christ Church Cathedral, more formally The Cathedral of the Holy Trinity, is the cathedral of the United Dioceses of Dublin and Glendalough and the cathedral of the ecclesiastical province of the United Provinces of Dublin and Cashel in the Church of Ireland. It is situated in Dublin, Ireland, and is the elder of the capital city's two medieval cathedrals, the other being St Patrick's Cathedral.",
+        "coords": [53.343513, -6.27106]
+      },
+      {
+        "name": "Jameson Distillery Bow St.",
+        "image": "https://salesman-public.s3.amazonaws.com/jameson-distillery-bow-st.jpg",
+        "description": "Jameson Distillery Bow St. is an Irish whiskey tourist attraction located just off Smithfield Square in Dublin, Ireland. Jameson Distillery Bow St. is the original site where Jameson Irish Whiskey was distilled until 1971. It is now a visitors centre that provides guided tours, tutored whiskey tastings, JJs bar and a gift shop.",
+        "coords": [53.348376, -6.277354]
+      },
+      {
+        "name": "Malahide Castle & Gardens",
+        "image": "https://salesman-public.s3.amazonaws.com/malahide-castle-gardens.jpg",
+        "description": "Malahide Castle, parts of which date to the 12th century, lies close to the village of Malahide, nine miles north of central Dublin in Ireland. It has over 260 acres of remaining parkland estate, forming the Malahide Demesne Regional Park.",
+        "coords": [53.444934, -6.164569]
+      }
     ]
   },
   {
     "name": "Helsinki",
     "image": "https://salesman-public.s3.amazonaws.com/helsinki.jpg",
     "coords": [60.1699, 24.9384],
-    "airlines": [{ "name": "Finnair", "image": "https://salesman-public.s3.amazonaws.com/finnair.png" }]
+    "airlines": [{ "name": "Finnair", "image": "https://salesman-public.s3.amazonaws.com/finnair.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "Suomenlinna",
+        "image": "https://salesman-public.s3.amazonaws.com/suomenlinna.jpg",
+        "description": "Suomenlinna, or Sveaborg, is an inhabited sea fortress built on eight islands about 4 km southeast of the city center of Helsinki, the capital of Finland. Suomenlinna is a UNESCO World Heritage site that is popular with tourists and locals, who enjoy it as a picturesque picnic site. Originally named Sveaborg, or Viapori as referred to by Finnish-speaking Finns, it was renamed in Finnish to Suomenlinna in 1918 for patriotic and nationalistic reasons, though it is still known by its original name in Sweden and by Swedish-speaking Finns. The Swedish crown commenced the construction of the fortress in 1748 as protection against Russian expansionism. The general responsibility for the fortification work was given to Augustin Ehrensvärd. The original plan of the bastion fortress was strongly influenced by the ideas of Vauban, the foremost military engineer of the time, and the principles of the star fort style of fortification, albeit adapted to a group of rocky islands.",
+        "coords": [60.1454, 24.98814]
+      },
+      {
+        "name": "Temppeliaukion Church",
+        "image": "https://salesman-public.s3.amazonaws.com/temppeliaukion-church.jpg",
+        "description": "Temppeliaukio Church is a Lutheran church in the Töölö neighborhood of Helsinki. The church was designed by architects and brothers Timo and Tuomo Suomalainen and opened in 1969. Built directly into solid rock, it is also known as the Church of the Rock and Rock Church.",
+        "coords": [60.172995, 24.925234]
+      },
+      {
+        "name": "Helsinki Cathedral",
+        "image": "https://salesman-public.s3.amazonaws.com/helsinki-cathedral.jpg",
+        "description": "Helsinki Cathedral is the Finnish Evangelical Lutheran cathedral of the Diocese of Helsinki, located in the neighborhood of Kruununhaka in the centre of Helsinki, Finland at the Senate Square. The church was originally built from 1830–1852 as a tribute to the Grand Duke of Finland, Tsar Nicholas I of Russia. It was also known as St Nicholas' Church until the independence of Finland in 1917. It is a major landmark of the city.",
+        "coords": [60.170419, 24.952165]
+      },
+      {
+        "name": "Sibelius Monument",
+        "image": "https://salesman-public.s3.amazonaws.com/sibelius-monument.jpg",
+        "description": "The Sibelius Monument by Eila Hiltunen is dedicated to the Finnish composer Jean Sibelius. The monument is located at the Sibelius Park in the district of Töölö in Helsinki, the capital city of Finland.",
+        "coords": [60.182113, 24.913422]
+      },
+      {
+        "name": "Market Square",
+        "image": "https://salesman-public.s3.amazonaws.com/market-square.jpg",
+        "description": "The Market Square is a central square in Helsinki, Finland. It is located in central Helsinki, at the eastern end of Esplanadi and bordering the Baltic Sea to the south and Katajanokka to the east. HSL maintains a year-round ferry link from Market Square to Suomenlinna, and in the summer there are also private companies providing ferry cruises, both to Suomenlinna and to other nearby islands. The Presidential Palace and Helsinki City Hall are located adjacent to Market Square. From spring to autumn, the Market Square is active with vendors selling fresh Finnish food and souvenirs. There are also many outdoor cafés at the square. Some cafés also provide meat pastries. The height of the square's popularity is in early October, when the annual Helsinki herring market begins. A long tradition at the Market Square is a display of old American cars on the first Friday of every month. Any motorist with an interest in old American cars may participate in the display. Seagulls have become an increasing menace in the Market Square, swooping down to snatch snacks and ice cream from the hands of unsuspecting tourists.",
+        "coords": [60.167665, 24.953678]
+      },
+      {
+        "name": "Senate Square",
+        "image": "https://salesman-public.s3.amazonaws.com/senate-square.jpg",
+        "description": "The Senate Square presents Carl Ludvig Engel's architecture as a unique allegory of political, religious, scientific and commercial powers in the centre of Helsinki, Finland. Senate Square and its surroundings make up the oldest part of central Helsinki. Landmarks and famous buildings surrounding the square are the Helsinki Cathedral, the Government Palace, main building of the University of Helsinki and the Sederholm House, the oldest building of central Helsinki dating from 1757.",
+        "coords": [60.169479, 24.952287]
+      },
+      {
+        "name": "Linnanmaki",
+        "image": "https://salesman-public.s3.amazonaws.com/linnanmaki.jpg",
+        "description": "Linnanmäki is an amusement park in Helsinki, Finland. It was opened on 27 May 1950 and is owned by non-profit Lasten Päivän Säätiö, which operates the park in order to raise funds to Finnish child welfare work. In 2019, the foundation donated a total of 4.5 million euros. Linnanmäki is the most popular amusement park in Finland. It has many rides of different sizes. It also has other attractions, such as arcades, games, kiosks, restaurants and an outdoor stage on which different performers appear in the summer. Annually the park is visited by over 1 million guests.",
+        "coords": [60.18817, 24.94043]
+      },
+      {
+        "name": "Uspenski Cathedral",
+        "image": "https://salesman-public.s3.amazonaws.com/uspenski-cathedral.jpg",
+        "description": "Uspenski Cathedral is an Eastern Orthodox cathedral in Helsinki, Finland, and main cathedral of the Orthodox Church of Finland, dedicated to the Dormition of the Theotokos. Its name comes from the Old Church Slavonic word uspenie, which denotes the Dormition.",
+        "coords": [60.168544, 24.95995]
+      },
+      {
+        "name": "Museum of Contemporary Art Kiasma",
+        "image": "https://salesman-public.s3.amazonaws.com/museum-of-contemporary-art-kiasma.jpg",
+        "description": "Kiasma is a contemporary art museum located on Mannerheimintie in Helsinki, Finland. Its name kiasma, Finnish for chiasma, alludes to the basic conceptual idea of its architect, Steven Holl. Kiasma is part of the Finnish National Gallery, and it is responsible for the gallery's contemporary art collection. Its central goal is to showcase contemporary art and to strengthen its status.",
+        "coords": [60.172004, 24.93668]
+      }
+    ]
   },
   {
     "name": "Istanbul",
