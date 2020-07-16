@@ -5,40 +5,59 @@ class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignin: true,
+      signin: true,
       username: "",
       password: "",
-      image: undefined,
+      image: null,
+      imageURL: null,
+      loading: false,
+      error: null,
     };
   }
 
   handleSignin = async (e) => {
     e.preventDefault();
     try {
+      const { username, password } = this.state;
+      if (!username || !password) {
+        return;
+      }
+      this.setState({ loading: true });
       const resp = await fetch("/api/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(),
+        body: JSON.stringify({ username, password }),
       });
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.setState({ loading: false });
+    }
   };
 
   handleSignup = async (e) => {
     e.preventDefault();
     try {
+      const { username, password, image } = this.state;
+      if (!username || !password || !image) {
+        return;
+      }
+      this.setState({ loading: true });
       const data = new FormData();
-      data.append("image", this.state.image);
-
-      const resp = await fetch("/api/signup", {
+      data.append("image", image);
+      data.append("username", username);
+      data.append("password", password);
+      await fetch("/api/signup", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(),
+        body: data,
       });
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.setState({ loading: false });
+    }
   };
 
   handleInput = (e) => {
@@ -46,12 +65,15 @@ class Auth extends React.Component {
   };
 
   handleImage = (e) => {
-    console.log(e.target.files[0]);
+    const file = e.target.files[0];
+    if (file) {
+      this.setState({ image: file, imageURL: URL.createObjectURL(file) });
+    }
   };
 
   handleSwitch = (e) => {
     e.preventDefault();
-    this.setState({ isSignin: !this.state.isSignin, username: "", password: "", image: null });
+    this.setState({ signin: !this.state.signin, username: "", password: "", image: null, imageURL: null });
   };
 
   renderSignin = () => {
@@ -64,6 +86,7 @@ class Auth extends React.Component {
             type="text"
             className="form-control"
             placeholder="Username"
+            autoComplete="off"
             name="username"
             value={username}
             onChange={this.handleInput}
@@ -83,7 +106,7 @@ class Auth extends React.Component {
             </label>
           </div>
           <button type="submit" className="btn btn-primary btn-block">
-            Let's go
+            Let&apos;s go
           </button>
           <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
             New player? Sign up here!
@@ -94,18 +117,20 @@ class Auth extends React.Component {
   };
 
   renderSignup = () => {
-    const { username, password } = this.state;
+    const { username, password, imageURL } = this.state;
     return (
       <div className="auth">
         <img src="images/background/background.png" alt="Background" />
         <form onSubmit={this.handleSignup}>
           <div className="image-input">
+            {imageURL && <img src={imageURL} />}
             <input type="file" accept="image/*" onChange={this.handleImage} />
           </div>
           <input
             type="text"
             className="form-control"
             placeholder="Username"
+            autoComplete="off"
             name="username"
             value={username}
             onChange={this.handleInput}
@@ -125,7 +150,7 @@ class Auth extends React.Component {
             </label>
           </div>
           <button type="submit" className="btn btn-primary btn-block">
-            Let's go
+            Let&apos;s go
           </button>
           <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
             Already a player? Sign in here!
@@ -136,7 +161,7 @@ class Auth extends React.Component {
   };
 
   render() {
-    if (this.state.isSignin) {
+    if (this.state.signin) {
       return this.renderSignin();
     }
     return this.renderSignup();
