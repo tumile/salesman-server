@@ -26,10 +26,14 @@ class App extends React.Component {
     }
   }
 
+  setPlayer = (player) => {
+    this.setState({ player });
+  };
+
   render() {
     const { player } = this.state;
     if (!player) {
-      return <Auth />;
+      return <Auth player={this.setPlayer} />;
     }
     return (
       <>

@@ -1,16 +1,16 @@
-.auth > img {
+.auth .background {
   position: fixed;
   bottom: 0;
-  width: 100%;
   z-index: -1;
+  width: 100%;
   opacity: 0.5;
 }
 
-.auth form {
+.auth .form {
   width: 400px;
   margin: auto;
   margin-top: 10%;
-  padding: 2rem 1.5rem 1rem 1.5rem;
+  padding: 32px 18px 16px 18px;
   border-radius: 12px;
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -18,7 +18,7 @@
 
 .auth input,
 .form-check {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .auth .image-input {
@@ -28,7 +28,7 @@
   border-radius: 60px;
   border: 1px solid #ced4da;
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .auth .image-input input {

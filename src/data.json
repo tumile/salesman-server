@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Amsterdam",
+    "image": "https://salesman-public.s3.amazonaws.com/amsterdam.jpg",
+    "coords": [52.3667, 4.8945],
+    "airlines": [{ "name": "KLM", "image": "https://salesman-public.s3.amazonaws.com/klm.png" }]
+  },
+  {
+    "name": "Athens",
+    "image": "https://salesman-public.s3.amazonaws.com/athens.jpg",
+    "coords": [37.9838, 23.7275],
+    "airlines": [{ "name": "Aegean Airlines", "image": "https://salesman-public.s3.amazonaws.com/aegean-airlines.png" }]
+  },
+  {
+    "name": "Berlin",
+    "image": "https://salesman-public.s3.amazonaws.com/berlin.jpg",
+    "coords": [52.52, 13.405],
+    "airlines": [
+      { "name": "Lufthansa", "image": "https://salesman-public.s3.amazonaws.com/lufthansa.png" },
+      { "name": "Eurowings", "image": "https://salesman-public.s3.amazonaws.com/eurowings.png" }
+    ]
+  },
+  {
+    "name": "Budapest",
+    "image": "https://salesman-public.s3.amazonaws.com/budapest.jpg",
+    "coords": [47.4979, 19.0402],
+    "airlines": [{ "name": "Wizz Air", "image": "https://salesman-public.s3.amazonaws.com/wizz-air.png" }]
+  },
+  {
+    "name": "Copenhagen",
+    "image": "https://salesman-public.s3.amazonaws.com/copenhagen.jpg",
+    "coords": [55.6761, 12.5683],
+    "airlines": [
+      { "name": "Scandinavian Airlines", "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png" }
+    ]
+  },
+  {
+    "name": "Dublin",
+    "image": "https://salesman-public.s3.amazonaws.com/dublin.jpg",
+    "coords": [53.3498, -6.2603],
+    "airlines": [
+      { "name": "Ryanair", "image": "https://salesman-public.s3.amazonaws.com/ryanair.png" },
+      { "name": "Aer Lingus", "image": "https://salesman-public.s3.amazonaws.com/aer-lingus.png" }
+    ]
+  },
+  {
+    "name": "Helsinki",
+    "image": "https://salesman-public.s3.amazonaws.com/helsinki.jpg",
+    "coords": [60.1699, 24.9384],
+    "airlines": [{ "name": "Finnair", "image": "https://salesman-public.s3.amazonaws.com/finnair.png" }]
+  },
+  {
+    "name": "Istanbul",
+    "image": "https://salesman-public.s3.amazonaws.com/istanbul.jpg",
+    "coords": [41.0082, 28.9784],
+    "airlines": [
+      { "name": "Turkish Airlines", "image": "https://salesman-public.s3.amazonaws.com/turkish-airlines.png" }
+    ]
+  },
+  {
+    "name": "Kyiv",
+    "image": "https://salesman-public.s3.amazonaws.com/kyiv.jpg",
+    "coords": [50.4501, 30.5234],
+    "airlines": [
+      { "name": "Ukraine International", "image": "https://salesman-public.s3.amazonaws.com/ukraine-international.png" }
+    ]
+  },
+  {
+    "name": "Lisbon",
+    "image": "https://salesman-public.s3.amazonaws.com/lisbon.jpg",
+    "coords": [38.7223, -9.1393],
+    "airlines": [{ "name": "TAP Portugal", "image": "https://salesman-public.s3.amazonaws.com/tap-portugal.png" }]
+  },
+  {
+    "name": "London",
+    "image": "https://salesman-public.s3.amazonaws.com/london.jpg",
+    "coords": [51.5074, -0.1278],
+    "airlines": [
+      { "name": "British Airways", "image": "https://salesman-public.s3.amazonaws.com/british-airways.png" },
+      { "name": "EasyJet", "image": "https://salesman-public.s3.amazonaws.com/easyjet.png" },
+      { "name": "Ryanair", "image": "https://salesman-public.s3.amazonaws.com/ryanair.png" }
+    ]
+  },
+  {
+    "name": "Luxembourg",
+    "image": "https://salesman-public.s3.amazonaws.com/luxembourg.jpg",
+    "coords": [49.8153, 6.1296],
+    "airlines": [{ "name": "Luxair", "image": "https://salesman-public.s3.amazonaws.com/luxair.png" }]
+  },
+  {
+    "name": "Madrid",
+    "image": "https://salesman-public.s3.amazonaws.com/madrid.jpg",
+    "coords": [40.4168, -3.7038],
+    "airlines": [
+      { "name": "Iberia", "image": "https://salesman-public.s3.amazonaws.com/iberia.png" },
+      { "name": "Air Europa", "image": "https://salesman-public.s3.amazonaws.com/air-europa.png" },
+      { "name": "Vueling", "image": "https://salesman-public.s3.amazonaws.com/vueling.png" }
+    ]
+  },
+  {
+    "name": "Minsk",
+    "image": "https://salesman-public.s3.amazonaws.com/minsk.jpg",
+    "coords": [53.9006, 27.559],
+    "airlines": [{ "name": "Belavia", "image": "https://salesman-public.s3.amazonaws.com/belavia.png" }]
+  },
+  {
+    "name": "Moscow",
+    "image": "https://salesman-public.s3.amazonaws.com/moscow.jpg",
+    "coords": [55.7558, 37.6173],
+    "airlines": [{ "name": "Aeroflot", "image": "https://salesman-public.s3.amazonaws.com/aeroflot.png" }]
+  },
+  {
+    "name": "Oslo",
+    "image": "https://salesman-public.s3.amazonaws.com/oslo.jpg",
+    "coords": [59.9139, 10.7522],
+    "airlines": [
+      {
+        "name": "Scandinavian Airlines",
+        "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png"
+      },
+      { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
+    ]
+  },
+  {
+    "name": "Paris",
+    "image": "https://salesman-public.s3.amazonaws.com/paris.jpg",
+    "coords": [48.8566, 2.3522],
+    "airlines": [
+      { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
+      { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ]
+  },
+  {
+    "name": "Prague",
+    "image": "https://salesman-public.s3.amazonaws.com/prague.jpg",
+    "coords": [50.0755, 14.4378],
+    "airlines": [
+      { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
+      { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ]
+  },
+  {
+    "name": "Rome",
+    "image": "https://salesman-public.s3.amazonaws.com/rome.jpg",
+    "coords": [41.9028, 12.4964],
+    "airlines": [
+      { "name": "Alitalia", "image": "https://salesman-public.s3.amazonaws.com/alitalia.png" },
+      { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ]
+  },
+  {
+    "name": "Stockholm",
+    "image": "https://salesman-public.s3.amazonaws.com/stockholm.jpg",
+    "coords": [59.3293, 18.0686],
+    "airlines": [
+      {
+        "name": "Scandinavian Airlines",
+        "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png"
+      },
+      { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
+    ]
+  },
+  {
+    "name": "Vienna",
+    "image": "https://salesman-public.s3.amazonaws.com/vienna.jpg",
+    "coords": [48.2082, 16.3738],
+    "airlines": [
+      { "name": "Austrian Airlines", "image": "https://salesman-public.s3.amazonaws.com/austrian-airlines.png" },
+      { "name": "Lauda", "image": "https://salesman-public.s3.amazonaws.com/lauda.png" }
+    ]
+  },
+  {
+    "name": "Warsaw",
+    "image": "https://salesman-public.s3.amazonaws.com/warsaw.jpg",
+    "coords": [52.2297, 21.0122],
+    "airlines": [{ "name": "LOT Polish", "image": "https://salesman-public.s3.amazonaws.com/lot-polish.png" }]
+  }
+]

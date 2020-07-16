@@ -8,17 +8,18 @@ class Auth extends React.Component {
       signin: true,
       username: "",
       password: "",
+      rememberMe: true,
       image: null,
       imageURL: null,
+      error: "",
       loading: false,
-      error: null,
     };
   }
 
   handleSignin = async (e) => {
     e.preventDefault();
     try {
-      const { username, password } = this.state;
+      const { username, password, rememberMe } = this.state;
       if (!username || !password) {
         return;
       }
@@ -29,9 +30,18 @@ class Auth extends React.Component {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-      });
+      }).then((res) => res.json());
+      const { error, token, ...player } = resp;
+      if (error) {
+        this.setState({ error });
+      } else {
+        if (rememberMe) {
+          localStorage.setItem("token", token);
+        }
+        this.props.setPlayer(player);
+      }
     } catch (err) {
-      console.error(err);
+      this.setState({ error: err });
     } finally {
       this.setState({ loading: false });
     }
@@ -40,7 +50,7 @@ class Auth extends React.Component {
   handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const { username, password, image } = this.state;
+      const { username, password, image, rememberMe } = this.state;
       if (!username || !password || !image) {
         return;
       }
@@ -49,12 +59,21 @@ class Auth extends React.Component {
       data.append("image", image);
       data.append("username", username);
       data.append("password", password);
-      await fetch("/api/signup", {
+      const resp = await fetch("/api/signup", {
         method: "POST",
         body: data,
-      });
+      }).then((res) => res.json());
+      const { error, token, ...player } = resp;
+      if (error) {
+        this.setState({ error });
+      } else {
+        if (rememberMe) {
+          localStorage.setItem("token", token);
+        }
+        this.props.setPlayer(player);
+      }
     } catch (err) {
-      console.error(err);
+      this.setState({ error: err });
     } finally {
       this.setState({ loading: false });
     }
@@ -73,98 +92,127 @@ class Auth extends React.Component {
 
   handleSwitch = (e) => {
     e.preventDefault();
-    this.setState({ signin: !this.state.signin, username: "", password: "", image: null, imageURL: null });
+    this.setState({ signin: !this.state.signin, username: "", password: "", image: null, imageURL: null, error: "" });
   };
 
   renderSignin = () => {
-    const { username, password } = this.state;
+    const { username, password, rememberMe, error, loading } = this.state;
     return (
-      <div className="auth">
-        <img src="images/background/background.png" alt="Background" />
-        <form onSubmit={this.handleSignin}>
+      <form onSubmit={this.handleSignin}>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Username"
+          autoComplete="off"
+          name="username"
+          value={username}
+          onChange={this.handleInput}
+        />
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={this.handleInput}
+        />
+        <div className="form-check">
           <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            autoComplete="off"
-            name="username"
-            value={username}
-            onChange={this.handleInput}
+            type="checkbox"
+            className="form-check-input"
+            id="remember-me"
+            checked={rememberMe}
+            onChange={() => this.setState({ rememberMe: !rememberMe })}
           />
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.handleInput}
-          />
-          <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="remember-me" />
-            <label className="form-check-label" htmlFor="remember-me">
-              Remember me
-            </label>
-          </div>
-          <button type="submit" className="btn btn-primary btn-block">
-            Let&apos;s go
-          </button>
-          <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
-            New player? Sign up here!
-          </button>
-        </form>
-      </div>
+          <label className="form-check-label" htmlFor="remember-me">
+            Remember me
+          </label>
+        </div>
+        {error && <p className="text-danger">{error}</p>}
+        <button type="submit" className="btn btn-primary btn-block">
+          {loading ? (
+            <div className="spinner-border spinner-border-sm text-light" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          ) : (
+            "Let's go"
+          )}
+        </button>
+        <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
+          New player? Sign up here!
+        </button>
+      </form>
     );
   };
 
   renderSignup = () => {
-    const { username, password, imageURL } = this.state;
+    const { username, password, imageURL, rememberMe, error, loading } = this.state;
     return (
-      <div className="auth">
-        <img src="images/background/background.png" alt="Background" />
-        <form onSubmit={this.handleSignup}>
-          <div className="image-input">
-            {imageURL && <img src={imageURL} />}
-            <input type="file" accept="image/*" onChange={this.handleImage} />
-          </div>
+      <form onSubmit={this.handleSignup}>
+        <div className="image-input">
+          {imageURL && <img src={imageURL} alt="Avatar" />}
+          <input type="file" accept="image/*" onChange={this.handleImage} />
+        </div>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Username"
+          autoComplete="off"
+          name="username"
+          value={username}
+          onChange={this.handleInput}
+        />
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Password"
+          name="password"
+          value={password}
+          onChange={this.handleInput}
+        />
+        <div className="form-check">
           <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            autoComplete="off"
-            name="username"
-            value={username}
-            onChange={this.handleInput}
+            type="checkbox"
+            className="form-check-input"
+            id="remember-me"
+            checked={rememberMe}
+            onChange={() => this.setState({ rememberMe: !rememberMe })}
           />
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={this.handleInput}
-          />
-          <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="remember-me" />
-            <label className="form-check-label" htmlFor="remember-me">
-              Remember me
-            </label>
-          </div>
-          <button type="submit" className="btn btn-primary btn-block">
-            Let&apos;s go
-          </button>
-          <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
-            Already a player? Sign in here!
-          </button>
-        </form>
-      </div>
+          <label className="form-check-label" htmlFor="remember-me">
+            Remember me
+          </label>
+        </div>
+        {error && <p className="text-danger">{error}</p>}
+        <button type="submit" className="btn btn-primary btn-block">
+          {loading ? (
+            <div className="spinner-border spinner-border-sm text-light" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          ) : (
+            "Let's go"
+          )}
+        </button>
+        <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
+          Already a player? Sign in here!
+        </button>
+      </form>
     );
   };
 
-  render() {
+  renderSigninOrSignup = () => {
     if (this.state.signin) {
       return this.renderSignin();
     }
     return this.renderSignup();
+  };
+
+  render() {
+    return (
+      <div className="auth">
+        <img className="background" src="images/background/background.png" alt="Background" />
+        <div className="form">{this.renderSigninOrSignup()}</div>
+      </div>
+    );
   }
 }
 
