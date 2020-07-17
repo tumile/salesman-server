@@ -41,10 +41,10 @@ app.post("/api/signin", async (req, res, next) => {
     const matched = await bcrypt.compare(password, player.password);
     assert.ok(matched, "Invalid username or password");
 
-    const { id, image, money, stamina, city } = player;
-    const token = jwt.sign({ id }, process.env.SECRET_KEY);
+    const { _id, image, money, stamina, city } = player;
+    const token = jwt.sign({ id: _id }, process.env.SECRET_KEY);
 
-    res.status(200).json({ token, username, image, money, stamina, city });
+    res.status(200).json({ token, _id, username, image, money, stamina, city });
   } catch (err) {
     next(err);
   }
@@ -106,10 +106,10 @@ app.post("/api/signup", multipart.single("image"), async (req, res, next) => {
       city: amsterdam.id,
       customers,
     });
-    const { id, image, money, stamina, city } = player;
-    const token = jwt.sign({ id }, process.env.SECRET_KEY);
+    const { _id, image, money, stamina, city } = player;
+    const token = jwt.sign({ id: _id }, process.env.SECRET_KEY);
 
-    res.status(200).json({ token, username, image, money, stamina, city });
+    res.status(200).json({ token, _id, username, image, money, stamina, city });
   } catch (err) {
     next(err);
   } finally {

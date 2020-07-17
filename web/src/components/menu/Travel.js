@@ -22,7 +22,7 @@ class Travel extends React.Component {
           this.setState({ suggestions: [], flights: [] });
         } else {
           const { cities } = await fetch(`/api/cities/text?q=${input}`).then((res) => res.json());
-          this.setState({ suggestions: cities });
+          this.setState({ suggestions: cities, flights: [] });
         }
       }
     }, 500);

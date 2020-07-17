@@ -39,6 +39,7 @@ class App extends React.Component {
   };
 
   setPlayer = (player) => {
+    console.log(player);
     this.setState({ player });
     this.getCustomers(player._id);
   };
