@@ -875,8 +875,8 @@
     "image": "https://salesman-public.s3.amazonaws.com/prague.jpg",
     "coords": [50.0755, 14.4378],
     "airlines": [
-      { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
-      { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+      { "name": "Czech Airlines", "image": "https://salesman-public.s3.amazonaws.com/czech-airlines.png" },
+      { "name": "Smartwings", "image": "https://salesman-public.s3.amazonaws.com/smartwings.png" }
     ],
     "pointsOfInterest": []
   },
@@ -884,10 +884,7 @@
     "name": "Rome",
     "image": "https://salesman-public.s3.amazonaws.com/rome.jpg",
     "coords": [41.9028, 12.4964],
-    "airlines": [
-      { "name": "Alitalia", "image": "https://salesman-public.s3.amazonaws.com/alitalia.png" },
-      { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
-    ],
+    "airlines": [{ "name": "Alitalia", "image": "https://salesman-public.s3.amazonaws.com/alitalia.png" }],
     "pointsOfInterest": []
   },
   {
@@ -908,8 +905,7 @@
     "image": "https://salesman-public.s3.amazonaws.com/vienna.jpg",
     "coords": [48.2082, 16.3738],
     "airlines": [
-      { "name": "Austrian Airlines", "image": "https://salesman-public.s3.amazonaws.com/austrian-airlines.png" },
-      { "name": "Lauda", "image": "https://salesman-public.s3.amazonaws.com/lauda.png" }
+      { "name": "Austrian Airlines", "image": "https://salesman-public.s3.amazonaws.com/austrian-airlines.png" }
     ],
     "pointsOfInterest": []
   },

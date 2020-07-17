@@ -9,7 +9,6 @@ class Travel extends React.Component {
       suggestions: [],
       destination: "",
       flights: [],
-      flightInfo: null,
     };
   }
 
@@ -20,13 +19,19 @@ class Travel extends React.Component {
       if (this.state.search === input) {
         input = input.trim();
         if (!input) {
-          this.setState({ suggestions: [] });
+          this.setState({ suggestions: [], flights: [] });
         } else {
-          const suggestions = await fetch(`/api/cities/text?q=${input}`).then((res) => res.json());
-          this.setState({ suggestions });
+          const { cities } = await fetch(`/api/cities/text?q=${input}`).then((res) => res.json());
+          this.setState({ suggestions: cities });
         }
       }
     }, 500);
+  };
+
+  handleFlight = async (city) => {
+    const { player } = this.props;
+    const { flights } = await fetch(`/api/flights?from=${player.city}&to=${city._id}`).then((res) => res.json());
+    this.setState({ flights });
   };
 
   renderFlightsOrSuggestions = () => {
@@ -68,7 +73,12 @@ class Travel extends React.Component {
     return (
       <div className="list-group">
         {this.state.suggestions.map((city) => (
-          <button key={city._id} type="button" className="list-group-item list-group-item-action" onClick={() => {}}>
+          <button
+            key={city._id}
+            type="button"
+            className="list-group-item list-group-item-action"
+            onClick={() => this.handleFlight(city)}
+          >
             {city.name}
           </button>
         ))}

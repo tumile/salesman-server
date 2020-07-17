@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB, {
+  useCreateIndex: true,
+  useFindAndModify: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const playerSchema = new mongoose.Schema({
   username: {

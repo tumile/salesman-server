@@ -29,7 +29,7 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { player } = this.props;
+    const { player, customers } = this.props;
     const { travelOpen, inboxOpen } = this.state;
 
     return (
@@ -68,8 +68,8 @@ class Menu extends React.Component {
             <i className="fas fa-envelope" />
           </button>
         </div>
-        <Travel travelOpen={travelOpen} />
-        <Inbox inboxOpen={inboxOpen} />
+        <Travel travelOpen={travelOpen} player={player} />
+        <Inbox inboxOpen={inboxOpen} customers={customers} />
       </>
     );
   }
