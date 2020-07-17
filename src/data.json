@@ -584,58 +584,58 @@
     "airlines": [{ "name": "TAP Portugal", "image": "https://salesman-public.s3.amazonaws.com/tap-portugal.png" }],
     "pointsOfInterest": [
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Belém Tower",
+        "image": "https://salesman-public.s3.amazonaws.com/belem-tower.jpg",
+        "description": "Belém Tower, officially the Tower of Saint Vincent is a 16th-century fortification located in Lisbon that served as a point of embarkation and disembarkation for Portuguese explorers and as a ceremonial gateway to Lisbon. It was built during the height of the Portuguese Renaissance, and is a prominent example of the Portuguese Manueline style, but it also incorporates hints of other architectural styles. The structure was built from lioz limestone and is composed of a bastion and a 30-metre, four-storey tower. Since 1983, the tower has been a UNESCO World Heritage Site, along with the Jerónimos Monastery. It is often portrayed as a symbol of Europe's Age of Discoveries and as a metonym for Portugal or Lisbon, given its landmark status. It has incorrectly been stated that the tower was built in the middle of the Tagus and now sits near the shore because the river was redirected after the 1755 Lisbon earthquake. In fact, the tower was built on a small island in the Tagus river near the Lisbon shore.",
+        "coords": [38.691584, -9.215977]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Jerónimos Monastery",
+        "image": "https://salesman-public.s3.amazonaws.com/jeronimos-monastery.jpg",
+        "description": "Joo de Castilho designed the Chapter House and Cloister. Rodrigo Afonso assosted him in 1517",
+        "coords": [38.697891, -9.206704]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Castelo de S. Jorge",
+        "image": "https://salesman-public.s3.amazonaws.com/castelo-de-s-jorge.jpg",
+        "description": "São Jorge Castle is a historic castle in the Portuguese capital of Lisbon, located in the freguesia of Santa Maria Maior. Human occupation of the castle hill dates to at least the 8th century BC while the first fortifications built date from the 1st century BC. The hill on which São Jorge Castle stands has played an important part in the history of Lisbon, having served as the location of fortifications occupied successively by Phoenicians, Carthaginians, Romans, and Moors, before its conquest by the Portuguese in the 1147 Siege of Lisbon. Since the 12th century, the castle has variously served as a royal palace, a military barracks, home of the Torre do Tombo National Archive, and now as a national monument and museum.",
+        "coords": [38.713909, -9.133476]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Praça do Comércio",
+        "image": "https://salesman-public.s3.amazonaws.com/praca-do-comercio.jpg",
+        "description": "The Praça do Comércio is located in the city of Lisbon, Portugal. Situated near the Tagus river, the square is still commonly known as Terreiro do Paço, because it was the location of the Paços da Ribeira until it was destroyed by the great 1755 Lisbon earthquake. After the earthquake, the square was completely remodeled as part of the rebuilding of the Pombaline Downtown, ordered by Sebastião José de Carvalho e Melo, 1st Marquis of Pombal, who was the Minister of the Kingdom of Portugal from 1750 to 1777, during the reign of Dom José I, King of Portugal.",
+        "coords": [38.707729, -9.135636]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Bairro Alto",
+        "image": "https://salesman-public.s3.amazonaws.com/bairro-alto.jpg",
+        "description": "Bairro Alto is a central district of the city of Lisbon, the Portuguese capital. Unlike many of the civil parishes of Lisbon, this region can be commonly explained as a loose association of neighbourhoods, with no formal local political authority but social and historical significance to the urban community of Lisbon and of Portugal as a whole. The bairro or \"neighbourhood\" resulted from urban expansion in the 16th century, forming outside the walls of the historical city, and is characterized by an almost orthogonal tract. It is a fundamental quarter of Lisbon, organized into a hierarchical scheme of roads and lanes: the roads, the structural axis, run perpendicular to the river; and the lanes, or secondary axis, cut parallel to the river. The matrix of allotments reflects the persistent use of the medieval layout; the division and multiplication of this module had its origin in the variations of the architectural typology. The space constructed is dominated by living spaces implanted in long narrow lots, three to four storeys in height, with asymmetric facades consisting of windows along the various storeys and staircases along the lateral flanks.",
+        "coords": [38.712833, -9.145058]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Santa Justa Lift",
+        "image": "https://salesman-public.s3.amazonaws.com/santa-justa-lift.jpg",
+        "description": "The Santa Justa Lift, also called Carmo Lift, is an elevator, or lift, in the civil parish of Santa Justa, in the historical city of Lisbon, Portugal. Situated at the end of Rua de Santa Justa, it connects the lower streets of the Baixa with the higher Largo do Carmo. Since its construction the Lift has become a tourist attraction for Lisbon as, among the urban lifts in the city, Santa Justa is the only remaining vertical one. Others, including Elevador da Glória and Elevador da Bica, are actually funicular railways, and the other lift constructed around the same time, the Elevator of São Julião, has since been demolished.",
+        "coords": [38.71213, -9.13943]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Rossio",
+        "image": "https://salesman-public.s3.amazonaws.com/rossio.jpg",
+        "description": "The Rossio is the popular name of the King Pedro IV Square in the city of Lisbon, in Portugal. It is located in the Pombaline Downtown of Lisbon and has been one of its main squares since the Middle Ages. It has been the setting of popular revolts and celebrations, bullfights and executions, and is now a preferred meeting place of Lisbon natives and tourists alike. The current name of the Rossio pays homage to Pedro IV, King of Portugal. The Column of Pedro IV is in the middle of the square.",
+        "coords": [38.71388, -9.139051]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Oceanário de Lisboa",
+        "image": "https://salesman-public.s3.amazonaws.com/oceanario-de-lisboa.jpg",
+        "description": "The Lisbon Oceanarium is an oceanarium in Lisbon, Portugal. It is located in the Parque das Nações, which was the exhibition grounds for the Expo '98. It is the largest indoor aquarium in Europe.",
+        "coords": [38.763544, -9.093741]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Padrão dos Descobrimentos",
+        "image": "https://salesman-public.s3.amazonaws.com/padrao-dos-descobrimentos.jpg",
+        "description": "Padrão dos Descobrimentos is a monument on the northern bank of the Tagus River estuary, in the civil parish of Santa Maria de Belém, Lisbon. Located along the river where ships departed to explore and trade with India and the Orient, the monument celebrates the Portuguese Age of Discovery during the 15th and 16th centuries.",
+        "coords": [38.693597, -9.205711]
       }
     ]
   },
@@ -650,58 +650,58 @@
     ],
     "pointsOfInterest": [
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "The British Museum",
+        "image": "https://salesman-public.s3.amazonaws.com/the-british-museum.jpg",
+        "description": "British Museum Co Ltd operates as a museum. The company was founded in 1972 and is based in London, United Kingdom. It was formerly known as British Museum Publications Limited and changed its name in 1995. British Museum Co Ltd operates as a subsidiary of The Trustees Of The British Museum.",
+        "coords": [51.519413, -0.126957]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Tower of London",
+        "image": "https://salesman-public.s3.amazonaws.com/tower-of-london.jpg",
+        "description": "The Tower of London, officially Her Majesty's Royal Palace and Fortress of the Tower of London, is a historic castle on the north bank of the River Thames in central London. It lies within the London Borough of Tower Hamlets, which is separated from the eastern edge of the square mile of the City of London by the open space known as Tower Hill. It was founded towards the end of 1066 as part of the Norman Conquest of England. The White Tower, which gives the entire castle its name, was built by William the Conqueror in 1078 and was a resented symbol of oppression, inflicted upon London by the new ruling elite. The castle was also used as a prison from 1100 until 1952, although that was not its primary purpose. A grand palace early in its history, it served as a royal residence. As a whole, the Tower is a complex of several buildings set within two concentric rings of defensive walls and a moat. There were several phases of expansion, mainly under kings Richard I, Henry III, and Edward I in the 12th and 13th centuries. The general layout established by the late 13th century remains despite later activity on the site.",
+        "coords": [51.508112, -0.075949]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "London Eye",
+        "image": "https://salesman-public.s3.amazonaws.com/london-eye.jpg",
+        "description": "The London Eye, or the Millennium Wheel, is a cantilevered observation wheel on the South Bank of the River Thames in London. It is Europe's tallest cantilevered observation wheel, and is the most popular paid tourist attraction in the United Kingdom with over 3 million visitors annually, and has made many appearances in popular culture. The structure is 135 metres tall and the wheel has a diameter of 120 metres. When it opened to the public in 2000 it was the world's tallest Ferris wheel. Its height was surpassed by the 160-metre Star of Nanchang in 2006, the 165-metre Singapore Flyer in 2008, and the 167-metre-tall High Roller in 2014. Supported by an A-frame on one side only, unlike the taller Nanchang and Singapore wheels, the Eye is described by its operators as \"the world's tallest cantilevered observation wheel\". The London Eye used to offer the highest public viewing point in London until it was superseded by the 245-metre-high observation deck on the 72nd floor of The Shard, which opened to the public on 1 February 2013.",
+        "coords": [51.503324, -0.119543]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Big Ben",
+        "image": "https://salesman-public.s3.amazonaws.com/big-ben.jpg",
+        "description": "Big Ben is the nickname for the Great Bell of the striking clock at the north end of the Palace of Westminster in London and is usually extended to refer to both the clock and the clock tower. The official name of the tower in which Big Ben is located was originally the Clock Tower; it was renamed Elizabeth Tower in 2012 to mark the Diamond Jubilee of Elizabeth II, Queen of the United Kingdom. The tower was designed by Augustus Pugin in a neo-Gothic style. When completed in 1859, its clock was the largest and most accurate four-faced striking and chiming clock in the world. The tower stands 315 feet tall, and the climb from ground level to the belfry is 334 steps. Its base is square, measuring 39 feet on each side. Dials of the clock are 23 feet in diameter. On 31 May 2009, celebrations were held to mark the tower's 150th anniversary. Big Ben is the largest of the tower's five bells and weighs 13.5 long tons. It was the largest bell in the United Kingdom for 23 years. The origin of the bell's nickname is open to question; it may be named after Sir Benjamin Hall, who oversaw its installation, or heavyweight boxing champion Benjamin Caunt.",
+        "coords": [51.500729, -0.124625]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Buckingham Palace",
+        "image": "https://salesman-public.s3.amazonaws.com/buckingham-palace.jpg",
+        "description": "Buckingham Palace is the London residence and administrative headquarters of the monarchy of the United Kingdom. Located in the City of Westminster, the palace is often at the centre of state occasions and royal hospitality. It has been a focal point for the British people at times of national rejoicing and mourning. Originally known as Buckingham House, the building at the core of today's palace was a large townhouse built for the Duke of Buckingham in 1703 on a site that had been in private ownership for at least 150 years. It was acquired by King George III in 1761 as a private residence for Queen Charlotte and became known as The Queen's House. During the 19th century it was enlarged, principally by architects John Nash and Edward Blore, who constructed three wings around a central courtyard. Buckingham Palace became the London residence of the British monarch on the accession of Queen Victoria in 1837.",
+        "coords": [51.501364, -0.14189]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Tower Bridge",
+        "image": "https://salesman-public.s3.amazonaws.com/tower-bridge.jpg",
+        "description": "Tower Bridge is a combined bascule and suspension bridge in London, built between 1886 and 1894. The bridge crosses the River Thames close to the Tower of London and has become an iconic symbol of London. As a result, it is sometimes confused with London Bridge, about half a mile upstream. Tower Bridge is one of five London bridges owned and maintained by the Bridge House Estates, a charitable trust overseen by the City of London Corporation. It is the only one of the trust's bridges not to connect the City of London directly to the Southwark bank, as its northern landfall is in Tower Hamlets. The bridge consists of two bridge towers tied together at the upper level by two horizontal walkways, designed to withstand the horizontal tension forces imposed by the suspended sections of the bridge on the landward sides of the towers. The vertical components of the forces in the suspended sections and the vertical reactions of the two walkways are carried by the two robust towers. The bascule pivots and operating machinery are housed in the base of each tower.",
+        "coords": [51.505456, -0.075356]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "name": "Hyde Park",
+        "image": "https://salesman-public.s3.amazonaws.com/hyde-park.jpg",
         "description": "",
-        "coords": []
+        "coords": [51.507268, -0.16573]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "St. Paul's Cathedral",
+        "image": "https://salesman-public.s3.amazonaws.com/stpauls-cathedral.jpg",
+        "description": "St Paul's Cathedral is an Anglicancathedral in London, United Kingdom, which, as the cathedral of the Bishop of London, serves as the mother church of the Diocese of London. It sits on Ludgate Hill at the highest point of the City of London and is a Grade I listed building. Its dedication to Paul the Apostle dates back to the original church on this site, founded in AD 604. The present cathedral, dating from the late 17th century, was designed in the English Baroque style by Sir Christopher Wren. Its construction, completed in Wren's lifetime, was part of a major rebuilding programme in the City after the Great Fire of London. The earlier Gothic cathedral building was largely destroyed in the Great Fire, and is now often referred to as Old St Paul's Cathedral, and was a central focus for medieval and early modern London, including Paul's walk and St Paul's Churchyard being the site of St Paul's Cross. The cathedral is one of the most famous and most recognisable sights of London. Its dome, framed by the spires of Wren's City churches, has dominated the skyline for over 300 years. At 365 feet high, it was the tallest building in London from 1710 to 1963.",
+        "coords": [51.513845, -0.098351]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Westminster Abbey",
+        "image": "https://salesman-public.s3.amazonaws.com/westminster-abbey.jpg",
+        "description": "Westminster Abbey, formally titled the Collegiate Church of Saint Peter at Westminster, is a large, mainly Gothic abbey church in the City of Westminster, London, England, just to the west of the Palace of Westminster. It is one of the United Kingdom's most notable religious buildings and the traditional place of coronation and burial site for English and, later, British monarchs. The building itself was a Benedictine monastic church until the monastery was dissolved in 1539. Between 1540 and 1556, the abbey had the status of a cathedral. Since 1560, the building is no longer an abbey or a cathedral, having instead the status of a Church of England \"Royal Peculiar\"—a church responsible directly to the sovereign. According to a tradition first reported by Sulcard in about 1080, a church was founded at the site in the seventh century, at the time of Mellitus, a Bishop of London. Construction of the present church began in 1245, on the orders of King Henry III. Since the coronation of William the Conqueror in 1066, all coronations of English and British monarchs have been in Westminster Abbey. There have been 16 royal weddings at the abbey since 1100.",
+        "coords": [51.499292, -0.12731]
       }
     ]
   },
@@ -712,58 +712,58 @@
     "airlines": [{ "name": "Luxair", "image": "https://salesman-public.s3.amazonaws.com/luxair.png" }],
     "pointsOfInterest": [
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Vianden Castle",
+        "image": "https://salesman-public.s3.amazonaws.com/vianden-castle.jpg",
+        "description": "Vianden Castle, located in Vianden in the north of Luxembourg, is one of the largest fortified castles west of the Rhine. With origins dating from the 10th century, the castle was built in the Romanesque style from the 11th to 14th centuries. Gothic transformations and trimmings were added at the end of this period. A Renaissance mansion was added in the 17th century but thereafter the castle was allowed to fall into ruins. It has, however, recently been fully restored and is open to visitors.",
+        "coords": [49.935035, 6.202722]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Palais Grand-Ducal",
+        "image": "https://salesman-public.s3.amazonaws.com/palais-grand-ducal.jpg",
+        "description": "The Grand Ducal Palace is a palace in Luxembourg City, in southern Luxembourg. It is the official residence of the Grand Duke of Luxembourg, and where he performs most of his duties as head of state of the Grand Duchy.",
+        "coords": [49.610888, 6.13276]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Cathédrale Notre-Dame",
+        "image": "https://salesman-public.s3.amazonaws.com/cathedrale-notre-dame.jpg",
+        "description": "Notre-Dame Cathedral is the Roman Catholic Cathedral of Luxembourg City, in southern Luxembourg. It was originally a Jesuit church, and its cornerstone was laid in 1613. It is the only cathedral in Luxembourg. The church is a noteworthy example of late gothic architecture; however, it also has many Renaissance elements and adornments. At the end of the 18th century, the church received the miraculous image of the Maria Consolatrix Afflictorum, the patron saint of both the city and the nation. Around 50 years later, the church was consecrated as the Church of Our Lady and in 1870, it was elevated by Pope Pius IX to the Cathedral of Notre-Dame. At the cemetery of the cathedral is the National Monument to the Resistance and to the Deportation. The centerpiece of the monument is the famous bronze monument by the 20th century Luxembourgish sculptor Lucien Wercollier called The Political Prisoner. The cathedral was expanded and enlarged from 1935 to 1938.",
+        "coords": [49.609552, 6.131574]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Adolphe Bridge",
+        "image": "https://salesman-public.s3.amazonaws.com/adolphe-bridge.jpg",
+        "description": "The Adolphe Bridge is a double-decked arch bridge in Luxembourg City, in southern Luxembourg. The bridge provides a one-way route for road traffic across the Pétrusse, from Boulevard Royal, in Ville Haute, to Avenue de la Liberté, in Gare. Its upper deck is 153 m in length and carries two lanes of road traffic, and two pedestrian footpaths. Its lower deck, opened in 2018, suspended beneath the upper deck, is 154 m in length, and carries a dedicated bidirectional bicycle path, with access provided for pedestrian use. Following the completion of the third phase of the construction of the City Tram Line 1, expected in 2020, the bridge will carry bidirectional tram traffic on its upper deck. The Adolphe Bridge has become an unofficial national symbol of sorts, representing Luxembourg's independence, and has become one of Luxembourg City's main tourist attractions. The bridge was designed by Paul Séjourné, a Frenchman, and Albert Rodange, a Luxembourger, and was built between 1900 and 1903. Its design was copied in the construction of Walnut Lane Bridge in Philadelphia, the United States.",
+        "coords": [49.608353, 6.127018]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Grand Duke Jean Museum of Modern Art",
+        "image": "https://salesman-public.s3.amazonaws.com/grand-duke-jean-museum-of-modern-art.jpg",
+        "description": "The Grand Duke Jean Museum of Modern Art, abbreviated to Mudam, is a museum of modern art in Luxembourg City, in southern Luxembourg. The museum stands on the site of the old Fort Thüngen, on the southwestern edge of the Kirchberg-plateau, in close proximity to many of the European Union institutions based within the city.",
+        "coords": [49.617095, 6.140337]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Musée national d'histoire et d'art Luxembourg",
+        "image": "https://salesman-public.s3.amazonaws.com/musee-national-dhistoire-et-dart-luxembourg.jpg",
+        "description": "The National Museum of History and Art, abbreviated to MNHA, is a museum located in Luxembourg City, in southern Luxembourg. It is dedicated to displaying artworks and artefacts from all epochs of Luxembourg history. The museum is situated in Fishmarket, the historic heart of the city, in the Ville Haute quarter.",
+        "coords": [49.611629, 6.133858]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Casemates du Bock",
+        "image": "https://salesman-public.s3.amazonaws.com/casemates-du-bock.jpg",
+        "description": "18th-century tunnels & WWII shelters.",
+        "coords": [49.611724, 6.136736]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Luxembourg City History Museum",
+        "image": "https://salesman-public.s3.amazonaws.com/luxembourg-city-history-museum.jpg",
+        "description": "The Luxembourg City History Museum, French: Musée d'histoire de la Ville de Luxembourg, illustrates the thousand-year history of the City of Luxembourg with both permanent and temporary exhibits. Founded on 22 June 1996, it was designed by Luxembourg architect Conny Lentz and Repérages, Paris.",
+        "coords": [49.610061, 6.133655]
       },
       {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
+        "name": "Place Guillaume II",
+        "image": "https://salesman-public.s3.amazonaws.com/place-guillaume-ii.jpg",
+        "description": "Place Guillaume II is a town square in Luxembourg City, in southern Luxembourg. The square lies to the west of Krautmaart and to the north of Boulevard Franklin Delano Roosevelt in the heart of Luxembourg's historic Ville Haute quarter. It is colloquially known as Knuedler, from the Luxembourgish language's word for 'knot', referring to the knot in the belt worn by Franciscan friars. The western half of the square is dominated by Luxembourg City Hall in the southwest, whilst the equestrian statue to former Grand Duke William II, after whom the square is named, is the prominent feature of the eastern half. Much of the square is ringed with trees, narrowing the open area. The square was originally the site of a Franciscan monastery, hence the colloquial name. However, in 1797, during the French Revolutionary Wars, the monastery was dispossessed by occupying French soldiers. In 1804, the visiting Napoleon presented Place Guillaume II to the city as a gift. In 1829, plans were put in place to build a new town hall on the square, based upon the plans of Belgian architect Justin Remont.",
+        "coords": [49.61069, 6.13129]
       }
     ]
   },
@@ -776,186 +776,21 @@
       { "name": "Air Europa", "image": "https://salesman-public.s3.amazonaws.com/air-europa.png" },
       { "name": "Vueling", "image": "https://salesman-public.s3.amazonaws.com/vueling.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Minsk",
     "image": "https://salesman-public.s3.amazonaws.com/minsk.jpg",
     "coords": [53.9006, 27.559],
     "airlines": [{ "name": "Belavia", "image": "https://salesman-public.s3.amazonaws.com/belavia.png" }],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Moscow",
     "image": "https://salesman-public.s3.amazonaws.com/moscow.jpg",
     "coords": [55.7558, 37.6173],
     "airlines": [{ "name": "Aeroflot", "image": "https://salesman-public.s3.amazonaws.com/aeroflot.png" }],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Oslo",
@@ -968,62 +803,7 @@
       },
       { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Paris",
@@ -1033,62 +813,7 @@
       { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Prague",
@@ -1098,62 +823,7 @@
       { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Rome",
@@ -1163,62 +833,7 @@
       { "name": "Alitalia", "image": "https://salesman-public.s3.amazonaws.com/alitalia.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Stockholm",
@@ -1231,62 +846,7 @@
       },
       { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Vienna",
@@ -1296,123 +856,13 @@
       { "name": "Austrian Airlines", "image": "https://salesman-public.s3.amazonaws.com/austrian-airlines.png" },
       { "name": "Lauda", "image": "https://salesman-public.s3.amazonaws.com/lauda.png" }
     ],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   },
   {
     "name": "Warsaw",
     "image": "https://salesman-public.s3.amazonaws.com/warsaw.jpg",
     "coords": [52.2297, 21.0122],
     "airlines": [{ "name": "LOT Polish", "image": "https://salesman-public.s3.amazonaws.com/lot-polish.png" }],
-    "pointsOfInterest": [
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      },
-      {
-        "name": "",
-        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
-        "description": "",
-        "coords": []
-      }
-    ]
+    "pointsOfInterest": []
   }
 ]
