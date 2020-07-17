@@ -3,25 +3,16 @@ import PropTypes from "prop-types";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
-import "./Map.css";
 import Icon from "./Icon";
+import "./Map.css";
 
 class MainMap extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      city: null,
-    };
-  }
-
   async componentDidMount() {
-    let { city } = this.props.player;
-    city = await fetch(`/api/cities/${city}`).then((res) => res.json());
-    this.setState({ city });
+    await this.props.updateCurrentCity();
   }
 
   render() {
-    const { city } = this.state;
+    const { player, city } = this.props;
     if (!city) {
       return null;
     }
@@ -34,7 +25,7 @@ class MainMap extends React.Component {
         <Marker
           position={city.coords}
           icon={L.divIcon({
-            html: ReactDOMServer.renderToString(<Icon avatar src={this.props.player.image} />),
+            html: ReactDOMServer.renderToString(<Icon avatar src={player.image} />),
           })}
         />
         {city.pointsOfInterest.map((point) => {
@@ -65,6 +56,9 @@ class MainMap extends React.Component {
 
 MainMap.propTypes = {
   player: PropTypes.object.isRequired,
+  city: PropTypes.object,
+  customers: PropTypes.array.isRequired,
+  updateCurrentCity: PropTypes.func.isRequired,
 };
 
 export default MainMap;

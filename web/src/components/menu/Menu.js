@@ -1,124 +1,42 @@
 import PropTypes from "prop-types";
 import React from "react";
 import Inbox from "./Inbox";
+import Leaderboard from "./Leaderboard";
 import "./Menu.css";
+import Progress from "./Progress";
 import Travel from "./Travel";
 
 class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      travelOpen: false,
-      hotelOpen: false,
-      inboxOpen: false,
-      leaderboardOpen: false,
-      sourvenirsOpen: false,
-      leaderboard: [],
-    };
-  }
-
-  toggleTravel = (open) => {
-    this.setState({
-      travelOpen: open,
-      inboxOpen: false,
-      leaderboardOpen: false,
-      sourvenirsOpen: false,
-    });
+  defaultState = {
+    leaderboardOpen: false,
+    progressOpen: false,
+    travelOpen: false,
+    inboxOpen: false,
   };
 
-  toggleEmail = (open) => {
-    this.setState({
-      travelOpen: false,
-      inboxOpen: open,
-      leaderboardOpen: false,
-      sourvenirsOpen: false,
-    });
+  state = {
+    ...this.defaultState,
   };
 
   toggleLeaderboard = () => {
-    this.setState({ leaderboardOpen: !this.state.leaderboardOpen, sourvenirsOpen: false });
+    this.setState((prev) => ({ ...this.defaultState, leaderboardOpen: !prev.leaderboardOpen }));
   };
 
-  toggleSouvenirs = () => {
-    this.setState({ sourvenirsOpen: !this.state.sourvenirsOpen, leaderboardOpen: false });
+  toggleProgress = () => {
+    this.setState((prev) => ({ ...this.defaultState, progressOpen: !prev.progressOpen }));
   };
 
-  async componentDidMount() {
-    const { players } = await fetch("/api/leaderboard").then((res) => res.json());
-    this.setState({ leaderboard: players });
-  }
-
-  renderLeaderboard = () => {
-    const { leaderboardOpen, leaderboard } = this.state;
-    if (!leaderboardOpen) {
-      return null;
-    }
-    return (
-      <div className="modal" role="dialog" style={{ display: "block", top: 100 }}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Hall of fame</h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={this.toggleLeaderboard}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              {leaderboard.map((p, i) => (
-                <div
-                  key={p._id}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: 8 }}
-                >
-                  <img style={{ width: 50, borderRadius: 25 }} src={p.image} />
-                  <span>{p.username}</span>
-                  <span>${p.money}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  toggleTravel = () => {
+    this.setState((prev) => ({ ...this.defaultState, travelOpen: !prev.travelOpen }));
   };
 
-  renderSouvenirs = () => {
-    const { sourvenirsOpen } = this.state;
-    if (!sourvenirsOpen) {
-      return null;
-    }
-    return (
-      <div className="modal" role="dialog" style={{ display: "block", top: 100 }}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Progress</h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-                onClick={this.toggleSouvenirs}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">Coming soon!</div>
-          </div>
-        </div>
-      </div>
-    );
+  toggleInbox = () => {
+    this.setState((prev) => ({ ...this.defaultState, inboxOpen: !prev.inboxOpen }));
   };
 
   render() {
-    const { player, customers } = this.props;
-    const { travelOpen, inboxOpen } = this.state;
-
+    const { player, customers, updatePlayer, updateCustomers, updateCurrentCity } = this.props;
+    const { leaderboardOpen, progressOpen, travelOpen, inboxOpen } = this.state;
     return (
       <>
         <div className="menu-stats">
@@ -126,13 +44,13 @@ class Menu extends React.Component {
           <div>
             <span>
               <i className="fas fa-wallet" />
-              {` $${Math.round(player.money)}`}
+              {` $${player.money}`}
             </span>
             <div className="progress">
               <div style={{ width: `${player.stamina}%` }} className="progress-bar" role="progressbar" />
             </div>
           </div>
-          <button type="button" className="btn" onClick={this.toggleSouvenirs}>
+          <button type="button" className="btn" onClick={this.toggleProgress}>
             <i className="fas fa-home" />
           </button>
           <button type="button" className="btn" onClick={this.toggleLeaderboard}>
@@ -140,25 +58,22 @@ class Menu extends React.Component {
           </button>
         </div>
         <div className="menu-btns">
-          <button
-            type="button"
-            className={`btn ${travelOpen ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => this.toggleTravel(!travelOpen)}
-          >
+          <button type="button" className="btn btn-outline-primary" onClick={this.toggleTravel}>
             <i className="fas fa-plane-departure" />
           </button>
-          <button
-            type="button"
-            className={`btn ${inboxOpen ? "btn-primary" : "btn-outline-primary"}`}
-            onClick={() => this.toggleEmail(!inboxOpen)}
-          >
+          <button type="button" className="btn btn-outline-primary" onClick={this.toggleInbox}>
             <i className="fas fa-envelope" />
           </button>
         </div>
-        {this.renderLeaderboard()}
-        {this.renderSouvenirs()}
-        <Travel travelOpen={travelOpen} player={player} refreshPlayer={this.props.refreshPlayer} />
-        <Inbox inboxOpen={inboxOpen} customers={customers} />
+        <Leaderboard leaderboardOpen={leaderboardOpen} />
+        <Progress progressOpen={progressOpen} />
+        <Travel
+          travelOpen={travelOpen}
+          player={player}
+          updatePlayer={updatePlayer}
+          updateCurrentCity={updateCurrentCity}
+        />
+        <Inbox inboxOpen={inboxOpen} customers={customers} updateCustomers={updateCustomers} />
       </>
     );
   }
@@ -166,6 +81,10 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   player: PropTypes.object.isRequired,
+  customers: PropTypes.array.isRequired,
+  updatePlayer: PropTypes.func.isRequired,
+  updateCustomers: PropTypes.func.isRequired,
+  updateCurrentCity: PropTypes.func.isRequired,
 };
 
 export default Menu;

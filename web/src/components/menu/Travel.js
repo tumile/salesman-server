@@ -1,16 +1,14 @@
+import axios from "axios";
 import PropTypes from "prop-types";
 import React from "react";
 
 class Travel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      search: "",
-      suggestions: [],
-      destination: "",
-      flights: [],
-    };
-  }
+  state = {
+    search: "",
+    suggestions: [],
+    destination: "",
+    flights: [],
+  };
 
   handleSearch = (e) => {
     let input = e.target.value;
@@ -21,8 +19,8 @@ class Travel extends React.Component {
         if (!input) {
           this.setState({ suggestions: [], flights: [] });
         } else {
-          const { cities } = await fetch(`/api/cities/text?q=${input}`).then((res) => res.json());
-          this.setState({ suggestions: cities, flights: [] });
+          const resp = await axios.get(`/api/cities/text?q=${input}`);
+          this.setState({ suggestions: resp.data, flights: [] });
         }
       }
     }, 200);
@@ -30,20 +28,20 @@ class Travel extends React.Component {
 
   handleFlight = async (city) => {
     const { player } = this.props;
-    const { flights } = await fetch(`/api/flights?from=${player.city}&to=${city._id}`).then((res) => res.json());
-    this.setState({ flights, destination: city });
+    const resp = await axios.get(`/api/flights?f=${player.city}&t=${city._id}`);
+    this.setState({ flights: resp.data, destination: city });
   };
 
   handleBook = async (price) => {
     try {
-      const { destination } = this.state;
       const { player } = this.props;
-      await fetch(`/api/players/${player._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ destination: destination._id, price }),
+      const { destination } = this.state;
+      await axios.post(`/api/players/${player._id}/flight`, {
+        destination: destination._id,
+        price,
       });
-      await this.props.refreshPlayer();
+      await this.props.updatePlayer();
+      await this.props.updateCurrentCity();
     } catch (err) {
       console.error(err);
     }
@@ -67,7 +65,7 @@ class Travel extends React.Component {
     return (
       <div className="side-list">
         {this.state.flights.map((flight) => (
-          <div key={flight.name} className="side-list-item">
+          <div key={flight._id} className="side-list-item">
             <img className="img-fluid rounded" src={flight.image} alt={flight.name} />
             <div className="side-list-item-body">
               <h6>{flight.name}</h6>
@@ -125,6 +123,9 @@ class Travel extends React.Component {
 
 Travel.propTypes = {
   travelOpen: PropTypes.bool.isRequired,
+  player: PropTypes.object.isRequired,
+  updatePlayer: PropTypes.func.isRequired,
+  updateCurrentCity: PropTypes.func.isRequired,
 };
 
 export default Travel;

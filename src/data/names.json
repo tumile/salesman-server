@@ -1,5 +1,5 @@
 {
-  "femaleFirstName": [
+  "femaleFirstNames": [
     "Jackelyn",
     "Corrine",
     "Elfreda",
@@ -51,7 +51,7 @@
     "Marrissa",
     "Elenore"
   ],
-  "maleFirstName": [
+  "maleFirstNames": [
     "Jeffy",
     "Duane",
     "Harlin",
@@ -103,7 +103,7 @@
     "Kaspar",
     "Bronson"
   ],
-  "lastName": [
+  "lastNames": [
     "Templeton",
     "Tye",
     "Seyler",

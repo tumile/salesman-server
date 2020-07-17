@@ -4,28 +4,27 @@ import React from "react";
 import "./Auth.css";
 
 class Auth extends React.Component {
-  constructor(props) {
-    super(props);
-    this.defaultError = {
-      usernameError: "",
-      passwordError: "",
-      imageError: "",
-      error: "",
-    };
-    this.defaultState = {
-      username: "",
-      password: "",
-      image: null,
-      imageURL: null,
-      rememberMe: true,
-    };
-    this.state = {
-      signin: true,
-      loading: false,
-      ...this.defaultError,
-      ...this.defaultState,
-    };
-  }
+  defaultError = {
+    usernameError: "",
+    passwordError: "",
+    imageError: "",
+    error: "",
+  };
+
+  defaultState = {
+    username: "",
+    password: "",
+    image: null,
+    imageURL: null,
+    rememberMe: true,
+  };
+
+  state = {
+    signin: true,
+    loading: false,
+    ...this.defaultError,
+    ...this.defaultState,
+  };
 
   validate = () => {
     const { signin, username, password, image } = this.state;
@@ -63,13 +62,14 @@ class Auth extends React.Component {
         data.append("password", password);
         promise = axios.post("/api/signup", data);
       }
-      const { token, playerId } = await promise;
+      const resp = await promise;
+      const { token, id } = resp.data;
       if (rememberMe) {
         localStorage.setItem("token", token);
       }
-      this.props.updatePlayer(playerId);
+      await this.props.updatePlayer(id);
     } catch (err) {
-      this.setState({ error: err.error || "Something went horribly wrong 😥" });
+      this.setState({ error: err.response.data.error || "Something went horribly wrong 😥" });
     } finally {
       this.setState({ loading: false });
     }

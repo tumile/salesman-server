@@ -1,62 +1,68 @@
+import axios from "axios";
 import jwtDecode from "jwt-decode";
 import React from "react";
 import "./App.css";
 import Auth from "./auth/Auth";
-import PlayerMap from "./map/MainMap";
+import MainMap from "./map/MainMap";
 import Menu from "./menu/Menu";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      player: null,
-      customers: [],
-    };
-  }
+  state = {
+    loaded: false,
+    player: null,
+    currentCity: null,
+    customers: [],
+  };
 
   async componentDidMount() {
     try {
       const token = localStorage.getItem("token");
       if (token) {
         const { id } = jwtDecode(token);
-        const { error, ...player } = await fetch(`/api/players/${id}`).then((res) => res.json());
-        if (error) {
-          throw error;
-        }
-        this.setPlayer(player);
-        setInterval(async () => {
-          await fetch(`/api/players/${id}/activity`, { method: "PUT" });
-        }, 300000);
+        await this.updatePlayer(id);
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      this.setState({ loaded: true });
     }
   }
 
-  refreshPlayer = async () => {
-    const player = await fetch(`/api/players/${this.state.player._id}`).then((res) => res.json());
-    this.setPlayer(player);
+  updatePlayer = async (id) => {
+    const resp = await axios.get(`/api/players/${id || this.state.player._id}`);
+    this.setState({ player: resp.data });
   };
 
-  getCustomers = async (id) => {
-    const { customers } = await fetch(`/api/players/${id}/customers`).then((res) => res.json());
-    this.setState({ customers });
+  updateCustomers = async () => {
+    const { _id } = this.state.player;
+    const resp = await axios.get(`/api/players/${_id}/customers`);
+    this.setState({ customers: resp.data });
   };
 
-  setPlayer = (player) => {
-    this.setState({ player });
-    this.getCustomers(player._id);
+  updateCurrentCity = async () => {
+    const { city } = this.state.player;
+    const resp = await axios.get(`/api/cities/${city}`);
+    this.setState({ currentCity: resp.data });
   };
 
   render() {
-    const { player, customers } = this.state;
+    const { player, currentCity, customers, loaded } = this.state;
+    if (!loaded) {
+      return null;
+    }
     if (!player) {
-      return <Auth setPlayer={this.setPlayer} />;
+      return <Auth updatePlayer={this.updatePlayer} />;
     }
     return (
       <>
-        <Menu player={player} customers={customers} refreshPlayer={this.refreshPlayer} />
-        <PlayerMap player={player} />
+        <Menu
+          player={player}
+          customers={customers}
+          updatePlayer={this.updatePlayer}
+          updateCustomers={this.updateCustomers}
+          updateCurrentCity={this.updateCurrentCity}
+        />
+        <MainMap player={player} customers={customers} city={currentCity} updateCurrentCity={this.updateCurrentCity} />
       </>
     );
   }
