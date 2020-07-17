@@ -129,7 +129,7 @@ class Auth extends React.Component {
           </label>
         </div>
         {error && <p className="text-danger">{error}</p>}
-        <button type="submit" className="btn btn-primary btn-block">
+        <button type="submit" className="btn btn-primary btn-block" disabled={!username || !password}>
           {loading ? (
             <div className="spinner-border spinner-border-sm text-light" role="status">
               <span className="sr-only">Loading...</span>
@@ -183,7 +183,7 @@ class Auth extends React.Component {
           </label>
         </div>
         {error && <p className="text-danger">{error}</p>}
-        <button type="submit" className="btn btn-primary btn-block">
+        <button type="submit" className="btn btn-primary btn-block" disabled={!username || !password || !imageURL}>
           {loading ? (
             <div className="spinner-border spinner-border-sm text-light" role="status">
               <span className="sr-only">Loading...</span>

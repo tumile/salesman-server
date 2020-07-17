@@ -12,9 +12,18 @@ const { upload } = require("./s3");
 
 const multipart = multer({ dest: "src/uploads" });
 
+class NotFoundError extends Error {}
+
 const app = express();
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
+
+app.get("/api/leaderboard", async (req, res, next) => {
+  try {
+  } catch (err) {
+    next(err);
+  }
+});
 
 app.post("/api/signin", async (req, res, next) => {
   try {
@@ -22,17 +31,16 @@ app.post("/api/signin", async (req, res, next) => {
     assert.ok(username, "Missing username or password");
     assert.ok(password, "Missing username or password");
 
-    const player = await db.Player.findOne({ username }).populate("city");
+    const player = await db.Player.findOne({ username });
     assert.ok(player, "Invalid username or password");
 
     const matched = await bcrypt.compare(password, player.password);
     assert.ok(matched, "Invalid username or password");
 
     const { id, image, money, stamina, city } = player;
-    const { name, coords } = city;
     const token = jwt.sign({ id }, process.env.SECRET_KEY);
 
-    res.status(200).json({ token, username, image, money, stamina, city: { name, coords } });
+    res.status(200).json({ token, username, image, money, stamina, city });
   } catch (err) {
     next(err);
   }
@@ -62,11 +70,10 @@ app.post("/api/signup", multipart.single("image"), async (req, res, next) => {
       city: amsterdam.id,
       customers: [],
     });
-    const { id, image, money, stamina } = player;
-    const { name, coords } = amsterdam;
+    const { id, image, money, stamina, city } = player;
     const token = jwt.sign({ id }, process.env.SECRET_KEY);
 
-    res.status(200).json({ token, username, image, money, stamina, city: { name, coords } });
+    res.status(200).json({ token, username, image, money, stamina, city });
   } catch (err) {
     next(err);
   } finally {
@@ -76,19 +83,43 @@ app.post("/api/signup", multipart.single("image"), async (req, res, next) => {
   }
 });
 
-class NotFoundError extends Error {}
-
 app.get("/api/players/:id", async (req, res, next) => {
   try {
-    const player = await db.Player.findById(req.params.id).populate("city");
+    const player = await db.Player.findById(req.params.id, "username image money stamina city");
     assert.ok(player);
-
-    const { username, image, money, stamina, city } = player;
-    const { name, coords } = city;
-
-    res.status(200).json({ username, image, money, stamina, city: { name, coords } });
+    res.status(200).json(player);
   } catch (err) {
     next(new NotFoundError("Player not found"));
+  }
+});
+
+app.get("/api/players/:id/customers", async (req, res, next) => {
+  try {
+    const { customers } = await db.Player.findById(req.params.id, "customers");
+    assert.ok(customers);
+    res.status(200).json(customers);
+  } catch (err) {
+    next(new NotFoundError("Player not found"));
+  }
+});
+
+app.get("/api/cities/text", async (req, res, next) => {
+  try {
+    const { q } = req.query;
+    const cities = await db.City.find({ name: { $regex: `^${q}`, $options: "i" } }, "name");
+    res.status(200).json(cities);
+  } catch (err) {
+    next(err);
+  }
+});
+
+app.get("/api/cities/:id", async (req, res, next) => {
+  try {
+    const city = await db.City.findById(req.params.id, "name coords pointsOfInterest");
+    assert.ok(city);
+    res.status(200).json(city);
+  } catch (err) {
+    next(new NotFoundError("City not found"));
   }
 });
 

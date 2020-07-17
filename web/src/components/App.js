@@ -19,7 +19,7 @@ class App extends React.Component {
       if (token) {
         const { id } = jwtDecode(token);
         const player = await fetch(`/api/players/${id}`).then((res) => res.json());
-        this.setState({ player });
+        this.setPlayer(player);
       }
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ class App extends React.Component {
   render() {
     const { player } = this.state;
     if (!player) {
-      return <Auth player={this.setPlayer} />;
+      return <Auth setPlayer={this.setPlayer} />;
     }
     return (
       <>

@@ -23,6 +23,24 @@
   border-top-right-radius: 12px;
 }
 
-.popup-content p {
-  padding: 0 1rem;
+.popup-content-inner {
+  padding: 16px 16px 0 16px;
+}
+
+.icon {
+  position: absolute;
+  top: -5px;
+  left: -20px;
+  width: 50px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.icon-avatar {
+  position: absolute;
+  top: -5px;
+  left: -35px;
+  width: 60px;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }

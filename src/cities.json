@@ -776,7 +776,62 @@
       { "name": "Air Europa", "image": "https://salesman-public.s3.amazonaws.com/air-europa.png" },
       { "name": "Vueling", "image": "https://salesman-public.s3.amazonaws.com/vueling.png" }
     ],
-    "pointsOfInterest": []
+    "pointsOfInterest": [
+      {
+        "name": "Museo Nacional del Prado",
+        "image": "https://salesman-public.s3.amazonaws.com/museo-nacional-del-prado.jpg",
+        "description": "The Prado Museum, officially known as Museo Nacional del Prado, is the main Spanish national art museum, located in central Madrid. It is widely considered to have one of the world's finest collections of European art, dating from the 12th century to the early 20th century, based on the former Spanish Royal Collection, and the single best collection of Spanish art. Founded as a museum of paintings and sculpture in 1819, it also contains important collections of other types of works. The Prado Museum is one of the most visited sites in the world, and it is considered one of the greatest art museums in the world. The numerous works by Francisco Goya, the single most extensively represented artist, as well as by Hieronymus Bosch, El Greco, Peter Paul Rubens, Titian, and Diego Velázquez, are some of the highlights of the collection. The collection currently comprises around 8,200 drawings, 7,600 paintings, 4,800 prints, and 1,000 sculptures, in addition to many other works of art and historic documents. As of 2012, the museum displayed about 1,300 works in the main buildings, while around 3,100 works were on temporary loan to various museums and official institutions.",
+        "coords": [40.413782, -3.692127]
+      },
+      {
+        "name": "Plaza Mayor",
+        "image": "https://salesman-public.s3.amazonaws.com/plaza-mayor.jpg",
+        "description": "The Plaza Mayor is a major public space in the heart of Madrid, the capital of Spain. It was once the centre of Old Madrid. It was first built during the reign of Philip III. Only a few blocks away is another famous plaza, the Puerta del Sol. The Plaza Mayor is for the people of Madrid and tourists to shop, walk around, eat, and enjoy the outdoors.",
+        "coords": [40.415511, -3.707401]
+      },
+      {
+        "name": "El Retiro Park",
+        "image": "https://salesman-public.s3.amazonaws.com/el-retiro-park.jpg",
+        "description": "The Buen Retiro Park, Retiro Park or simply El Retiro is one of the largest parks of the city of Madrid, Spain. The park belonged to the Spanish Monarchy until the late 19th century, when it became a public park.",
+        "coords": [40.415261, -3.684499]
+      },
+      {
+        "name": "Royal Palace of Madrid",
+        "image": "https://salesman-public.s3.amazonaws.com/royal-palace-of-madrid.jpg",
+        "description": "The Royal Palace of Madrid is the official residence of the Spanish royal family at the city of Madrid, although now only used for state ceremonies. The palace has 135,000 square metres of floor space and contains 3,418 rooms. It is the largest functioning royal palace and the largest by floor area in Europe. King Felipe VI and the royal family do not reside in the palace, choosing instead the significantly more modest Palace of Zarzuela on the outskirts of Madrid. The palace is owned by the Spanish state and administered by the Patrimonio Nacional, a public agency of the Ministry of the Presidency. The palace is located on Calle de Bailén in the western part of downtown Madrid, east of the Manzanares River, and is accessible from the Ópera metro station. Several rooms in the palace are regularly open to the public except during state functions. An admission fee of €13 is required however, some days it is free. The palace is located on the site of a 9th-century Moorish Alcázar, near the town of Magerit, constructed as an outpost by Muhammad I of Córdoba and inherited after 1036 by the independent Moorish Taifa of Toledo.",
+        "coords": [40.417955, -3.714312]
+      },
+      {
+        "name": "Puerta del Sol",
+        "image": "https://salesman-public.s3.amazonaws.com/puerta-del-sol.jpg",
+        "description": "The Puerta del Sol is a public square in Madrid, one of the best known and busiest places in the city. This is the centre of the radial network of Spanish roads. The square also contains the famous clock whose bells mark the traditional eating of the Twelve Grapes and the beginning of a new year. The New Year's celebration has been broadcast live since 31 December 1962 on major radio and television networks including Antena 3 and RTVE.",
+        "coords": [40.416947, -3.703528]
+      },
+      {
+        "name": "Museo Nacional Centro de Arte Reina Sofía",
+        "image": "https://salesman-public.s3.amazonaws.com/museo-nacional-centro-de-arte-reina-sofia.jpg",
+        "description": "The Museo Nacional Centro de Arte Reina Sofía is Spain's national museum of 20th-century art. The museum was officially inaugurated on September 10, 1992, and is named for Queen Sofía. It is located in Madrid, near the Atocha train and metro stations, at the southern end of the so-called Golden Triangle of Art. The museum is mainly dedicated to Spanish art. Highlights of the museum include excellent collections of Spain's two greatest 20th-century masters, Pablo Picasso and Salvador Dalí. The most famous masterpiece in the museum is Picasso's painting Guernica. Along with its extensive collection, the museum offers a mixture of national and international temporary exhibitions in its many galleries, making it one of the world's largest museums for modern and contemporary art. In 2019 it attracted 4,425,699 visitors, making it the ninth-most-visited art museum in the world. It also hosts a free-access library specializing in art, with a collection of over 100,000 books, over 3,500 sound recordings, and almost 1,000 videos.",
+        "coords": [40.407912, -3.694557]
+      },
+      {
+        "name": "Gran Vía",
+        "image": "https://salesman-public.s3.amazonaws.com/gran-via.jpg",
+        "description": "The Gran Vía street is an urban esplanade in central Madrid, Spain. It leads from Calle de Alcalá, close to Plaza de Cibeles, to Plaza de España. The street, sometimes referred to as the \"Spanish Broadway\", is one of the city's most important shopping areas, with a large number of hotels and large movie theatres; however, since the late 2000s, many of these theatres have been replaced by shopping centres. The Gran Vía serves as a showcase of early 20th-century revival architecture, with architectural styles ranging from Vienna Secession style, Plateresque, Neo-Mudéjar, Art Deco, among others.",
+        "coords": [40.420191, -3.704063]
+      },
+      {
+        "name": "Thyssen-Bornemisza Museum",
+        "image": "https://salesman-public.s3.amazonaws.com/thyssen-bornemisza-museum.jpg",
+        "description": "The Thyssen-Bornemisza National Museum, or simply the Thyssen, is an art museum in Madrid, Spain, located near the Prado Museum on one of city's main boulevards. It is known as part of the \"Golden Triangle of Art\", which also includes the Prado and the Reina Sofia national galleries. The Thyssen-Bornemisza fills the historical gaps in its counterparts' collections: in the Prado's case this includes Italian primitives and works from the English, Dutch and German schools, while in the case of the Reina Sofia it concerns Impressionists, Expressionists, and European and American paintings from the 20th century. With over 1,600 paintings, it was once the second largest private collection in the world after the British Royal Collection. A competition was held to house the core of the collection in 1987–88 after Baron Thyssen, having unsuccessfully sought permission to enlarge his Museum in Lugano, searched for a better-suited location elsewhere in Europe.",
+        "coords": [40.416041, -3.694925]
+      },
+      {
+        "name": "Temple of Debod",
+        "image": "https://salesman-public.s3.amazonaws.com/temple-of-debod.jpg",
+        "description": "The Temple of Debod is an ancient Egyptian temple that was dismantled and rebuilt in Madrid, Spain.",
+        "coords": [40.424022, -3.717769]
+      }
+    ]
   },
   {
     "name": "Minsk",

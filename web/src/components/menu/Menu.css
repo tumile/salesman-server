@@ -1,9 +1,9 @@
 .menu-stats {
   z-index: 101;
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  padding: 1rem;
+  top: 16px;
+  left: 16px;
+  padding: 16px;
   width: 400px;
   border-radius: 12px;
   display: flex;
@@ -15,7 +15,7 @@
 .menu-stats img {
   height: 50px;
   border-radius: 25px;
-  margin-right: 1rem;
+  margin-right: 16px;
   width: auto;
 }
 
@@ -36,15 +36,15 @@
 .menu-btns {
   z-index: 103;
   position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 24px;
+  right: 24px;
 }
 
 .menu-btns button {
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  margin-left: 0.5rem;
+  margin-left: 8px;
   color: #007bff;
   background-color: white;
 }
@@ -64,7 +64,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 480px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -74,12 +74,12 @@
 }
 
 .side-top {
-  padding: 1rem;
+  padding: 16px 24px;
 }
 
 .side-top h3 {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 16px;
+  margin-bottom: 24px;
 }
 
 .side-placeholder {
@@ -94,6 +94,10 @@
   max-height: 100%;
 }
 
+.side .list-group {
+  padding: 0 24px;
+}
+
 .side-list {
   flex: 1;
   overflow: auto;
@@ -105,13 +109,13 @@
 
 .side-list-item {
   border-bottom: 1px solid #ced4da;
-  padding: 1rem 1.5rem;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
 }
 
 .side-list-item img {
-  margin-right: 1rem;
+  margin-right: 16px;
   width: 50px;
 }
 

@@ -35,7 +35,7 @@ class Menu extends React.Component {
     return (
       <>
         <div className="menu-stats">
-          <img src="images/player/salesman.png" alt="Player" />
+          <img src={player.image} alt="Player" />
           <div>
             <span>
               <i className="fas fa-wallet" />

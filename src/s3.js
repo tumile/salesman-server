@@ -18,7 +18,7 @@ const upload = (file, key) => {
     });
     s3.upload(
       {
-        Bucket: "salesman-letm",
+        Bucket: "salesman-players",
         Body: stream,
         Key: key,
         ACL: "public-read",
