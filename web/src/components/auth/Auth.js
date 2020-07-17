@@ -1,79 +1,75 @@
+import axios from "axios";
+import PropTypes from "prop-types";
 import React from "react";
 import "./Auth.css";
 
 class Auth extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      signin: true,
+    this.defaultError = {
+      usernameError: "",
+      passwordError: "",
+      imageError: "",
+      error: "",
+    };
+    this.defaultState = {
       username: "",
       password: "",
-      rememberMe: true,
       image: null,
       imageURL: null,
-      error: "",
+      rememberMe: true,
+    };
+    this.state = {
+      signin: true,
       loading: false,
+      ...this.defaultError,
+      ...this.defaultState,
     };
   }
 
-  handleSignin = async (e) => {
-    e.preventDefault();
-    try {
-      const { username, password, rememberMe } = this.state;
-      if (!username || !password) {
-        return;
-      }
-      this.setState({ loading: true });
-      const resp = await fetch("/api/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      }).then((res) => res.json());
-      const { error, token, ...player } = resp;
-      if (error) {
-        this.setState({ error });
-      } else {
-        if (rememberMe) {
-          localStorage.setItem("token", token);
-        }
-        this.props.setPlayer(player);
-      }
-    } catch (err) {
-      this.setState({ error: err });
-    } finally {
-      this.setState({ loading: false });
+  validate = () => {
+    const { signin, username, password, image } = this.state;
+    this.setState({ ...this.defaultError });
+    if (!username) {
+      this.setState({ usernameError: "What's your name? 🤔" });
+    } else if (!password) {
+      this.setState({ passwordError: "Forgot something? 🤔" });
+    } else if (!signin && !image) {
+      this.setState({ imageError: "How do you look like? 🤔" });
+    } else {
+      return true;
     }
+    return false;
   };
 
-  handleSignup = async (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { username, password, image, rememberMe } = this.state;
-      if (!username || !password || !image) {
+      if (!this.validate()) {
         return;
       }
       this.setState({ loading: true });
-      const data = new FormData();
-      data.append("image", image);
-      data.append("username", username);
-      data.append("password", password);
-      const resp = await fetch("/api/signup", {
-        method: "POST",
-        body: data,
-      }).then((res) => res.json());
-      const { error, token, ...player } = resp;
-      if (error) {
-        this.setState({ error });
+      const { signin, username, password, image, rememberMe } = this.state;
+      let promise;
+      if (signin) {
+        promise = axios.post("/api/signin", {
+          username,
+          password,
+        });
       } else {
-        if (rememberMe) {
-          localStorage.setItem("token", token);
-        }
-        this.props.setPlayer(player);
+        const data = new FormData();
+        data.append("image", image);
+        data.append("username", username);
+        data.append("password", password);
+        promise = axios.post("/api/signup", data);
       }
+      const { token, playerId } = await promise;
+      if (rememberMe) {
+        localStorage.setItem("token", token);
+      }
+      this.props.updatePlayer(playerId);
     } catch (err) {
-      this.setState({ error: err });
+      this.setState({ error: err.error || "Something went horribly wrong 😥" });
     } finally {
       this.setState({ loading: false });
     }
@@ -81,6 +77,10 @@ class Auth extends React.Component {
 
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleCheckbox = () => {
+    this.setState((prev) => ({ rememberMe: !prev.rememberMe }));
   };
 
   handleImage = (e) => {
@@ -92,128 +92,105 @@ class Auth extends React.Component {
 
   handleSwitch = (e) => {
     e.preventDefault();
-    this.setState({ signin: !this.state.signin, username: "", password: "", image: null, imageURL: null, error: "" });
-  };
-
-  renderSignin = () => {
-    const { username, password, rememberMe, error, loading } = this.state;
-    return (
-      <form onSubmit={this.handleSignin}>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Username"
-          autoComplete="off"
-          name="username"
-          value={username}
-          onChange={this.handleInput}
-        />
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={this.handleInput}
-        />
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="remember-me"
-            checked={rememberMe}
-            onChange={() => this.setState({ rememberMe: !rememberMe })}
-          />
-          <label className="form-check-label" htmlFor="remember-me">
-            Remember me
-          </label>
-        </div>
-        {error && <p className="text-danger">{error}</p>}
-        <button type="submit" className="btn btn-primary btn-block" disabled={!username || !password}>
-          {loading ? (
-            <div className="spinner-border spinner-border-sm text-light" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          ) : (
-            "Let's go"
-          )}
-        </button>
-        <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
-          New player? Sign up here!
-        </button>
-      </form>
-    );
-  };
-
-  renderSignup = () => {
-    const { username, password, imageURL, rememberMe, error, loading } = this.state;
-    return (
-      <form onSubmit={this.handleSignup}>
-        <div className="image-input">
-          {imageURL && <img src={imageURL} alt="Avatar" />}
-          <input type="file" accept="image/*" onChange={this.handleImage} />
-        </div>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Username"
-          autoComplete="off"
-          name="username"
-          value={username}
-          onChange={this.handleInput}
-        />
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={this.handleInput}
-        />
-        <div className="form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="remember-me"
-            checked={rememberMe}
-            onChange={() => this.setState({ rememberMe: !rememberMe })}
-          />
-          <label className="form-check-label" htmlFor="remember-me">
-            Remember me
-          </label>
-        </div>
-        {error && <p className="text-danger">{error}</p>}
-        <button type="submit" className="btn btn-primary btn-block" disabled={!username || !password || !imageURL}>
-          {loading ? (
-            <div className="spinner-border spinner-border-sm text-light" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          ) : (
-            "Let's go"
-          )}
-        </button>
-        <button type="button" className="btn btn-block" onClick={this.handleSwitch}>
-          Already a player? Sign in here!
-        </button>
-      </form>
-    );
-  };
-
-  renderSigninOrSignup = () => {
-    if (this.state.signin) {
-      return this.renderSignin();
-    }
-    return this.renderSignup();
+    this.setState((prev) => ({
+      signin: !prev.signin,
+      ...this.defaultError,
+      ...this.defaultState,
+    }));
   };
 
   render() {
+    const {
+      signin,
+      username,
+      password,
+      imageURL,
+      rememberMe,
+      usernameError,
+      passwordError,
+      imageError,
+      error,
+      loading,
+    } = this.state;
     return (
       <div className="auth">
         <img className="background" src="images/background/background.png" alt="Background" />
-        <div className="form">{this.renderSigninOrSignup()}</div>
+        <div className="form animate__animated animate__fadeIn">
+          <form onSubmit={this.handleSubmit}>
+            {!signin && (
+              <div className="text-center">
+                <div className="form-image">
+                  {imageURL && <img src={imageURL} alt="Avatar" />}
+                  <input type="file" accept="image/*" onChange={this.handleImage} />
+                </div>
+                {imageError && (
+                  <div className="form-group">
+                    <div className="invalid-feedback d-block">{imageError}</div>
+                  </div>
+                )}
+              </div>
+            )}
+            <div className="form-group">
+              <input
+                type="text"
+                className={`form-control${usernameError && " is-invalid"}`}
+                placeholder="Username"
+                autoComplete="off"
+                name="username"
+                value={username}
+                onChange={this.handleInput}
+              />
+              {usernameError && <div className="invalid-feedback">{usernameError}</div>}
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                className={`form-control${passwordError && " is-invalid"}`}
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={this.handleInput}
+              />
+              {passwordError && <div className="invalid-feedback">{passwordError}</div>}
+            </div>
+            {error && (
+              <div className="form-group">
+                <div className="invalid-feedback d-block">{error}</div>
+              </div>
+            )}
+            <div className="form-group form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="remember-me"
+                checked={rememberMe}
+                onChange={this.handleCheckbox}
+              />
+              <label className="form-check-label" htmlFor="remember-me">
+                Remember me
+              </label>
+            </div>
+            <button type="submit" className="btn btn-primary btn-block">
+              {loading ? (
+                <div className="spinner-border spinner-border-sm text-light" role="status">
+                  <span className="sr-only">Loading...</span>
+                </div>
+              ) : (
+                "Let's go"
+              )}
+            </button>
+            <button type="button" className="btn btn-block btn-sm switch-btn" onClick={this.handleSwitch}>
+              {signin ? "New player? Sign up here!" : "Already a player? Sign in here!"}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
 }
+
+Auth.propTypes = {
+  updatePlayer: PropTypes.func.isRequired,
+};
 
 export default Auth;
