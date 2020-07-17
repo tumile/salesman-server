@@ -9,6 +9,7 @@ const morgan = require("morgan");
 const multer = require("multer");
 const db = require("./db");
 const { upload } = require("./s3");
+const names = require("./names.json");
 
 const multipart = multer({ dest: "src/uploads" });
 
@@ -20,6 +21,8 @@ app.use(bodyParser.json());
 
 app.get("/api/leaderboard", async (req, res, next) => {
   try {
+    const players = await db.Player.find({}, "username image money").sort({ money: -1 }).limit(10);
+    res.status(200).json(players);
   } catch (err) {
     next(err);
   }
@@ -93,10 +96,87 @@ app.get("/api/players/:id", async (req, res, next) => {
   }
 });
 
+app.put("/api/players/:id/activity", async (req, res, next) => {
+  try {
+    await db.Player.findByIdAndUpdate(req.params.id, { lastActive: new Date() });
+    res.status(200);
+  } catch (err) {
+    next(new NotFoundError("Player not found"));
+  }
+});
+
+const random = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
+const randomMaleName = () => {
+  return `${names.maleFirstName[random(names.maleFirstName.length)]} ${names.lastName[random(names.lastName.length)]}`;
+};
+
+const randomFemaleName = () => {
+  return `${names.femaleFirstName[random(names.femaleFirstName.length)]} ${
+    names.lastName[random(names.lastName.length)]
+  }`;
+};
+
+const randomMaleImage = () => {
+  return `male-${random(7)}`;
+};
+
+const randomFemaleImage = () => {
+  return `female-${random(4)}`;
+};
+
 app.get("/api/players/:id/customers", async (req, res, next) => {
   try {
-    const { customers } = await db.Player.findById(req.params.id, "customers");
-    assert.ok(customers);
+    const player = await db.Player.findById(req.params.id, "customers");
+    const customers = player.customers.filter((cust) => cust.expireTime < new Date());
+
+    const numHoursSinceLastActive = (new Date() - player.lastActive) / 3600000;
+    const numSpawn = Math.min(8 - customers.length, Math.floor(numHoursSinceLastActive / 2));
+
+    if (numSpawn > 0) {
+      const cities = await db.City.find({}, "_id");
+
+      for (let i = 0; i < numSpawn; i += 1) {
+        let city = cities[random(cities.length)].id;
+        // eslint-disable-next-line no-loop-func
+        while (city === player.city || customers.find((cust) => cust.city === city)) {
+          city = cities[random(cities.length)].id;
+        }
+
+        const price = 500 + random(500);
+        let customer = {
+          message: `I want to buy you product for $${price}!`,
+          price,
+          city,
+          expireTime: new Date(Date.now() + (7200 + random(10800)) * 1000), // between 2 and 5 hours
+        };
+        if (Math.random() > 0.6) {
+          customer = {
+            name: randomMaleName(),
+            image: randomMaleImage(),
+            ...customer,
+          };
+        } else {
+          customer = {
+            name: randomFemaleName(),
+            image: randomFemaleImage(),
+            ...customer,
+          };
+        }
+        customers.push(customer);
+      }
+    }
+
+    // player last active
+    // spawn number of customer according to time passed
+    // on frontend make a timeout for each customers
+    // after travel reset timeouts
+    // if 30 mins passed call spawn
+    player.customers = customers;
+    await player.save();
+
     res.status(200).json(customers);
   } catch (err) {
     next(new NotFoundError("Player not found"));

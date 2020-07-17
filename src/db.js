@@ -40,9 +40,14 @@ const playerSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
           ref: "City",
         },
+        expireTime: Date,
       },
     ],
     required: true,
+  },
+  lastActive: {
+    type: Date,
+    default: new Date(),
   },
 });
 

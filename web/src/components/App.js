@@ -20,6 +20,10 @@ class App extends React.Component {
         const { id } = jwtDecode(token);
         const player = await fetch(`/api/players/${id}`).then((res) => res.json());
         this.setPlayer(player);
+
+        setInterval(async () => {
+          await fetch(`/api/players/${id}/activity`, { method: "PUT" });
+        }, 300000);
       }
     } catch (err) {
       console.error(err);

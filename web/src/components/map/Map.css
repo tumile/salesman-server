@@ -33,7 +33,7 @@
   left: -20px;
   width: 50px;
   border-radius: 6px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .icon-avatar {
@@ -42,5 +42,5 @@
   left: -35px;
   width: 60px;
   border-radius: 40px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
