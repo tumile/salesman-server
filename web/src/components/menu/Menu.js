@@ -11,6 +11,9 @@ class Menu extends React.Component {
       travelOpen: false,
       hotelOpen: false,
       inboxOpen: false,
+      leaderboardOpen: false,
+      sourvenirsOpen: false,
+      leaderboard: [],
     };
   }
 
@@ -18,6 +21,8 @@ class Menu extends React.Component {
     this.setState({
       travelOpen: open,
       inboxOpen: false,
+      leaderboardOpen: false,
+      sourvenirsOpen: false,
     });
   };
 
@@ -25,7 +30,89 @@ class Menu extends React.Component {
     this.setState({
       travelOpen: false,
       inboxOpen: open,
+      leaderboardOpen: false,
+      sourvenirsOpen: false,
     });
+  };
+
+  toggleLeaderboard = () => {
+    this.setState({ leaderboardOpen: !this.state.leaderboardOpen, sourvenirsOpen: false });
+  };
+
+  toggleSouvenirs = () => {
+    this.setState({ sourvenirsOpen: !this.state.sourvenirsOpen, leaderboardOpen: false });
+  };
+
+  async componentDidMount() {
+    const { players } = await fetch("/api/leaderboard").then((res) => res.json());
+    this.setState({ leaderboard: players });
+  }
+
+  renderLeaderboard = () => {
+    const { leaderboardOpen, leaderboard } = this.state;
+    if (!leaderboardOpen) {
+      return null;
+    }
+    return (
+      <div className="modal" role="dialog" style={{ display: "block", top: 100 }}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Hall of fame</h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={this.toggleLeaderboard}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              {leaderboard.map((p, i) => (
+                <div
+                  key={p._id}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: 8 }}
+                >
+                  <img style={{ width: 50, borderRadius: 25 }} src={p.image} />
+                  <span>{p.username}</span>
+                  <span>${p.money}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  renderSouvenirs = () => {
+    const { sourvenirsOpen } = this.state;
+    if (!sourvenirsOpen) {
+      return null;
+    }
+    return (
+      <div className="modal" role="dialog" style={{ display: "block", top: 100 }}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Progress</h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                onClick={this.toggleSouvenirs}
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">Coming soon!</div>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   render() {
@@ -45,10 +132,10 @@ class Menu extends React.Component {
               <div style={{ width: `${player.stamina}%` }} className="progress-bar" role="progressbar" />
             </div>
           </div>
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={this.toggleSouvenirs}>
             <i className="fas fa-home" />
           </button>
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={this.toggleLeaderboard}>
             <i className="fas fa-trophy" />
           </button>
         </div>
@@ -68,7 +155,9 @@ class Menu extends React.Component {
             <i className="fas fa-envelope" />
           </button>
         </div>
-        <Travel travelOpen={travelOpen} player={player} />
+        {this.renderLeaderboard()}
+        {this.renderSouvenirs()}
+        <Travel travelOpen={travelOpen} player={player} refreshPlayer={this.props.refreshPlayer} />
         <Inbox inboxOpen={inboxOpen} customers={customers} />
       </>
     );

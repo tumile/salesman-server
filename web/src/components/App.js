@@ -33,13 +33,17 @@ class App extends React.Component {
     }
   }
 
+  refreshPlayer = async () => {
+    const player = await fetch(`/api/players/${this.state.player._id}`).then((res) => res.json());
+    this.setPlayer(player);
+  };
+
   getCustomers = async (id) => {
     const { customers } = await fetch(`/api/players/${id}/customers`).then((res) => res.json());
     this.setState({ customers });
   };
 
   setPlayer = (player) => {
-    console.log(player);
     this.setState({ player });
     this.getCustomers(player._id);
   };
@@ -51,7 +55,7 @@ class App extends React.Component {
     }
     return (
       <>
-        <Menu player={player} customers={customers} />
+        <Menu player={player} customers={customers} refreshPlayer={this.refreshPlayer} />
         <PlayerMap player={player} />
       </>
     );

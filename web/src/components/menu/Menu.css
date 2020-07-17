@@ -19,8 +19,8 @@
   width: auto;
 }
 
-.menu-stats div {
-  flex: 1;
+.menu-stats .progress {
+  width: 230px;
 }
 
 .menu-stats button {

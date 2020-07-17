@@ -129,6 +129,20 @@ app.get("/api/players/:id", async (req, res, next) => {
   }
 });
 
+app.put("/api/players/:id", async (req, res, next) => {
+  try {
+    const { destination, price } = req.body;
+    const player = await db.Player.findById(req.params.id);
+    player.city = destination;
+    player.money -= price;
+    player.stamina -= 20;
+    await player.save();
+    res.status(200).end();
+  } catch (err) {
+    next(new NotFoundError("Player not found"));
+  }
+});
+
 app.put("/api/players/:id/activity", async (req, res, next) => {
   try {
     await db.Player.findByIdAndUpdate(req.params.id, { lastActive: new Date() });

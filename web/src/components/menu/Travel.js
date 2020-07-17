@@ -25,13 +25,28 @@ class Travel extends React.Component {
           this.setState({ suggestions: cities, flights: [] });
         }
       }
-    }, 500);
+    }, 200);
   };
 
   handleFlight = async (city) => {
     const { player } = this.props;
     const { flights } = await fetch(`/api/flights?from=${player.city}&to=${city._id}`).then((res) => res.json());
-    this.setState({ flights });
+    this.setState({ flights, destination: city });
+  };
+
+  handleBook = async (price) => {
+    try {
+      const { destination } = this.state;
+      const { player } = this.props;
+      await fetch(`/api/players/${player._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ destination: destination._id, price }),
+      });
+      await this.props.refreshPlayer();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   renderFlightsOrSuggestions = () => {
@@ -58,7 +73,7 @@ class Travel extends React.Component {
               <h6>{flight.name}</h6>
               <div>
                 <span>{`$${flight.price}`}</span>
-                <button type="button" className="btn btn-primary btn-sm" onClick={() => {}}>
+                <button type="button" className="btn btn-primary btn-sm" onClick={() => this.handleBook(flight.price)}>
                   Book
                 </button>
               </div>
