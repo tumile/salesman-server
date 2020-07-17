@@ -455,6 +455,62 @@
     "coords": [41.0082, 28.9784],
     "airlines": [
       { "name": "Turkish Airlines", "image": "https://salesman-public.s3.amazonaws.com/turkish-airlines.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "Hagia Sophia",
+        "image": "https://salesman-public.s3.amazonaws.com/hagia-sophia.jpg",
+        "description": "Hagia Sophia, officially the Great Mosque of Ayasofya and formerly the Church of Hagia Sophia, is a Late Antique place of worship in Istanbul. Built as the patriarchal cathedral of Constantinople for the state church of the Roman Empire, it was used by the Eastern Orthodox Church, temporarily by the Roman Catholic Church, and then as an Ottoman mosque before becoming a secular museum. In 2020, it will re-open as a mosque. Completed in 537 during the reign of the eastern Roman emperor Justinian I, it was then the world's largest interior space and among the first to employ a fully pendentive dome. It is considered the epitome of Byzantine architecture and is said to have \"changed the history of architecture\". It is also an important example of the Islamic practice of converting non-Islamic places of worship into mosques. Built as the Christian cathedral of Constantinople between 532 and 537 on the orders of Justinian I, the basilica was designed by the Greek geometers Isidore of Miletus and Anthemius of Tralles. The present Justinianic building was the third church of the same name to occupy the site, the prior one having been destroyed in the Nika riots.",
+        "coords": [41.008583, 28.980175]
+      },
+      {
+        "name": "The Blue Mosque",
+        "image": "https://salesman-public.s3.amazonaws.com/the-blue-mosque.jpg",
+        "description": "Sultan Ahmed Mosque, also known as the Blue Mosque, is an Ottoman-era mosque located in Istanbul, Turkey. A functioning mosque, it also attracts large numbers of tourist visitors. It was constructed between 1609 and 1616 during the rule of Ahmed I. Its Külliye contains Ahmed's tomb, a madrasah and a hospice. Hand-painted blue tiles adorn the mosque’s interior walls, and at night the mosque is bathed in blue as lights frame the mosque’s five main domes, six minarets and eight secondary domes. It sits next to the Hagia Sophia, the principal mosque of Istanbul until the Blue Mosque's construction and another popular tourist site.",
+        "coords": [41.00541, 28.976814]
+      },
+      {
+        "name": "Topkapi Palace Museum",
+        "image": "https://salesman-public.s3.amazonaws.com/topkapi-palace-museum.jpg",
+        "description": "The Topkapı Palace, or the Seraglio, is a large museum in the east of the Fatih district of Istanbul in Turkey. In the 15th and 16th centuries it served as the main residence and administrative headquarters of the Ottoman sultans. Construction, ordered by the Sultan Mehmed the Conqueror, began in 1459, six years after the conquest of Constantinople. Topkapı was originally called the \"New Palace\" to distinguish it from the Old Palace in Beyazıt Square. It was given the name Topkapı, meaning Cannon Gate, in the 19th century. The complex expanded over the centuries, with major renovations after the 1509 earthquake and the 1665 fire. The palace complex consists of four main courtyards and many smaller buildings. Female members of the Sultan's family lived in the harem, and leading state officials, including the Grand Vizier, held meetings in the Imperial Council building. After the 17th century, Topkapı gradually lost its importance. The sultans of that period preferred to spend more time in their new palaces along the Bosphorus. In 1856 Sultan Abdulmejid I decided to move the court to the newly built Dolmabahçe Palace.",
+        "coords": [41.01152, 28.983379]
+      },
+      {
+        "name": "Grand Bazaar",
+        "image": "https://salesman-public.s3.amazonaws.com/grand-bazaar.jpg",
+        "description": "The Grand Bazaar in Istanbul is one of the largest and oldest covered markets in the world, with 61 covered streets and over 4,000 shops on a total area of 30,700 m², attracting between 250,000 and 400,000 visitors daily. In 2014, it was listed No.1 among the world's most-visited tourist attractions with 91,250,000 annual visitors. The Grand Bazaar at Istanbul is often regarded as one of the first shopping malls of the world.",
+        "coords": [41.010685, 28.968068]
+      },
+      {
+        "name": "Bosporus",
+        "image": "https://salesman-public.s3.amazonaws.com/bosporus.jpg",
+        "description": "The Bosporus or Bosphorus is a narrow, natural strait and an internationally significant waterway located in northwestern Turkey. It forms part of the continental boundary between Europe and Asia, and divides Turkey by separating Anatolia from Thrace. It is the world's narrowest strait used for international navigation. The Bosporus connects the Black Sea with the Sea of Marmara, and, by extension via the Dardanelles, the Aegean and Mediterranean seas. Most of the shores of the strait are heavily settled, straddled by the city of Istanbul's metropolitan population of 17 million inhabitants extending inland from both coasts. Together with the Dardanelles, the Bosporus forms the Turkish Straits.",
+        "coords": [41.221313, 29.129016]
+      },
+      {
+        "name": "Basilica Cistern",
+        "image": "https://salesman-public.s3.amazonaws.com/basilica-cistern.jpg",
+        "description": "The Basilica Cistern, or Cisterna Basilica, is the largest of several hundred ancient cisterns that lie beneath the city of Istanbul, Turkey. The cistern, located 150 metres southwest of the Hagia Sophia on the historical peninsula of Sarayburnu, was built in the 6th century during the reign of Byzantine Emperor Justinian I. Today it is kept with little water, for public access inside the space.",
+        "coords": [41.008384, 28.977878]
+      },
+      {
+        "name": "Galata Tower",
+        "image": "https://salesman-public.s3.amazonaws.com/galata-tower.jpg",
+        "description": "The Galata Tower — called Christea Turris by the Genoese — is a medieval stone tower in the Galata/Karaköy quarter of Istanbul, Turkey, just to the north of the Golden Horn's junction with the Bosphorus. It is a high, cone-capped cylinder that dominates the skyline and offers a panoramic vista of Istanbul's historic peninsula and its environs.",
+        "coords": [41.025668, 28.974129]
+      },
+      {
+        "name": "Dolmabahçe Palace",
+        "image": "https://salesman-public.s3.amazonaws.com/dolmabahce-palace.jpg",
+        "description": "Dolmabahçe Palace located in the Beşiktaş district of Istanbul, Turkey, on the European coast of the Strait of Istanbul, served as the main administrative center of the Ottoman Empire from 1856 to 1887 and from 1909 to 1922.",
+        "coords": [41.039164, 29.000459]
+      },
+      {
+        "name": "Taksim Square",
+        "image": "https://salesman-public.s3.amazonaws.com/taksim-square.jpg",
+        "description": "Taksim Square, situated in Beyoğlu in the European part of Istanbul, Turkey, is a major tourist and leisure district famed for its restaurants, shops, and hotels. It is considered the heart of modern Istanbul, with the central station of the Istanbul Metro network. Taksim Square is also the location of the Republic Monument which was crafted by Pietro Canonica and inaugurated in 1928. The monument commemorates the 5th anniversary of the foundation of the Republic of Turkey in 1923, following the Turkish War of Independence.",
+        "coords": [41.037002, 28.985092]
+      }
     ]
   },
   {
@@ -463,13 +519,125 @@
     "coords": [50.4501, 30.5234],
     "airlines": [
       { "name": "Ukraine International", "image": "https://salesman-public.s3.amazonaws.com/ukraine-international.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "St. Sophia's Cathedral",
+        "image": "https://salesman-public.s3.amazonaws.com/stsophias-cathedral.jpg",
+        "description": "Saint Sophia Cathedral in Kiev is an outstanding architectural monument of Kievan Rus'. The cathedral is one of the city's best known landmarks and the first heritage site in Ukraine to be inscribed on the World Heritage List along with the Kiev Cave Monastery complex. Aside from its main building, the cathedral includes an ensemble of supporting structures such as a bell tower and the House of Metropolitan. In 2011 the historic site was reassigned from the jurisdiction of the Ministry of Regional Development of Ukraine to the Ministry of Culture of Ukraine. One of the reasons for the move was that both Saint Sophia Cathedral and Kiev Pechersk Lavra are recognized by the UNESCO World Heritage Program as one complex, while in Ukraine the two were governed by different government entities. In Ukrainian the cathedral is known as Sobor Sviatoyi Sofiyi or Sofiyskyi sobor. The complex of the cathedral is the main component and museum of the National Sanctuary \"Sophia of Kiev\" which is the state institution responsible for the preservation of the cathedral complex as well as four other historic landmarks across the nation.",
+        "coords": [50.45291, 30.514307]
+      },
+      {
+        "name": "Kiev Pechersk Lavra",
+        "image": "https://salesman-public.s3.amazonaws.com/kiev-pechersk-lavra.jpg",
+        "description": "Kiev Pechersk Lavra, Kyiv Pechersk Lavra or Kyivo-Pechers’ka Lavra, also known as the Kiev Monastery of the Caves, is a historic Orthodox Christian monastery which gave its name to one of the city districts where it is located in Kiev. Since its foundation as the cave monastery in 1051, the Lavra has been a preeminent center of Eastern Orthodox Christianity in Eastern Europe. Together with the Saint Sophia Cathedral, it is inscribed as a UNESCO World Heritage Site. The monastery complex is considered a separate national historic-cultural preserve, the national status to which was granted on 13 March 1996. The Lavra is not only located in another part of the city, but is part of a different national sanctuary than Saint Sophia Cathedral. While being a cultural attraction, the monastery is once again active, with over 100 monks in residence. It was named one of the Seven Wonders of Ukraine on 21 August 2007, based on voting by experts and the internet community.",
+        "coords": [50.434638, 30.557256]
+      },
+      {
+        "name": "Golden Gate",
+        "image": "https://salesman-public.s3.amazonaws.com/golden-gate.jpg",
+        "description": "The Golden Gate of Kyiv was the main gate in the 11th century fortifications of Kyiv, the capital of Kievan Rus'. It was named in imitation of the Golden Gate of Constantinople. The structure was dismantled in the Middle Ages, leaving few vestiges of its existence. It was rebuilt completely by the Soviet authorities in 1982, though no images of the original gates have survived. The decision has been immensely controversial because there were many competing reconstructions of what the original gate might have looked like. The rebuilt structure on the corner of Volodymyr street and Yaroslaviv Val Street contains a branch of the National Sanctuary \"Sophia of Kyiv\" museum. The name Zoloti Vorota is also used for a nearby theater and the Zoloti Vorota station of the Kiev Metro.",
+        "coords": [50.448832, 30.513332]
+      },
+      {
+        "name": "Independence Square",
+        "image": "https://salesman-public.s3.amazonaws.com/independence-square.jpg",
+        "description": "Maidan Nezalezhnosti is the central square of Kyiv, the capital city of Ukraine. One of the city's main squares, it is located on Khreshchatyk Street in the Shevchenko Raion. The square has been known under many different names, but often it is called simply Maidan. In the 19th century, the square contained buildings of the city council and noble assembly. Since the start of Ukraine's independence movement in 1990, the square has been the traditional place for political rallies, including four large-scale radical protest campaigns: the 1990 student \"Revolution on Granite\", the 2001 \"Ukraine without Kuchma\", the 2004 Orange Revolution, and the 2013–14 Euromaidan. Maidan is also a regular site for non-political displays and events, however since 2014 most of them were moved to Sofiyivska Square or elsewhere, because making entertainment on a place where people were killed during Euromaidan was considered inappropriate. Most notably, Christmas Fairs and New Year celebrations were moved to Sofiyivska Square.",
+        "coords": [50.450532, 30.52299]
+      },
+      {
+        "name": "Khreschatyk Street",
+        "image": "https://salesman-public.s3.amazonaws.com/khreschatyk-street.jpg",
+        "description": "Khreshchatyk is the main street of Kyiv, Ukraine. The street has a length of 1.2 km. It stretches from the European Square through the Maidan and to Bessarabska Square where the Besarabsky Market is located. Along the street are the offices of the Kiev City Council which contains both the city's council and the state administration, the Main Post Office, the Ministry of Agrarian Policy, the State Committee of Television and Radio Broadcasting, the Central Department Store, the Ukrainian House, and others. The entire street was completely destroyed during World War II by the retreating Red Army troops and rebuilt in the neo-classical style of post-war Stalinist architecture. Among prominent buildings that did not survive were the Kiev City Duma, the Kiev Stock Exchange, Hotel Natsional, and the Ginzburg House. The street has been significantly renovated during the modern period of Ukraine's independence. Today, the street is still significant to administrative and business city organizations, as well as a popular tourist attraction. As of 2010, Khreshchatyk is included in the Top 20 of most expensive shopping streets in Europe.",
+        "coords": [50.447585, 30.522026]
+      },
+      {
+        "name": "The Motherland Monument",
+        "image": "https://salesman-public.s3.amazonaws.com/the-motherland-monument.jpg",
+        "description": "The Motherland Monument is a monumental statue in Kiev, the capital of Ukraine. The sculpture is a part of the National Museum of the History of Ukraine in the Second World War.",
+        "coords": [50.426583, 30.563054]
+      },
+      {
+        "name": "St. Andrew's Church",
+        "image": "https://salesman-public.s3.amazonaws.com/standrews-church.jpg",
+        "description": "St. Andrew's Church is a major Baroque church located in Kyiv, the capital of Ukraine. The church was constructed between 1747 and 1754, to a design by the Italian architect Bartolomeo Rastrelli. It is sometimes referred to as a cathedral. The church is part of the National Sanctuary \"Sophia of Kyiv\" as a landmark of cultural heritage. The church has no bells, as according to legend, their noise would cause flooding of the left part of the city. St Andrew's Church overlooks the historic Podil neighborhood, situated on a steep hill to which the church gave its current name—Andriyivska Hill. It is currently one of four architectural landmarks of Ukraine, which were put down on the List of Mankind Treasures of Five Continents by the world society. As the church sits atop a hill, foundation problems have been one of the main concerns of preservationists. More recently, the foundation below the church has started to shift, causing some concerns that the church's foundation might collapse. Cracks have already appeared in the foundation, and some of the church's falling decor has been found in neighboring areas.",
+        "coords": [50.459032, 30.517931]
+      },
+      {
+        "name": "St. Michael's Golden-Domed Monastery",
+        "image": "https://salesman-public.s3.amazonaws.com/stmichaels-golden-domed-monastery.jpg",
+        "description": "St. Michael's Golden-Domed Monastery is a functioning monastery in Kiev, the capital of Ukraine. The monastery is located on the right bank of the Dnieper River on the edge of a bluff northeast of the Saint Sophia Cathedral. The site is located in the historic administrative Uppertown and overlooks the city's historical commercial and merchant quarter, the Podil neighbourhood. Originally built in the Middle Ages by Sviatopolk II Iziaslavych, the monastery comprises the Cathedral itself, the Refectory of St. John the Divine, built in 1713, the Economic Gates, constructed in 1760 and the monastery's bell tower, which was added c. 1716–1719. The exterior of the structure was rebuilt in the Ukrainian Baroque style in the 18th century while the interior remained in its original Byzantine style. The original cathedral was demolished by the Soviet authorities in the 1930s, but was reconstructed and opened in 1999 following Ukrainian independence in 1991.",
+        "coords": [50.455846, 30.523013]
+      },
+      {
+        "name": "Andriivs'kyi descent",
+        "image": "https://salesman-public.s3.amazonaws.com/andriivskyi-descent.jpg",
+        "description": "Andriyivskyy Descent is a historic descent connecting Kiev's Upper Town neighborhood and the historically commercial Podil neighborhood. The street, often advertised by tour guides and operators as the \"Montmartre of Kiev\", is a major tourist attraction of the city. It is included in the list of national landmarks by the government resolution. In addition, the street is also part of the Kiev city historic reserve \"Ancient Kiev\", while the St.Andrew's Church belongs to the National historic reserve \"Sophia of Kiev\". The descent, 720 metres in length, is constructed of laid cobblestones and connects Old Kyiv with Podil. It starts at the end of Volodymyrska Street and winds down steeply around the Zamkova Hora hill, ending near the Kontraktova Square. The Andriyivskyy Descent is marked by a couple historic landmarks, including the Castle of Richard the Lionheart, the 18th century baroque Saint Andrew's Church, famed Russian writer Mikhail Bulgakov's house, and numerous other monuments.",
+        "coords": [50.459807, 30.51614]
+      }
     ]
   },
   {
     "name": "Lisbon",
     "image": "https://salesman-public.s3.amazonaws.com/lisbon.jpg",
     "coords": [38.7223, -9.1393],
-    "airlines": [{ "name": "TAP Portugal", "image": "https://salesman-public.s3.amazonaws.com/tap-portugal.png" }]
+    "airlines": [{ "name": "TAP Portugal", "image": "https://salesman-public.s3.amazonaws.com/tap-portugal.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
+    ]
   },
   {
     "name": "London",
@@ -479,13 +647,125 @@
       { "name": "British Airways", "image": "https://salesman-public.s3.amazonaws.com/british-airways.png" },
       { "name": "EasyJet", "image": "https://salesman-public.s3.amazonaws.com/easyjet.png" },
       { "name": "Ryanair", "image": "https://salesman-public.s3.amazonaws.com/ryanair.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
     "name": "Luxembourg",
     "image": "https://salesman-public.s3.amazonaws.com/luxembourg.jpg",
     "coords": [49.8153, 6.1296],
-    "airlines": [{ "name": "Luxair", "image": "https://salesman-public.s3.amazonaws.com/luxair.png" }]
+    "airlines": [{ "name": "Luxair", "image": "https://salesman-public.s3.amazonaws.com/luxair.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
+    ]
   },
   {
     "name": "Madrid",
@@ -495,19 +775,187 @@
       { "name": "Iberia", "image": "https://salesman-public.s3.amazonaws.com/iberia.png" },
       { "name": "Air Europa", "image": "https://salesman-public.s3.amazonaws.com/air-europa.png" },
       { "name": "Vueling", "image": "https://salesman-public.s3.amazonaws.com/vueling.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
     "name": "Minsk",
     "image": "https://salesman-public.s3.amazonaws.com/minsk.jpg",
     "coords": [53.9006, 27.559],
-    "airlines": [{ "name": "Belavia", "image": "https://salesman-public.s3.amazonaws.com/belavia.png" }]
+    "airlines": [{ "name": "Belavia", "image": "https://salesman-public.s3.amazonaws.com/belavia.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
+    ]
   },
   {
     "name": "Moscow",
     "image": "https://salesman-public.s3.amazonaws.com/moscow.jpg",
     "coords": [55.7558, 37.6173],
-    "airlines": [{ "name": "Aeroflot", "image": "https://salesman-public.s3.amazonaws.com/aeroflot.png" }]
+    "airlines": [{ "name": "Aeroflot", "image": "https://salesman-public.s3.amazonaws.com/aeroflot.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
+    ]
   },
   {
     "name": "Oslo",
@@ -519,6 +967,62 @@
         "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png"
       },
       { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
@@ -528,6 +1032,62 @@
     "airlines": [
       { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
@@ -537,6 +1097,62 @@
     "airlines": [
       { "name": "Air France", "image": "https://salesman-public.s3.amazonaws.com/air-france.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
@@ -546,6 +1162,62 @@
     "airlines": [
       { "name": "Alitalia", "image": "https://salesman-public.s3.amazonaws.com/alitalia.png" },
       { "name": "Transavia", "image": "https://salesman-public.s3.amazonaws.com/transavia.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
@@ -558,6 +1230,62 @@
         "image": "https://salesman-public.s3.amazonaws.com/scandinavian-airlines.png"
       },
       { "name": "Norwegian Air", "image": "https://salesman-public.s3.amazonaws.com/norwegian-air.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
@@ -567,12 +1295,124 @@
     "airlines": [
       { "name": "Austrian Airlines", "image": "https://salesman-public.s3.amazonaws.com/austrian-airlines.png" },
       { "name": "Lauda", "image": "https://salesman-public.s3.amazonaws.com/lauda.png" }
+    ],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
     ]
   },
   {
     "name": "Warsaw",
     "image": "https://salesman-public.s3.amazonaws.com/warsaw.jpg",
     "coords": [52.2297, 21.0122],
-    "airlines": [{ "name": "LOT Polish", "image": "https://salesman-public.s3.amazonaws.com/lot-polish.png" }]
+    "airlines": [{ "name": "LOT Polish", "image": "https://salesman-public.s3.amazonaws.com/lot-polish.png" }],
+    "pointsOfInterest": [
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      },
+      {
+        "name": "",
+        "image": "https://salesman-public.s3.amazonaws.com/.jpg",
+        "description": "",
+        "coords": []
+      }
+    ]
   }
 ]
