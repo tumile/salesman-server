@@ -8,8 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
 @Data
+@Entity
 public class Airline {
 
     @Id
@@ -17,8 +17,8 @@ public class Airline {
     private Long id;
 
     @NotNull
-    @Size(max = 30)
-    @Column(length = 30, nullable = false)
+    @Size(max = 50)
+    @Column(length = 50, nullable = false)
     private String name;
 
     @NotNull
@@ -26,10 +26,10 @@ public class Airline {
     @Column(length = 100, nullable = false)
     private String image;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "city_id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 }

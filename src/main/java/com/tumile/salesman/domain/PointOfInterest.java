@@ -8,8 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity(name = "point_of_interest")
 @Data
+@Entity(name = "point_of_interest")
 public class PointOfInterest {
 
     @Id
@@ -39,10 +39,10 @@ public class PointOfInterest {
     @Column(nullable = false)
     private Double longitude;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "city_id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 }

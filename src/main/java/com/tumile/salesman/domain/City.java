@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 @Data
+@Entity
 public class City {
 
     @Id
@@ -19,8 +19,8 @@ public class City {
     private Long id;
 
     @NotNull
-    @Size(max = 20)
-    @Column(length = 20, nullable = false)
+    @Size(max = 50)
+    @Column(length = 50, nullable = false)
     private String name;
 
     @NotNull
@@ -36,13 +36,13 @@ public class City {
     @Column(nullable = false)
     private Double longitude;
 
-    @OneToMany(mappedBy = "city")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @OneToMany(mappedBy = "city")
     private Set<Airline> airlines = new HashSet<>();
 
-    @OneToMany(mappedBy = "city")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @OneToMany(mappedBy = "city")
     private Set<PointOfInterest> pointsOfInterest = new HashSet<>();
 }

@@ -7,11 +7,10 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.Instant;
 import java.util.Date;
 
-@Entity
 @Data
+@Entity
 public class Customer {
 
     @Id
@@ -43,17 +42,17 @@ public class Customer {
     @Column(nullable = false)
     private Boolean isExpired = false;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "city_id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "player_id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id", nullable = false)
     private Player player;
 }

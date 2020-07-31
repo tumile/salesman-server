@@ -12,8 +12,8 @@ import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
 @Data
+@Entity
 public class Player {
 
     @Id
@@ -45,15 +45,15 @@ public class Player {
     @Column(nullable = false)
     private Integer stamina;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "city_id", nullable = false)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
-    @OneToMany(mappedBy = "player")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
+    @OneToMany(mappedBy = "player")
     private Set<Customer> customers = new HashSet<>();
 }
