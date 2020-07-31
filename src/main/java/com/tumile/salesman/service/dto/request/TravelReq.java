@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
-public class FlightReq {
+public class TravelReq {
 
     @NotNull
     private Long fromCityId;

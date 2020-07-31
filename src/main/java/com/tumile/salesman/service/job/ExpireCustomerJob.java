@@ -1,6 +1,6 @@
 package com.tumile.salesman.service.job;
 
-import com.tumile.salesman.service.CustomerService;
+import com.tumile.salesman.service.PlayerService;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -11,10 +11,10 @@ public class ExpireCustomerJob extends QuartzJobBean {
 
     public static final String GROUP_NAME = "EXPIRE_CUSTOMER";
 
-    private final CustomerService customerService;
+    private final PlayerService playerService;
 
-    public ExpireCustomerJob(CustomerService customerService) {
-        this.customerService = customerService;
+    public ExpireCustomerJob(PlayerService playerService) {
+        this.playerService = playerService;
     }
 
     @Override
@@ -22,6 +22,6 @@ public class ExpireCustomerJob extends QuartzJobBean {
         JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
         Long playerId = jobDataMap.getLong("playerId");
         Long customerId = jobDataMap.getLong("customerId");
-        customerService.expireCustomer(playerId, customerId);
+        playerService.expireCustomer(playerId, customerId);
     }
 }

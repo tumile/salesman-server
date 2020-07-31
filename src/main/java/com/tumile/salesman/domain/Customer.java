@@ -7,7 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -36,7 +36,7 @@ public class Customer {
     @Column(nullable = false)
     private Double price;
 
-    private Date expireAt;
+    private LocalDateTime expireAt;
 
     @NotNull
     @Column(nullable = false)

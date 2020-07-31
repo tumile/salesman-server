@@ -14,13 +14,10 @@ public class AWSConfiguration {
 
     @Bean
     public AmazonS3 amazonS3(@Value("${aws.access-key-id}") String accessKeyId,
-                                      @Value("${aws.secret-access-key}") String secretAccessKey,
-                                      @Value("${aws.s3.region}") String region) {
+                             @Value("${aws.secret-access-key}") String secretAccessKey,
+                             @Value("${aws.s3.region}") String region) {
         BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
-        return AmazonS3ClientBuilder
-                .standard()
-                .withRegion(Regions.fromName(region))
-                .withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials))
-                .build();
+        return AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
+            .withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials)).build();
     }
 }

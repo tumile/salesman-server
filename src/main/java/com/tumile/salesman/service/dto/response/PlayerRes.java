@@ -20,7 +20,7 @@ public class PlayerRes {
 
     private Integer stamina;
 
-    private CityNameRes city;
+    private CitySimpleRes city;
 
     public static PlayerRes fromPlayer(Player player) {
         PlayerRes res = new PlayerRes();
@@ -29,7 +29,7 @@ public class PlayerRes {
         res.setImage(player.getImage());
         res.setMoney(player.getMoney());
         res.setStamina(player.getStamina());
-        res.setCity(CityNameRes.fromCity(player.getCity()));
+        res.setCity(CitySimpleRes.fromCity(player.getCity()));
         return res;
     }
 }

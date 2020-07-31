@@ -28,8 +28,7 @@ public class CityRes {
         res.setName(city.getName());
         res.setLatitude(city.getLatitude());
         res.setLongitude(city.getLongitude());
-        res.setPointsOfInterest(city.getPointsOfInterest().stream().map(POIRes::fromPOI)
-            .collect(Collectors.toSet()));
+        res.setPointsOfInterest(city.getPointsOfInterest().stream().map(POIRes::fromPOI).collect(Collectors.toSet()));
         return res;
     }
 }

@@ -6,14 +6,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CityNameRes {
+public class CitySimpleRes {
 
     private Long id;
 
     private String name;
 
-    public static CityNameRes fromCity(City city) {
-        CityNameRes res = new CityNameRes();
+    public static CitySimpleRes fromCity(City city) {
+        CitySimpleRes res = new CitySimpleRes();
         res.setId(city.getId());
         res.setName(city.getName());
         return res;

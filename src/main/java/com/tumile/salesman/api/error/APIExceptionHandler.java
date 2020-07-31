@@ -8,7 +8,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -39,8 +38,7 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(error.getStatus()).body(error);
     }
 
-    @ExceptionHandler({AuthenticationException.class, RequestValidationException.class,
-        UsernameUsedException.class, IllegalArgumentException.class})
+    @ExceptionHandler({AuthenticationException.class, IllegalArgumentException.class})
     public ResponseEntity<Object> badRequestExceptionHandler(RuntimeException ex) {
         Error error = new Error(HttpStatus.BAD_REQUEST, ex.getMessage(), LocalDateTime.now());
         return ResponseEntity.status(error.getStatus()).body(error);

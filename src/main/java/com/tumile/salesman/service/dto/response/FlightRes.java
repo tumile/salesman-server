@@ -10,7 +10,7 @@ public class FlightRes {
 
     private Long id;
 
-    private String name;
+    private String airline;
 
     private String image;
 
@@ -19,7 +19,7 @@ public class FlightRes {
     public static FlightRes fromAirline(Airline airline, double price) {
         FlightRes res = new FlightRes();
         res.setId(airline.getId());
-        res.setName(airline.getName());
+        res.setAirline(airline.getName());
         res.setImage(airline.getImage());
         res.setPrice(price);
         return res;

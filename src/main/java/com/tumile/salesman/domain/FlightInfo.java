@@ -1,5 +1,6 @@
 package com.tumile.salesman.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -33,9 +34,9 @@ public class FlightInfo {
     @JoinColumn(name = "to_city_id", nullable = false)
     private City toCity;
 
-    @Embeddable
     @Data
-    static class FlightInfoId implements Serializable {
+    @Embeddable
+    public static class FlightInfoId implements Serializable {
 
         private Long fromCityId;
 

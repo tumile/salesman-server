@@ -6,7 +6,6 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,7 +29,7 @@ public class S3Service {
             ObjectMetadata metadata = new ObjectMetadata();
             metadata.setContentType(multipartFile.getContentType());
             PutObjectRequest request = new PutObjectRequest(bucket, name, inputStream, metadata)
-                    .withCannedAcl(CannedAccessControlList.PublicRead);
+                .withCannedAcl(CannedAccessControlList.PublicRead);
             s3Client.putObject(request);
             return s3Client.getUrl(bucket, name).toString();
         } catch (AmazonServiceException | IOException ex) {
