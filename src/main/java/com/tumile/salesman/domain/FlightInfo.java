@@ -1,12 +1,10 @@
 package com.tumile.salesman.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Data
@@ -19,20 +17,6 @@ public class FlightInfo {
     private Double distance;
 
     private Double duration;
-
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "from_city_id", nullable = false)
-    private City fromCity;
-
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "to_city_id", nullable = false)
-    private City toCity;
 
     @Data
     @Embeddable
