@@ -1,0 +1,53 @@
+.main-map {
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  width: 350px !important;
+  height: 350px !important;
+}
+
+.popup-content {
+  height: 100%;
+  border-radius: 12px;
+  color: black;
+  background-size: 100% 200px;
+  background-repeat: no-repeat;
+}
+
+.popup-content img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.popup-content-inner {
+  height: 140px;
+  overflow: auto;
+  padding: 16px 16px 0 16px;
+}
+
+.popup-content-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.icon {
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 50px;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-avatar {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 60px;
+  border-radius: 40px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
