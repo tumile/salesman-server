@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import "./App.css";
 import Auth from "./auth/Auth";
+import ErrorAlert from "./ErrorAlert";
 import MainMap from "./map/MainMap";
 import Menu from "./menu/Menu";
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     player: null,
     city: null,
     customers: [],
+    error: null,
   };
 
   async componentDidMount() {
@@ -24,15 +26,6 @@ class App extends React.Component {
     this.setState({ loaded: true });
   }
 
-  getPlayer = async () => {
-    try {
-      const res = await axios.get("/api/players/me");
-      this.setState({ player: res.data });
-    } catch (err) {
-      console.error(err.response.data);
-    }
-  };
-
   setAuthorization = (token) => {
     if (token) {
       axios.defaults.headers.common[AUTHORIZATION_HEADER] = `Bearer ${token}`;
@@ -41,12 +34,26 @@ class App extends React.Component {
     }
   };
 
+  handleError = (err) => {
+    this.setState({ error: err.response.data.message });
+    setTimeout(() => this.setState({ error: null }), 2000);
+  };
+
+  getPlayer = async () => {
+    try {
+      const res = await axios.get("/api/players/me");
+      this.setState({ player: res.data });
+    } catch (err) {
+      this.handleError(err);
+    }
+  };
+
   getCustomers = async () => {
     try {
       const res = await axios.get("/api/customers");
       this.setState({ customers: res.data });
     } catch (err) {
-      console.error(err.response.data);
+      this.handleError(err);
     }
   };
 
@@ -56,12 +63,12 @@ class App extends React.Component {
       const res = await axios.get(`/api/cities/${id}`);
       this.setState({ city: res.data });
     } catch (err) {
-      console.error(err.response.data);
+      this.handleError(err);
     }
   };
 
   render() {
-    const { player, city, customers, loaded } = this.state;
+    const { loaded, player, city, customers, error } = this.state;
     if (!loaded) {
       return null;
     }
@@ -69,7 +76,7 @@ class App extends React.Component {
       return <Auth getPlayer={this.getPlayer} setAuthorization={this.setAuthorization} />;
     }
     return (
-      <>
+      <div>
         <Menu
           player={player}
           customers={customers}
@@ -78,7 +85,8 @@ class App extends React.Component {
           getCity={this.getCity}
         />
         <MainMap player={player} customers={customers} city={city} getCity={this.getCity} />
-      </>
+        <ErrorAlert error={error} />
+      </div>
     );
   }
 }

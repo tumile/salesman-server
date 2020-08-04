@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
 import static com.tumile.salesman.service.Constants.*;
 
 @Service
-public class PlayerService implements PlayerService {
+public class PlayerServiceImpl implements PlayerService {
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final CityRepository cityRepository;
@@ -54,10 +54,10 @@ public class PlayerService implements PlayerService {
     private final Scheduler scheduler;
     private final Random random = new Random();
 
-    public PlayerService(AuthenticationManagerBuilder authenticationManagerBuilder, CityRepository cityRepository,
-                         CustomerRepository customerRepository, FlightInfoRepository flightInfoRepository,
-                         PlayerRepository playerRepository, PasswordEncoder passwordEncoder,
-                         TokenProvider tokenProvider, S3Service s3Service, Scheduler scheduler) {
+    public PlayerServiceImpl(AuthenticationManagerBuilder authenticationManagerBuilder, CityRepository cityRepository,
+                             CustomerRepository customerRepository, FlightInfoRepository flightInfoRepository,
+                             PlayerRepository playerRepository, PasswordEncoder passwordEncoder,
+                             TokenProvider tokenProvider, S3Service s3Service, Scheduler scheduler) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.cityRepository = cityRepository;
         this.customerRepository = customerRepository;
@@ -78,8 +78,7 @@ public class PlayerService implements PlayerService {
 
     @Override
     public List<PlayerLBRes> handleGetLeaderboard() {
-        return playerRepository.findTop5ByOrderByMoneyDesc()
-            .stream()
+        return playerRepository.findTop5ByOrderByMoneyDesc().stream()
             .map(PlayerLBRes::fromPlayer)
             .collect(Collectors.toList());
     }
@@ -104,7 +103,6 @@ public class PlayerService implements PlayerService {
         return new TokenRes(jwt);
     }
 
-    @Transactional
     @Override
     public TokenRes handleRegister(RegisterReq request) {
         ensureUsername(request.getUsername());
@@ -131,77 +129,32 @@ public class PlayerService implements PlayerService {
     }
 
     private void initCustomers(Player player) {
-        try {
-            addThenScheduleExpireCustomer(player);
-            addThenScheduleExpireCustomer(player);
-            addThenScheduleExpireCustomer(player);
-            scheduleAddCustomer(player.getId(), AddCustomerJob.TIME_MILLIS);
-        } catch (SchedulerException ex) {
-            throw new IllegalStateException(ex.getMessage());
-        }
+        addCustomerAndScheduleExpire(player);
+        addCustomerAndScheduleExpire(player);
+        addCustomerAndScheduleExpire(player);
+        scheduleAddCustomer(player.getId(), AddCustomerJob.TIME_MILLIS);
     }
 
-    @Transactional
-    public void handleTravel(TravelReq flight) {
-        Long playerId = getCurrentPlayerId();
-
-        Player player = playerRepository.findById(playerId)
+    @Override
+    public void handleTravel(TravelReq request) {
+        Player player = playerRepository.findById(getCurrentPlayerId())
             .orElseThrow(() -> new NotFoundException("Player not found"));
-        cityRepository.findById(flight.getFromCityId())
+        City fromCity = cityRepository.findById(request.getFromCityId())
             .orElseThrow(() -> new NotFoundException("From city not found"));
-        City toCity = cityRepository.findById(flight.getToCityId())
+        City toCity = cityRepository.findById(request.getToCityId())
             .orElseThrow(() -> new NotFoundException("To city not found"));
 
-        var id = new FlightInfo.FlightInfoId();
-        id.setFromCityId(Math.min(flight.getFromCityId(), flight.getToCityId()));
-        id.setToCityId(Math.max(flight.getFromCityId(), flight.getToCityId()));
-        FlightInfo info = flightInfoRepository.findById(id)
-            .orElseThrow(() -> new NotFoundException("Info not found"));
-        double duration = info.getDuration();
+        double duration = flightInfoRepository.findById(new FlightInfo.FlightInfoId(
+            Math.min(fromCity.getId(), toCity.getId()),
+            Math.max(fromCity.getId(), toCity.getId())
+        ))
+            .orElseThrow(() -> new NotFoundException("Info not found"))
+            .getDuration();
 
-        try {
-            Set<JobKey> expireJobKeys =
-                scheduler.getJobKeys(GroupMatcher.groupStartsWith(ExpireCustomerJob.buildGroupName(playerId)));
-            for (JobKey key : expireJobKeys) {
-                JobDetail job = scheduler.getJobDetail(key);
-                Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
-                long timeLeft = trigger.getStartTime().getTime() - new Date().getTime() - (long) duration;
-                if (timeLeft > 0) {
-                    scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job,
-                        Date.from(Instant.now().plusMillis(timeLeft))));
-                } else {
-                    expireCustomer(job.getJobDataMap().getLong("customerId"));
-                    scheduler.deleteJob(key);
-                }
-            }
-
-            Set<JobKey> addJobKeys =
-                scheduler.getJobKeys(GroupMatcher.groupEquals(AddCustomerJob.buildGroupName(playerId)));
-            for (JobKey key : addJobKeys) {
-                JobDetail job = scheduler.getJobDetail(key);
-                Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
-                long timeLeft = trigger.getStartTime().getTime() - new Date().getTime() - (long) duration;
-                if (timeLeft > 0) {
-                    scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job,
-                        Date.from(Instant.now().plusMillis(timeLeft))));
-                } else {
-                    addCustomer(player);
-                    timeLeft = -timeLeft;
-                    while (timeLeft >= AddCustomerJob.TIME_MILLIS) {
-                        addCustomer(player);
-                        timeLeft -= AddCustomerJob.TIME_MILLIS;
-                    }
-                    scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job,
-                        Date.from(Instant.now().plusMillis(timeLeft))));
-                }
-            }
-        } catch (SchedulerException ex) {
-            throw new IllegalStateException(ex.getMessage());
-        }
-
+        updateAddAndExpireCustomers(player, (long) duration);
         player.setCity(toCity);
-        player.setMoney(player.getMoney() - flight.getPrice());
-        player.setStamina(player.getStamina() - 20);
+        player.setMoney(player.getMoney() - request.getPrice());
+        player.setStamina(player.getStamina() - 33);
         playerRepository.save(player);
     }
 
@@ -209,47 +162,109 @@ public class PlayerService implements PlayerService {
     public void handleSell(SellReq request) {
         Customer customer = customerRepository.findById(request.getCustomerId())
             .orElseThrow(() -> new NotFoundException("Customer not found"));
-        if (!customer.getPlayer().getId().equals(getCurrentPlayerId())) {
+        Player player = playerRepository.findById(getCurrentPlayerId())
+            .orElseThrow(() -> new NotFoundException("Player not found"));
+        if (!customer.getPlayer().getId().equals(player.getId())) {
             throw new IllegalArgumentException("Not your customer!");
         }
-        customer.setExpireAt(null);
-        customer.setIsExpired(true);
-        customerRepository.save(customer);
+        try {
+            Set<JobKey> expireJobKeys = scheduler
+                .getJobKeys(GroupMatcher.groupEquals(ExpireCustomerJob.buildGroupName(player.getId(), customer.getId())));
+            expireCustomerAndDeleteJob(customer.getId(), expireJobKeys.iterator().next());
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
     }
 
     @Transactional
-    public void addCustomer(Long playerId) {
+    @Override
+    public void addCustomerAndRescheduleJob(Long playerId, JobDetail job, Trigger trigger) {
         Player player = playerRepository.findById(playerId)
             .orElseThrow(() -> new NotFoundException("Player not found"));
-        addThenScheduleExpireCustomer(player);
+        addCustomerAndScheduleExpire(player);
+        try {
+            scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job, AddCustomerJob.TIME_MILLIS));
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
     }
 
     @Override
-    public void expireCustomer(Long customerId) {
+    public void expireCustomerAndDeleteJob(Long customerId, JobKey jobKey) {
         Customer customer = customerRepository.findById(customerId)
             .orElseThrow(() -> new NotFoundException("Customer not found"));
         customer.setExpireAt(null);
         customer.setIsExpired(true);
         customerRepository.save(customer);
+        try {
+            scheduler.deleteJob(jobKey);
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
+    }
+
+    private void updateAddAndExpireCustomers(Player player, long timePassed) {
+        try {
+            Set<JobKey> expireJobKeys = scheduler
+                .getJobKeys(GroupMatcher.groupStartsWith(ExpireCustomerJob.buildGroupName(player.getId())));
+            for (JobKey key : expireJobKeys) {
+                JobDetail job = scheduler.getJobDetail(key);
+                Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
+                long timeLeft = trigger.getStartTime().getTime() - new Date().getTime() - timePassed;
+                if (timeLeft > 0) {
+                    scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job, timeLeft));
+                    Customer customer = customerRepository.findById(job.getJobDataMap().getLong("customerId"))
+                        .orElseThrow();
+                    customer.setExpireAt(LocalDateTime.now().plus(timeLeft, ChronoUnit.MILLIS));
+                    customerRepository.save(customer);
+                } else {
+                    expireCustomerAndDeleteJob(job.getJobDataMap().getLong("customerId"), key);
+                }
+            }
+            Set<JobKey> addJobKeys = scheduler
+                .getJobKeys(GroupMatcher.groupEquals(AddCustomerJob.buildGroupName(player.getId())));
+            for (JobKey key : addJobKeys) {
+                JobDetail job = scheduler.getJobDetail(key);
+                Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
+                long timeLeft = trigger.getStartTime().getTime() - new Date().getTime() - timePassed;
+                if (timeLeft <= 0) {
+                    addCustomerAndScheduleExpire(player);
+                    timeLeft = -timeLeft;
+                    while (timeLeft >= AddCustomerJob.TIME_MILLIS) {
+                        addCustomerAndScheduleExpire(player);
+                        timeLeft -= AddCustomerJob.TIME_MILLIS;
+                    }
+                }
+                scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job, timeLeft));
+            }
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
     }
 
     @Transactional
-    public void addThenScheduleExpireCustomer(Player player) {
-        List<Customer> customers = player.getCustomers().stream().filter(customer -> !customer.getIsExpired())
+    public void addCustomerAndScheduleExpire(Player player) {
+        List<Customer> customers = player.getCustomers().stream()
+            .filter(customer -> !customer.getIsExpired())
             .collect(Collectors.toList());
         if (customers.size() >= 3) {
             return;
         }
+        Customer customer = buildNewCustomer(player, ExpireCustomerJob.TIME_MILLIS);
+        player.getCustomers().add(customer);
+        customerRepository.save(customer);
+        scheduleExpireCustomer(player.getId(), customer.getId(), ExpireCustomerJob.TIME_MILLIS);
+    }
 
-        List<Long> cityIds = customers.stream().map(customer -> customer.getCity().getId())
+    private Customer buildNewCustomer(Player player, long expiredIn) {
+        List<Long> cityIds = player.getCustomers().stream()
+            .map(Customer::getCity).map(City::getId)
             .collect(Collectors.toList());
         if (cityIds.isEmpty()) {
             cityIds.add(-1L);
         }
         List<City> availableCities = cityRepository.findAllByIdNotIn(cityIds);
         City city = availableCities.get(random.nextInt(availableCities.size()));
-
-        long expiredIn = ExpireCustomerJob.TIME_MILLIS;
         Customer customer = new Customer();
         boolean isMale = random.nextBoolean();
         if (isMale) {
@@ -266,23 +281,10 @@ public class PlayerService implements PlayerService {
         customer.setExpireAt(LocalDateTime.now().plus(expiredIn, ChronoUnit.MILLIS));
         customer.setCity(city);
         customer.setPlayer(player);
-        player.getCustomers().add(customer);
-        playerRepository.save(player);
-
-        scheduleExpireCustomer(player.getId(), customer.getId(), expiredIn);
+        return customer;
     }
 
-    public void rescheduleAddCustomer(Long playerId,)
-
-    public void endJob(Job) {
-        JobKey key = jobs.iterator().next();
-        JobDetail job = scheduler.getJobDetail(key);
-        Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
-        scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job,
-            Date.from(Instant.now().plusMillis(duration))));
-    }
-
-    public void scheduleAddCustomer(Long playerId, long duration) throws SchedulerException {
+    private void scheduleAddCustomer(Long playerId, long millis) {
         JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.put("playerId", playerId);
         JobDetail jobDetail = JobBuilder.newJob(AddCustomerJob.class)
@@ -291,28 +293,37 @@ public class PlayerService implements PlayerService {
             .usingJobData(jobDataMap)
             .storeDurably()
             .build();
-        Trigger trigger = buildJobTrigger(jobDetail, Date.from(Instant.now().plusMillis(duration)));
-        scheduler.scheduleJob(jobDetail, trigger);
+        Trigger trigger = buildJobTrigger(jobDetail, millis);
+        try {
+            scheduler.scheduleJob(jobDetail, trigger);
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
     }
 
-    public void scheduleExpireCustomer(Long playerId, Long customerId, long duration) throws SchedulerException {
+    private void scheduleExpireCustomer(Long playerId, Long customerId, long millis) {
         JobDataMap jobDataMap = new JobDataMap();
-        jobDataMap.put("playerId", playerId);
         jobDataMap.put("customerId", customerId);
         JobDetail jobDetail = JobBuilder.newJob(ExpireCustomerJob.class)
             .withIdentity(UUID.randomUUID().toString(), ExpireCustomerJob.buildGroupName(playerId, customerId))
+            .withDescription("Expire customer " + customerId)
             .usingJobData(jobDataMap)
             .storeDurably()
             .build();
-        Trigger trigger = buildJobTrigger(jobDetail, Date.from(Instant.now().plusMillis(duration)));
-        scheduler.scheduleJob(jobDetail, trigger);
+        Trigger trigger = buildJobTrigger(jobDetail, millis);
+        try {
+            scheduler.scheduleJob(jobDetail, trigger);
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
     }
 
-    private Trigger buildJobTrigger(JobDetail jobDetail, Date startAt) {
+    private Trigger buildJobTrigger(JobDetail jobDetail, long millis) {
         return TriggerBuilder.newTrigger()
             .withIdentity(jobDetail.getKey().getName(), jobDetail.getKey().getGroup())
+            .withDescription(jobDetail.getDescription())
             .withSchedule(SimpleScheduleBuilder.simpleSchedule().withMisfireHandlingInstructionFireNow())
-            .startAt(startAt)
+            .startAt(Date.from(Instant.now().plusMillis(millis)))
             .forJob(jobDetail)
             .build();
     }

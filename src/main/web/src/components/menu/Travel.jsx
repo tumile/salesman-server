@@ -1,13 +1,20 @@
 import axios from "axios";
-import PropTypes from "prop-types";
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 
 class Travel extends React.Component {
-  state = {
+  defaultState = {
     search: "",
     suggestions: [],
-    destination: null,
     flights: [],
+    selectedCity: {},
+    selectedFlight: {},
+    loading: false,
+    transiting: false,
+  };
+
+  state = {
+    ...this.defaultState,
   };
 
   handleSearch = (e) => {
@@ -18,114 +25,155 @@ class Travel extends React.Component {
         input = input.trim();
         if (!input) {
           this.setState({ suggestions: [], flights: [] });
-        } else {
+          return;
+        }
+        try {
+          this.setState({ loading: true });
           const res = await axios.get(`/api/cities/search?query=${input}`);
           this.setState({ suggestions: res.data, flights: [] });
+        } catch (err) {
+          console.error(err);
+        } finally {
+          this.setState({ loading: false });
         }
       }
     }, 200);
   };
 
-  handleFlights = async (city) => {
-    const currentCity = this.props.player.city;
-    const res = await axios.get(`/api/flights?from=${currentCity.id}&to=${city.id}`);
-    this.setState({ flights: res.data, search: city.name, destination: city });
+  handleCitySelect = async (city) => {
+    try {
+      this.setState({ loading: true, search: city.name });
+      const currentCity = this.props.player.city;
+      const res = await axios.get(`/api/cities/${currentCity.id}/${city.id}/flights`);
+      this.setState({ flights: res.data, selectedCity: city });
+    } catch (err) {
+      console.error(err);
+    } finally {
+      this.setState({ loading: false });
+    }
   };
 
-  handleBooking = async (flight) => {
+  handleFlightSelect = (flight) => {
+    this.setState({ selectedFlight: flight });
+  };
+
+  handleConfirm = async () => {
     try {
-      const { destination } = this.state;
-      await axios.post(`/api/flights`, {
+      await axios.post(`/api/travel`, {
         fromCityId: this.props.player.city.id,
-        toCityId: destination.id,
-        airlineId: flight.id,
-        price: flight.price,
+        toCityId: this.state.selectedCity.id,
+        airlineId: this.state.selectedFlight.id,
+        price: this.state.selectedFlight.price,
       });
       await this.props.getPlayer();
       await this.props.getCity();
+      this.setState({ ...this.defaultState, transiting: true });
+      setTimeout(() => this.setState({ transiting: false }), 4000);
     } catch (err) {
-      console.error(err.response.data);
+      console.error(err);
     }
+  };
+
+  getDurationString = (duration) => {
+    let mins = Math.round(duration / 60000);
+    const hours = Math.floor(mins / 60);
+    mins %= 60;
+    return hours > 0 ? `${hours}h ${mins}m` : `${mins}m`;
   };
 
   renderFlightsOrSuggestions = () => {
-    if (this.state.flights.length > 0) {
-      return this.renderFlights();
+    const { loading, flights, suggestions, selectedFlight } = this.state;
+    if (loading) {
+      return (
+        <div className="m-auto spinner-border text-primary" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      );
     }
-    if (this.state.suggestions.length > 0) {
-      return this.renderSuggestions();
-    }
-    return (
-      <div className="side-placeholder">
-        <img src="/images/player/running.png" alt="Travel" />
-      </div>
-    );
-  };
-
-  renderFlights = () => {
-    return (
-      <div className="side-list">
-        {this.state.flights.map((flight) => (
-          <div key={flight.id} className="side-list-item">
-            <img className="img-fluid rounded" src={flight.image} alt={flight.name} />
-            <div className="side-list-item-body">
-              <h6>{flight.name}</h6>
-              <div>
-                <span>{`$${flight.price}`}</span>
-                <button type="button" className="btn btn-primary btn-sm" onClick={() => this.handleBooking(flight)}>
-                  Book
-                </button>
+    if (flights.length > 0) {
+      return (
+        <div className="side-list">
+          {this.state.flights.map((flight) => (
+            <div key={flight.id} className="side-list-item">
+              <img className="img-fluid rounded" src={flight.image} alt={flight.name} />
+              <div className="side-list-item-body">
+                <h6>{flight.airline}</h6>
+                <div>
+                  <span>{`$${flight.price}`}</span>
+                  <span>{this.getDurationString(flight.duration)}</span>
+                  {flight.id !== selectedFlight.id ? (
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => this.handleFlightSelect(flight)}
+                    >
+                      Book
+                    </button>
+                  ) : (
+                    <button type="button" className="btn btn-success btn-sm" onClick={this.handleConfirm}>
+                      Confirm
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
-  renderSuggestions = () => {
+          ))}
+        </div>
+      );
+    }
+    if (suggestions.length > 0) {
+      return (
+        <div className="list-group">
+          {this.state.suggestions.map((city) => (
+            <button
+              key={city.id}
+              type="button"
+              className="list-group-item list-group-item-action"
+              onClick={() => this.handleCitySelect(city)}
+            >
+              {city.name}
+            </button>
+          ))}
+        </div>
+      );
+    }
     return (
-      <div className="list-group">
-        {this.state.suggestions.map((city) => (
-          <button
-            key={city.id}
-            type="button"
-            className="list-group-item list-group-item-action"
-            onClick={() => this.handleFlights(city)}
-          >
-            {city.name}
-          </button>
-        ))}
+      <div className="m-auto text-center">
+        <img className="w-50" src="/images/player/running.png" alt="Travel" />
       </div>
     );
   };
 
   render() {
-    if (!this.props.open) {
-      return null;
-    }
     return (
-      <div className="side">
-        <div className="side-top">
-          <h3>Travel</h3>
-          <input
-            className="form-control"
-            placeholder="Where to?"
-            value={this.state.search}
-            onChange={this.handleSearch}
-          />
+      <CSSTransition in={this.props.open} timeout={300} classNames="slide-right" unmountOnExit>
+        <div className="side">
+          <div className="side-top">
+            <h3>Travel</h3>
+            <input
+              className="form-control"
+              placeholder="Where to?"
+              value={this.state.search}
+              onChange={this.handleSearch}
+            />
+          </div>
+          {this.renderFlightsOrSuggestions()}
+
+          <CSSTransition in={this.state.transiting} timeout={200} classNames="fade-in" unmountOnExit>
+            <video
+              autoPlay
+              className="transition-video"
+              src="https://salesman-public.s3.amazonaws.com/takeoff.mp4"
+              type="video/mp4"
+            >
+              <track default kind="captions" />
+              Your browser does not support the video tag 😢
+            </video>
+          </CSSTransition>
         </div>
-        {this.renderFlightsOrSuggestions()}
-      </div>
+      </CSSTransition>
     );
   }
 }
-
-Travel.propTypes = {
-  open: PropTypes.bool.isRequired,
-  player: PropTypes.object.isRequired,
-  getPlayer: PropTypes.func.isRequired,
-  getCity: PropTypes.func.isRequired,
-};
 
 export default Travel;

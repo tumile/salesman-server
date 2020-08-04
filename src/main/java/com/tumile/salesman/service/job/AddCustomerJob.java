@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddCustomerJob extends QuartzJobBean {
 
-    public static final String GROUP_NAME = "ADD_CUSTOMER";
+    public static final Long TIME_MILLIS = 3600000L;
 
     private final PlayerService playerService;
 
@@ -18,12 +18,18 @@ public class AddCustomerJob extends QuartzJobBean {
         this.playerService = playerService;
     }
 
+    public static String buildGroupName(Long playerId) {
+        return "ADD_CUSTOMER_" + playerId;
+    }
+
     @SneakyThrows
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) {
         JobDataMap jobDataMap = jobExecutionContext.getMergedJobDataMap();
         Long playerId = jobDataMap.getLong("playerId");
-        playerService.addCustomer(playerId);
-        playerService.scheduleAddCustomer(playerId, 3600000L);
+        playerService.addCustomerAndRescheduleJob(playerId, jobExecutionContext.getJobDetail(),
+            jobExecutionContext.getTrigger());
+
+        System.out.println("ADDING CUSTOMER FOR PLAYER " + playerId);
     }
 }

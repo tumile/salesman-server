@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@elfalem/leaflet-curve": "^0.6.0",
+    "@types/react-transition-group": "^4.4.0",
     "axios": "^0.19.2",
     "jwt-decode": "^2.2.0",
     "leaflet": "^1.6.0",
@@ -23,7 +24,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-transition-group": "^4.4.1"
   },
   "scripts": {
     "fmt": "prettier --check src",

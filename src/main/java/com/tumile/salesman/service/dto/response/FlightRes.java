@@ -16,12 +16,15 @@ public class FlightRes {
 
     private Double price;
 
-    public static FlightRes fromAirline(Airline airline, double price) {
+    private Double duration;
+
+    public static FlightRes fromAirline(Airline airline, double price, double duration) {
         FlightRes res = new FlightRes();
         res.setId(airline.getId());
         res.setAirline(airline.getName());
         res.setImage(airline.getImage());
         res.setPrice(price);
+        res.setDuration(duration);
         return res;
     }
 }

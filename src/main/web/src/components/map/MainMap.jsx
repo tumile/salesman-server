@@ -1,5 +1,4 @@
 import L from "leaflet";
-import PropTypes from "prop-types";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { Map as LeafletMap, Marker, Popup, TileLayer } from "react-leaflet";
@@ -60,11 +59,5 @@ class MainMap extends React.Component {
     );
   }
 }
-
-MainMap.propTypes = {
-  player: PropTypes.object.isRequired,
-  city: PropTypes.object,
-  getCity: PropTypes.func.isRequired,
-};
 
 export default MainMap;

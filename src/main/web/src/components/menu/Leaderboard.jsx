@@ -1,6 +1,6 @@
 import axios from "axios";
-import PropTypes from "prop-types";
 import React from "react";
+import { CSSTransition } from "react-transition-group";
 
 class Leaderboard extends React.Component {
   state = {
@@ -13,41 +13,27 @@ class Leaderboard extends React.Component {
   }
 
   render() {
-    if (!this.props.open) {
-      return null;
-    }
     const { players } = this.state;
     return (
-      <div className="modal" role="dialog" style={{ display: "block", top: 100 }}>
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">players</h5>
-            </div>
-            <div className="modal-body">
-              {players.map((player) => (
-                <div
-                  key={player.id}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "space-between", margin: 8 }}
-                >
-                  <img style={{ width: 50, borderRadius: 25 }} src={player.image} alt={player.username} />
-                  <span>{player.username}</span>
-                  <span>
-                    <i className="fas fa-money-bill-wave" />
-                    {player.money}
-                  </span>
-                </div>
-              ))}
-            </div>
+      <CSSTransition in={this.props.open} timeout={200} classNames="fade-in" unmountOnExit>
+        <div className="center">
+          <h5>Leaderboard</h5>
+          <div>
+            {players.map((player) => (
+              <div key={player.id} className="leaderboard-item">
+                <img src={player.image} alt={player.username} />
+                <span>{player.username}</span>
+                <span>
+                  <i className="fas fa-money-bill-wave mr-2" />
+                  {player.money}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </CSSTransition>
     );
   }
 }
-
-Leaderboard.propTypes = {
-  open: PropTypes.bool.isRequired,
-};
 
 export default Leaderboard;

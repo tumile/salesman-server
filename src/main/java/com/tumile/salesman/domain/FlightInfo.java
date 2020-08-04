@@ -1,6 +1,8 @@
 package com.tumile.salesman.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
@@ -19,6 +21,8 @@ public class FlightInfo {
     private Double duration;
 
     @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     @Embeddable
     public static class FlightInfoId implements Serializable {
 

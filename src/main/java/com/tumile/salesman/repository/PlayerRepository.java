@@ -10,5 +10,5 @@ public interface PlayerRepository extends CrudRepository<Player, Long> {
 
     Optional<Player> findOneByUsername(String username);
 
-    List<Player> findTop10ByOrderByMoneyDesc();
+    List<Player> findTop5ByOrderByMoneyDesc();
 }

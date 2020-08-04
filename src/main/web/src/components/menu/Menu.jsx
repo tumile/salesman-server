@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import Inbox from "./Inbox";
 import Leaderboard from "./Leaderboard";
@@ -39,11 +38,11 @@ class Menu extends React.Component {
     const { leaderboardOpen, progressOpen, travelOpen, inboxOpen } = this.state;
     return (
       <>
-        <div className="menu-stats">
-          <img src={player.image} alt="Player" />
+        <div className="menu-player">
+          <img className="avatar" src={player.image} alt="Player" />
           <div>
             <span>
-              <i className="fas fa-money-bill-wave" />
+              <i className="fas fa-money-bill-wave mr-1" />
               {player.money}
             </span>
             <div className="progress">
@@ -57,7 +56,7 @@ class Menu extends React.Component {
             <i className="fas fa-trophy" />
           </button>
         </div>
-        <div className="menu-btns">
+        <div className="menu-controls">
           <button type="button" className="btn btn-outline-primary" onClick={this.toggleTravel}>
             <i className="fas fa-plane-departure" />
           </button>
@@ -73,13 +72,5 @@ class Menu extends React.Component {
     );
   }
 }
-
-Menu.propTypes = {
-  player: PropTypes.object.isRequired,
-  customers: PropTypes.array.isRequired,
-  getPlayer: PropTypes.func.isRequired,
-  getCity: PropTypes.func.isRequired,
-  getCustomers: PropTypes.func.isRequired,
-};
 
 export default Menu;

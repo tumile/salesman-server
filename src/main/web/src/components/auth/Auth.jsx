@@ -1,5 +1,4 @@
 import axios from "axios";
-import PropTypes from "prop-types";
 import React from "react";
 import "./Auth.css";
 
@@ -51,7 +50,7 @@ class Auth extends React.Component {
       const { signin, username, password, image, rememberMe } = this.state;
       let promise;
       if (signin) {
-        promise = axios.post("/api/players/login", {
+        promise = axios.post("/api/login", {
           username,
           password,
           rememberMe,
@@ -60,7 +59,7 @@ class Auth extends React.Component {
         const data = new FormData();
         data.append("body", JSON.stringify({ username, password, rememberMe }));
         data.append("image", image, { type: image.type });
-        promise = axios.post("/api/players/register", data);
+        promise = axios.post("/api/register", data);
       }
       const resp = await promise;
       const { token } = resp.data;
@@ -68,7 +67,7 @@ class Auth extends React.Component {
       this.props.setAuthorization(token);
       await this.props.getPlayer();
     } catch (err) {
-      this.setState({ error: err.response.data.message || "Something went horribly wrong 😥" });
+      this.setState({ error: err.response.data.message || "Something went wrong 😥" });
     } finally {
       this.setState({ loading: false });
     }
@@ -189,10 +188,5 @@ class Auth extends React.Component {
     );
   }
 }
-
-Auth.propTypes = {
-  getPlayer: PropTypes.func.isRequired,
-  setAuthorization: PropTypes.func.isRequired,
-};
 
 export default Auth;

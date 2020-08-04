@@ -20,6 +20,6 @@
   "rules": {
     "react/destructuring-assignment": "off",
     "react/state-in-constructor": "off",
-    "react/forbid-prop-types": "off"
+    "react/prop-types": "off"
   }
 }

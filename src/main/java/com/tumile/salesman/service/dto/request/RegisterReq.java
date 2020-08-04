@@ -2,6 +2,7 @@ package com.tumile.salesman.service.dto.request;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -19,6 +20,8 @@ public class RegisterReq {
     @NotBlank(message = "Password cannot be blank")
     @Size(min = 8, message = "Password is too short")
     private String password;
+
+    private MultipartFile image;
 
     private boolean rememberMe;
 }

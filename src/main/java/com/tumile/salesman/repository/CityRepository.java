@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CityRepository extends CrudRepository<City, Long> {
 
-    List<City> findAllByNameStartsWith(String query);
+    List<City> findAllByNameStartsWithAndIdIsNot(String query, Long id);
 
     List<City> findAllByIdNotIn(List<Long> ids);
 }

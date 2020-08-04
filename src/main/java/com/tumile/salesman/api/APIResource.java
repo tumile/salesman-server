@@ -4,10 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tumile.salesman.service.CityService;
 import com.tumile.salesman.service.PlayerService;
+import com.tumile.salesman.service.impl.CityServiceImpl;
 import com.tumile.salesman.service.dto.request.LoginReq;
 import com.tumile.salesman.service.dto.request.RegisterReq;
+import com.tumile.salesman.service.dto.request.SellReq;
 import com.tumile.salesman.service.dto.request.TravelReq;
 import com.tumile.salesman.service.dto.response.*;
+import com.tumile.salesman.service.impl.PlayerServiceImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -32,71 +36,70 @@ public class APIResource {
         this.validator = validator;
     }
 
+    @GetMapping("/players/me")
+    public PlayerRes getCurrentPlayer() {
+        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+        return playerService.handleGet(playerId);
+    }
+
+    @GetMapping("/players/leaderboard")
+    public List<PlayerLBRes> getLeaderboard() {
+        return playerService.handleGetLeaderboard();
+    }
+
+    @GetMapping("/players/{playerId}")
+    public PlayerRes getPlayer(@PathVariable Long playerId) {
+        return playerService.handleGet(playerId);
+    }
+
+    @GetMapping("/customers")
+    public List<CustomerRes> getCustomers() {
+        return playerService.handleGetCustomers();
+    }
+
     @PostMapping("/login")
-    public LoginRes login(@Valid @RequestBody LoginReq request) {
-        return playerService.login(request);
+    public TokenRes login(@Valid @RequestBody LoginReq request) {
+        return playerService.handleLogin(request);
     }
 
     @PostMapping("/register")
-    public LoginRes register(@RequestPart("body") String body, @RequestPart("image") MultipartFile image) {
+    public TokenRes register(@RequestPart("body") String body, @NotNull @RequestPart("image") MultipartFile image) {
         try {
             RegisterReq request = new ObjectMapper().readValue(body, RegisterReq.class);
             Set<ConstraintViolation<RegisterReq>> violations = validator.validate(request);
             if (!violations.isEmpty()) {
                 throw new IllegalArgumentException(violations.iterator().next().getMessage());
             }
-            return playerService.register(request, image);
+            request.setImage(image);
+            return playerService.handleRegister(request);
         } catch (JsonProcessingException ex) {
             throw new IllegalArgumentException("Invalid JSON");
         }
     }
 
-    @GetMapping("/players/me")
-    public PlayerRes getCurrentPlayer() {
-        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-        return playerService.getById(playerId);
-    }
-
-    @GetMapping("/players/leaderboard")
-    public List<PlayerLBRes> getLeaderboard() {
-        return playerService.getLeaderboard();
-    }
-
-    @GetMapping("/players/{playerId}")
-    public PlayerRes getPlayerById(@PathVariable Long playerId) {
-        return playerService.getById(playerId);
-    }
-
     @PostMapping("/travel")
-    public void travel(@Valid @RequestBody TravelReq flight) {
-        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-        playerService.travel(playerId, flight);
-    }
-
-    @GetMapping("/customers")
-    public List<CustomerRes> getCustomers() {
-        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-        return playerService.getCustomers(playerId);
+    public void travel(@Valid @RequestBody TravelReq request) {
+        playerService.handleTravel(request);
     }
 
     @PutMapping("/customers/{customerId}")
-    public void expireCustomer(@PathVariable Long customerId) {
-        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-        playerService.expireCustomer(playerId, customerId);
+    public void sell(@PathVariable Long customerId, @Valid @RequestBody SellReq request) {
+        request.setCustomerId(customerId);
+        playerService.handleSell(request);
     }
 
     @GetMapping("/cities/search")
     public List<CitySimpleRes> searchCity(@RequestParam String query) {
-        return cityService.search(query);
+        return cityService.handleSearch(query);
     }
 
     @GetMapping("/cities/{cityId}")
-    public CityRes getCityById(@PathVariable Long cityId) {
-        return cityService.getById(cityId);
+    public CityRes getCity(@PathVariable Long cityId) {
+        return cityService.handleGet(cityId);
     }
 
-    @GetMapping("/cities/{city1Id}/{city2Id}/flights")
-    public List<FlightRes> getFlights(@PathVariable Long city1Id, @PathVariable Long city2Id) {
-        return cityService.getFlights(city1Id, city2Id);
+    @GetMapping("/cities/{cityId1}/{cityId2}/flights")
+    public List<FlightRes> getFlights(@PathVariable Long cityId1, @PathVariable Long cityId2) {
+        return cityService.handleGetFlights(cityId1, cityId2);
     }
 }
