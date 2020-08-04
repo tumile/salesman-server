@@ -29,7 +29,7 @@ class Inbox extends React.Component {
             {this.props.customers.map((cust) => (
               <div key={cust.id} className="side-list-item">
                 <div style={{ height: 60, overflow: "hidden" }}>
-                  <img src={`images/customers/${cust.image}.png`} alt={cust.name} />
+                  <img src={`https://salesman-public.s3.amazonaws.com/${cust.image}.png`} alt={cust.name} />
                 </div>
                 <div className="side-list-item-body">
                   <h6>{`From: ${cust.name}`}</h6>

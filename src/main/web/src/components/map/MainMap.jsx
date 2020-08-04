@@ -34,6 +34,12 @@ class MainMap extends React.Component {
             html: ReactDOMServer.renderToString(<Icon avatar src={player.image} />),
           })}
         />
+        <Marker
+          position={[city.latitude, city.longitude]}
+          icon={L.divIcon({
+            html: ReactDOMServer.renderToString(<Icon avatar src={player.image} />),
+          })}
+        />
         {city.pointsOfInterest.map((point) => {
           return (
             <Marker
