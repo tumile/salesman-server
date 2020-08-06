@@ -41,12 +41,14 @@ class Menu extends React.Component {
         <div className="menu-player">
           <img className="avatar" src={player.image} alt="Player" />
           <div>
-            <span>
-              <i className="fas fa-money-bill-wave mr-1" />
-              {player.money}
-            </span>
-            <div className="progress">
-              <div style={{ width: `${player.stamina}%` }} className="progress-bar" />
+            <span>{`💰${player.money}`}</span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span role="img" aria-label="Stamina">
+                ❤️
+              </span>
+              <div className="progress">
+                <div style={{ width: `${player.stamina}%` }} className="progress-bar" />
+              </div>
             </div>
           </div>
           <button type="button" className="btn" onClick={this.toggleProgress}>
@@ -66,7 +68,14 @@ class Menu extends React.Component {
         </div>
         <Leaderboard open={leaderboardOpen} />
         <Progress open={progressOpen} />
-        <Travel open={travelOpen} player={player} getPlayer={getPlayer} getCity={getCity} />
+        <Travel
+          open={travelOpen}
+          player={player}
+          getPlayer={getPlayer}
+          getCity={getCity}
+          getCustomers={getCustomers}
+          toggleTravel={this.toggleTravel}
+        />
         <Inbox open={inboxOpen} customers={customers} getCustomers={getCustomers} />
       </>
     );

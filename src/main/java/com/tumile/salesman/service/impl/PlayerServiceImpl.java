@@ -85,9 +85,9 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<CustomerRes> handleGetCustomers() {
-        return playerRepository.findById(getCurrentPlayerId())
-            .map(player -> player.getCustomers().stream().map(CustomerRes::fromCustomer).collect(Collectors.toList()))
-            .orElseThrow(() -> new NotFoundException("Player not found"));
+        return customerRepository.findAllByPlayerIdAndIsExpiredFalse(getCurrentPlayerId()).stream()
+            .map(CustomerRes::fromCustomer)
+            .collect(Collectors.toList());
     }
 
     private Long getCurrentPlayerId() {
@@ -143,14 +143,18 @@ public class PlayerServiceImpl implements PlayerService {
             .orElseThrow(() -> new NotFoundException("From city not found"));
         City toCity = cityRepository.findById(request.getToCityId())
             .orElseThrow(() -> new NotFoundException("To city not found"));
-
+        if (player.getStamina() < 33) {
+            throw new IllegalArgumentException("Not enough stamina");
+        }
+        if (player.getMoney() < request.getPrice()) {
+            throw new IllegalArgumentException("Not enough money");
+        }
         double duration = flightInfoRepository.findById(new FlightInfo.FlightInfoId(
             Math.min(fromCity.getId(), toCity.getId()),
             Math.max(fromCity.getId(), toCity.getId())
         ))
             .orElseThrow(() -> new NotFoundException("Info not found"))
             .getDuration();
-
         updateAddAndExpireCustomers(player, (long) duration);
         player.setCity(toCity);
         player.setMoney(player.getMoney() - request.getPrice());
@@ -167,6 +171,11 @@ public class PlayerServiceImpl implements PlayerService {
         if (!customer.getPlayer().getId().equals(player.getId())) {
             throw new IllegalArgumentException("Not your customer!");
         }
+        if (player.getStamina() < request.getStamina()) {
+            throw new IllegalArgumentException("Not enough stamina");
+        }
+        player.setMoney(player.getMoney() + request.getPrice());
+        player.setStamina(player.getStamina() - request.getStamina());
         try {
             Set<JobKey> expireJobKeys = scheduler
                 .getJobKeys(GroupMatcher.groupEquals(ExpireCustomerJob.buildGroupName(player.getId(), customer.getId())));
@@ -184,6 +193,24 @@ public class PlayerServiceImpl implements PlayerService {
         addCustomerAndScheduleExpire(player);
         try {
             scheduler.rescheduleJob(trigger.getKey(), buildJobTrigger(job, AddCustomerJob.TIME_MILLIS));
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void expireCustomer(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+            .orElseThrow(() -> new NotFoundException("Customer not found"));
+        Player player = playerRepository.findById(getCurrentPlayerId())
+            .orElseThrow(() -> new NotFoundException("Player not found"));
+        if (!customer.getPlayer().getId().equals(player.getId())) {
+            throw new IllegalArgumentException("Not your customer!");
+        }
+        try {
+            Set<JobKey> expireJobKeys = scheduler
+                .getJobKeys(GroupMatcher.groupEquals(ExpireCustomerJob.buildGroupName(player.getId(), customer.getId())));
+            expireCustomerAndDeleteJob(customer.getId(), expireJobKeys.iterator().next());
         } catch (SchedulerException ex) {
             throw new IllegalStateException(ex.getMessage());
         }
@@ -250,10 +277,11 @@ public class PlayerServiceImpl implements PlayerService {
         if (customers.size() >= 3) {
             return;
         }
-        Customer customer = buildNewCustomer(player, ExpireCustomerJob.TIME_MILLIS);
+        long expireIn = ExpireCustomerJob.TIME_MILLIS + random.nextInt(7200000);
+        Customer customer = buildNewCustomer(player, expireIn);
         player.getCustomers().add(customer);
         customerRepository.save(customer);
-        scheduleExpireCustomer(player.getId(), customer.getId(), ExpireCustomerJob.TIME_MILLIS);
+        scheduleExpireCustomer(player.getId(), customer.getId(), expireIn);
     }
 
     private Customer buildNewCustomer(Player player, long expiredIn) {
@@ -270,11 +298,11 @@ public class PlayerServiceImpl implements PlayerService {
         if (isMale) {
             customer.setName(MaleFirstNames.get(random.nextInt(MaleFirstNames.size())) + " " +
                 LastNames.get(random.nextInt(LastNames.size())));
-            customer.setImage("male-" + random.nextInt(7));
+            customer.setImage("https://salesman-public.s3.amazonaws.com/male-" + random.nextInt(13) + ".png");
         } else {
             customer.setName(FemaleFirstNames.get(random.nextInt(FemaleFirstNames.size())) + " " +
                 LastNames.get(random.nextInt(LastNames.size())));
-            customer.setImage("female-" + random.nextInt(4));
+            customer.setImage("https://salesman-public.s3.amazonaws.com/female-" + random.nextInt(11) + ".png");
         }
         customer.setMessage("Hello there! I want to buy your product.");
         customer.setPrice(300.0 + random.nextInt(300));

@@ -9,8 +9,10 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class SellReq {
 
+    private Long customerId;
+
+    private Integer stamina = 0;
+
     @NotNull
     private Double price;
-
-    private Long customerId;
 }

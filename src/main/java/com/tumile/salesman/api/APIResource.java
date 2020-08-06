@@ -88,6 +88,11 @@ public class APIResource {
         playerService.handleSell(request);
     }
 
+    @DeleteMapping("/customers/{customerId}")
+    public void reject(@PathVariable Long customerId) {
+        playerService.expireCustomer(customerId);
+    }
+
     @GetMapping("/cities/search")
     public List<CitySimpleRes> searchCity(@RequestParam String query) {
         return cityService.handleSearch(query);

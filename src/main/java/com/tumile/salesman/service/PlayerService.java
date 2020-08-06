@@ -30,6 +30,7 @@ public interface PlayerService {
 
     void handleSell(SellReq request);
 
+    void expireCustomer(Long customerId);
 
     void addCustomerAndRescheduleJob(Long playerId, JobDetail job, Trigger trigger);
 

@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import "./App.css";
 import Auth from "./auth/Auth";
+import CustomerModal from "./CustomerModal";
 import ErrorAlert from "./ErrorAlert";
 import MainMap from "./map/MainMap";
 import Menu from "./menu/Menu";
@@ -35,8 +36,12 @@ class App extends React.Component {
   };
 
   handleError = (err) => {
-    this.setState({ error: err.response.data.message });
-    setTimeout(() => this.setState({ error: null }), 2000);
+    if (err.response) {
+      this.setState({ error: err.response.data.message });
+      setTimeout(() => this.setState({ error: null }), 2000);
+    } else {
+      this.setState({ error: "Something went wrong 😥" });
+    }
   };
 
   getPlayer = async () => {
@@ -75,6 +80,7 @@ class App extends React.Component {
     if (!player) {
       return <Auth getPlayer={this.getPlayer} setAuthorization={this.setAuthorization} />;
     }
+    const customer = customers.find((cust) => cust.city.id === (city ? city.id : undefined));
     return (
       <div>
         <Menu
@@ -85,6 +91,7 @@ class App extends React.Component {
           getCity={this.getCity}
         />
         <MainMap player={player} customers={customers} city={city} getCity={this.getCity} />
+        <CustomerModal customer={customer} getPlayer={this.getPlayer} getCustomers={this.getCustomers} />
         <ErrorAlert error={error} />
       </div>
     );
