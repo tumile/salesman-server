@@ -12,17 +12,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.filter.CorsFilter;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final CorsFilter corsFilter;
     private final JWTFilter jwtFilter;
 
-    public SecurityConfiguration(JWTFilter jwtFilter, CorsFilter corsFilter) {
-        this.corsFilter = corsFilter;
+    public SecurityConfiguration(JWTFilter jwtFilter) {
         this.jwtFilter = jwtFilter;
     }
 
@@ -36,7 +33,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
             .csrf()
             .disable()
-            .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

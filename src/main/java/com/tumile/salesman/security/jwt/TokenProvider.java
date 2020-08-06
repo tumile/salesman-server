@@ -19,24 +19,20 @@ import java.util.Date;
 public class TokenProvider {
 
     private final Key key;
-    private final long tokenValidity;
-    private final long tokenValidityRemember;
+    private static final long TOKEN_VALIDITY = 86400000L;
+    private static final long TOKEN_VALIDITY_REMEMBER = 2592000000L;
 
-    public TokenProvider(@Value("${security.jwt.secret}") String secret,
-                         @Value("${security.jwt.token-validity}") long tokenValidity,
-                         @Value("${security.jwt.token-validity-remember-me}") long tokenValidityRemember) {
+    public TokenProvider(@Value("${JWT_SECRET}") String secret) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
-        this.tokenValidity = tokenValidity;
-        this.tokenValidityRemember = tokenValidityRemember;
     }
 
     public String createToken(Authentication authentication, boolean rememberMe) {
         long now = (new Date()).getTime();
         Date validity;
         if (!rememberMe) {
-            validity = new Date(now + this.tokenValidity);
+            validity = new Date(now + TOKEN_VALIDITY);
         } else {
-            validity = new Date(now + this.tokenValidityRemember);
+            validity = new Date(now + TOKEN_VALIDITY_REMEMBER);
         }
         return Jwts.builder()
                 .setSubject(authentication.getName())
@@ -49,9 +45,9 @@ public class TokenProvider {
         long now = (new Date()).getTime();
         Date validity;
         if (!rememberMe) {
-            validity = new Date(now + this.tokenValidity);
+            validity = new Date(now + TOKEN_VALIDITY);
         } else {
-            validity = new Date(now + this.tokenValidityRemember);
+            validity = new Date(now + TOKEN_VALIDITY_REMEMBER);
         }
         return Jwts.builder()
                 .setSubject(player)

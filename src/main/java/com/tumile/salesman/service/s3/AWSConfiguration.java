@@ -13,9 +13,9 @@ import org.springframework.context.annotation.Configuration;
 public class AWSConfiguration {
 
     @Bean
-    public AmazonS3 amazonS3(@Value("${aws.access-key-id}") String accessKeyId,
-                             @Value("${aws.secret-access-key}") String secretAccessKey,
-                             @Value("${aws.region}") String region) {
+    public AmazonS3 amazonS3(@Value("${AWS_ACCESS_KEY_ID}") String accessKeyId,
+                             @Value("${AWS_SECRET_ACCESS_KEY}") String secretAccessKey,
+                             @Value("${AWS_REGION}") String region) {
         BasicAWSCredentials basicAWSCredentials = new BasicAWSCredentials(accessKeyId, secretAccessKey);
         return AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
             .withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials)).build();
