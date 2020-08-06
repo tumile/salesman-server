@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tumile</groupId>
     <artifactId>salesman</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>salesman</name>
     <description>Demo project for Spring Boot</description>
 

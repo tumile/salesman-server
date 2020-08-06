@@ -14,4 +14,4 @@ phases:
             - mvn package
 artifacts:
     files:
-        - target/*
+        - target/salesman-1.0-SNAPSHOT.jar
