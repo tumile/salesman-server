@@ -14,4 +14,4 @@ phases:
             - mvn package
 artifacts:
     files:
-        - target/salesman-1.0.jar
+        - target/*
