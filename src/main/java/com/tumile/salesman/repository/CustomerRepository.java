@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-    List<Customer> findAllByPlayerIdAndIsExpiredFalse(Long playerId);
+    List<Customer> findAllByPlayerId(Long playerId);
 }

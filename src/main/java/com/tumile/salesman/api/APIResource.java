@@ -3,15 +3,13 @@ package com.tumile.salesman.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tumile.salesman.service.CityService;
+import com.tumile.salesman.service.CustomerService;
 import com.tumile.salesman.service.PlayerService;
-import com.tumile.salesman.service.impl.CityServiceImpl;
 import com.tumile.salesman.service.dto.request.LoginReq;
+import com.tumile.salesman.service.dto.request.NegotiateReq;
 import com.tumile.salesman.service.dto.request.RegisterReq;
-import com.tumile.salesman.service.dto.request.SellReq;
 import com.tumile.salesman.service.dto.request.TravelReq;
 import com.tumile.salesman.service.dto.response.*;
-import com.tumile.salesman.service.impl.PlayerServiceImpl;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,19 +25,21 @@ import java.util.Set;
 public class APIResource {
 
     private final CityService cityService;
+    private final CustomerService customerService;
     private final PlayerService playerService;
     private final Validator validator;
 
-    public APIResource(CityService cityService, PlayerService playerService, Validator validator) {
+    public APIResource(CityService cityService, CustomerService customerService, PlayerService playerService,
+                       Validator validator) {
         this.cityService = cityService;
+        this.customerService = customerService;
         this.playerService = playerService;
         this.validator = validator;
     }
 
     @GetMapping("/players/me")
     public PlayerRes getCurrentPlayer() {
-        Long playerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-        return playerService.handleGet(playerId);
+        return playerService.handleGet();
     }
 
     @GetMapping("/players/leaderboard")
@@ -54,7 +54,7 @@ public class APIResource {
 
     @GetMapping("/customers")
     public List<CustomerRes> getCustomers() {
-        return playerService.handleGetCustomers();
+        return customerService.handleGetCustomers();
     }
 
     @PostMapping("/login")
@@ -82,15 +82,19 @@ public class APIResource {
         playerService.handleTravel(request);
     }
 
-    @PutMapping("/customers/{customerId}")
-    public void sell(@PathVariable Long customerId, @Valid @RequestBody SellReq request) {
-        request.setCustomerId(customerId);
-        playerService.handleSell(request);
+    @PostMapping("/customers/{customerId}/sell")
+    public void sell(@PathVariable Long customerId) {
+        customerService.handleSell(customerId);
     }
 
-    @DeleteMapping("/customers/{customerId}")
+    @PostMapping("/customers/{customerId}/reject")
     public void reject(@PathVariable Long customerId) {
-        playerService.expireCustomer(customerId);
+        customerService.handleReject(customerId);
+    }
+
+    @PostMapping("/customers/{customerId}/negotiate")
+    public NegotiateRes negotiate(@PathVariable Long customerId, @Valid @RequestBody NegotiateReq request) {
+        return customerService.handleNegotiate(customerId, request.getPrice());
     }
 
     @GetMapping("/cities/search")
@@ -105,6 +109,16 @@ public class APIResource {
 
     @GetMapping("/cities/{cityId1}/{cityId2}/flights")
     public List<FlightRes> getFlights(@PathVariable Long cityId1, @PathVariable Long cityId2) {
-        return cityService.handleGetFlights(cityId1, cityId2);
+        return cityService.handleSearchFlights(cityId1, cityId2);
     }
+
+//    @GetMapping("/missions")
+//    public List<Object> getMissions() {
+//        return playerService.handleGetMissions();
+//    }
+//
+//    @GetMapping("/achievements")
+//    public List<Object> getAchievements() {
+//        return playerService.handleGetAchievements();
+//    }
 }

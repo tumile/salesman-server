@@ -10,14 +10,8 @@ import javax.validation.constraints.NotNull;
 public class TravelReq {
 
     @NotNull
-    private Long fromCityId;
-
-    @NotNull
     private Long toCityId;
 
     @NotNull
     private Long airlineId;
-
-    @NotNull
-    private Double price;
 }

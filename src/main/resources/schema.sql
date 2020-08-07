@@ -1,8 +1,9 @@
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS player;
+DROP TABLE IF EXISTS airfare;
 DROP TABLE IF EXISTS airline;
+DROP TABLE IF EXISTS course;
 DROP TABLE IF EXISTS point_of_interest;
-DROP TABLE IF EXISTS flight_info;
 DROP TABLE IF EXISTS city;
 
 CREATE TABLE city
@@ -35,7 +36,7 @@ CREATE TABLE airline
     FOREIGN KEY (city_id) REFERENCES city (id)
 );
 
-create table flight_info
+create table course
 (
     from_city_id INT   NOT NULL,
     to_city_id   INT   NOT NULL,
@@ -44,6 +45,18 @@ create table flight_info
     FOREIGN KEY (from_city_id) REFERENCES city (id),
     FOREIGN KEY (to_city_id) REFERENCES city (id),
     PRIMARY KEY (from_city_id, to_city_id)
+);
+
+create table airfare
+(
+    from_city_id INT   NOT NULL,
+    to_city_id   INT   NOT NULL,
+    airline_id   INT   NOT NULL,
+    price        FLOAT NOT NULL,
+    FOREIGN KEY (from_city_id) REFERENCES city (id),
+    FOREIGN KEY (to_city_id) REFERENCES city (id),
+    FOREIGN KEY (airline_id) REFERENCES airline (id),
+    PRIMARY KEY (from_city_id, to_city_id, airline_id)
 );
 
 CREATE TABLE player
@@ -60,15 +73,16 @@ CREATE TABLE player
 
 CREATE TABLE customer
 (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    name       VARCHAR(50)  NOT NULL,
-    image      VARCHAR(100) NOT NULL,
-    message    VARCHAR(250) NOT NULL,
-    price      FLOAT        NOT NULL,
-    expire_at  DATETIME,
-    is_expired BIT          NOT NULL,
-    city_id    INT          NOT NULL,
-    player_id  INT          NOT NULL,
+    id                INT AUTO_INCREMENT PRIMARY KEY,
+    name              VARCHAR(50)  NOT NULL,
+    image             VARCHAR(100) NOT NULL,
+    message           VARCHAR(250) NOT NULL,
+    price             FLOAT        NOT NULL,
+    max_price         FLOAT        NOT NULL,
+    negotiation_count INT          NOT NULL DEFAULT 0,
+    expire_at         DATETIME     NOT NULL,
+    city_id           INT          NOT NULL,
+    player_id         INT          NOT NULL,
     FOREIGN KEY (city_id) REFERENCES city (id),
     FOREIGN KEY (player_id) REFERENCES player (id)
 );

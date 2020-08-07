@@ -6,3 +6,5 @@ spring:
         url: ${JDBC_CONNECTION_STRING}
     quartz:
         job-store-type: jdbc
+        jdbc:
+            initialize-schema: always

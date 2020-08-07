@@ -4,7 +4,7 @@ import com.tumile.salesman.domain.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -18,11 +18,11 @@ public class CustomerRes {
 
     private Double price;
 
+    private Integer negotiationCount;
+
     private String message;
 
-    private LocalDateTime expireAt;
-
-    private Boolean isExpired;
+    private Date expireAt;
 
     private CitySimpleRes city;
 
@@ -32,9 +32,9 @@ public class CustomerRes {
         res.setName(customer.getName());
         res.setImage(customer.getImage());
         res.setPrice(customer.getPrice());
+        res.setNegotiationCount(customer.getNegotiationCount());
         res.setMessage(customer.getMessage());
         res.setExpireAt(customer.getExpireAt());
-        res.setIsExpired(customer.getIsExpired());
         res.setCity(CitySimpleRes.fromCity(customer.getCity()));
         return res;
     }

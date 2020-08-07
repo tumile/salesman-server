@@ -41,7 +41,7 @@ public class TokenProvider {
                 .compact();
     }
 
-    public String createToken(String player, boolean rememberMe) {
+    public String createToken(Long playerId, boolean rememberMe) {
         long now = (new Date()).getTime();
         Date validity;
         if (!rememberMe) {
@@ -50,7 +50,7 @@ public class TokenProvider {
             validity = new Date(now + TOKEN_VALIDITY_REMEMBER);
         }
         return Jwts.builder()
-                .setSubject(player)
+                .setSubject(playerId.toString())
                 .signWith(key, SignatureAlgorithm.HS512)
                 .setExpiration(validity)
                 .compact();

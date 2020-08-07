@@ -12,5 +12,9 @@ public interface CityService {
 
     List<CitySimpleRes> handleSearch(String query);
 
-    List<FlightRes> handleGetFlights(Long id1, Long id2);
+    List<FlightRes> handleSearchFlights(Long cityId1, Long cityId2);
+
+    double getFlightDuration(Long cityId1, Long cityId2);
+
+    double getAirfare(Long cityId1, Long cityId2, Long airlineId);
 }

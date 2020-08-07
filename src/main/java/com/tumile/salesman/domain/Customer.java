@@ -7,7 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -36,11 +36,17 @@ public class Customer {
     @Column(nullable = false)
     private Double price;
 
-    private LocalDateTime expireAt;
+    @NotNull
+    @Column(nullable = false)
+    private Double maxPrice;
 
     @NotNull
     @Column(nullable = false)
-    private Boolean isExpired = false;
+    private Integer negotiationCount = 0;
+
+    @NotNull
+    @Column(nullable = false)
+    private Date expireAt;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

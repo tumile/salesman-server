@@ -13,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestControllerAdvice
 public class APIExceptionHandler extends ResponseEntityExceptionHandler {
@@ -23,31 +23,31 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
                                                                   HttpHeaders headers, HttpStatus status,
                                                                   WebRequest request) {
         FieldError fieldError = ex.getBindingResult().getFieldErrors().get(0);
-        Error error = new Error(HttpStatus.BAD_REQUEST, fieldError.getDefaultMessage(), LocalDateTime.now());
+        Error error = new Error(HttpStatus.BAD_REQUEST, fieldError.getDefaultMessage(), new Date());
         return handleExceptionInternal(ex, error, new HttpHeaders(), error.getStatus(), request);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Object> methodArgumentTypeMismatchExceptionHandler(MethodArgumentTypeMismatchException ex) {
-        Error error = new Error(HttpStatus.NOT_FOUND, "Resource not found", LocalDateTime.now());
+        Error error = new Error(HttpStatus.NOT_FOUND, "Resource not found", new Date());
         return ResponseEntity.status(error.getStatus()).body(error);
     }
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> notFoundExceptionHandler(NotFoundException ex) {
-        Error error = new Error(HttpStatus.NOT_FOUND, ex.getMessage(), LocalDateTime.now());
+        Error error = new Error(HttpStatus.NOT_FOUND, ex.getMessage(), new Date());
         return ResponseEntity.status(error.getStatus()).body(error);
     }
 
     @ExceptionHandler({AuthenticationException.class, IllegalArgumentException.class})
     public ResponseEntity<Object> badRequestExceptionHandler(RuntimeException ex) {
-        Error error = new Error(HttpStatus.BAD_REQUEST, ex.getMessage(), LocalDateTime.now());
+        Error error = new Error(HttpStatus.BAD_REQUEST, ex.getMessage(), new Date());
         return ResponseEntity.status(error.getStatus()).body(error);
     }
 
     @ExceptionHandler(IllegalStateException.class)
     public ResponseEntity<Object> illegalStateExceptionHandler(IllegalStateException ex) {
-        Error error = new Error(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), LocalDateTime.now());
+        Error error = new Error(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), new Date());
         return ResponseEntity.status(error.getStatus()).body(error);
     }
 
@@ -55,6 +55,6 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
     private static class Error {
         private final HttpStatus status;
         private final String message;
-        private final LocalDateTime timestamp;
+        private final Date timestamp;
     }
 }

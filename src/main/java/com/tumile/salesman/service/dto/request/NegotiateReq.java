@@ -7,11 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
-public class SellReq {
-
-    private Long customerId;
-
-    private Integer stamina = 0;
+public class NegotiateReq {
 
     @NotNull
     private Double price;

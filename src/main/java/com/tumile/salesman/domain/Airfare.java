@@ -4,30 +4,34 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
-@Entity(name = "flight_info")
-public class FlightInfo {
+@Entity
+public class Airfare {
 
     @EmbeddedId
-    private FlightInfoId id;
+    private AirfareId id;
 
-    private Double distance;
-
-    private Double duration;
+    @NotNull
+    @Column(nullable = false)
+    private Double price;
 
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     @Embeddable
-    public static class FlightInfoId implements Serializable {
+    public static class AirfareId implements Serializable {
 
         private Long fromCityId;
 
         private Long toCityId;
+
+        private Long airlineId;
     }
 }
