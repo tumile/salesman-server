@@ -9,6 +9,7 @@ import com.tumile.salesman.repository.PlayerRepository;
 import com.tumile.salesman.service.JobService;
 import com.tumile.salesman.service.job.AddCustomerJob;
 import com.tumile.salesman.service.job.ExpireCustomerJob;
+import com.tumile.salesman.service.job.StaminaRegenJob;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -137,6 +138,21 @@ public class JobServiceImpl implements JobService {
         }
     }
 
+    @Transactional
+    @Override
+    public void executeAddCustomer(JobExecutionContext context) throws SchedulerException {
+        JobDetail job = context.getJobDetail();
+        log.info(job.getDescription());
+        Long playerId = context.getMergedJobDataMap().getLong("playerId");
+        Player player = playerRepository.findById(playerId).orElse(null);
+        if (player == null) {
+            scheduler.deleteJob(job.getKey());
+        } else {
+            addCustomerAndScheduleExpire(player);
+            scheduler.rescheduleJob(context.getTrigger().getKey(), buildJobTrigger(job, AddCustomerJob.TIME_MILLIS));
+        }
+    }
+
     @Override
     public void scheduleExpireCustomer(Long playerId, Long customerId, long timeMillis) {
         JobDataMap jobDataMap = new JobDataMap();
@@ -155,21 +171,6 @@ public class JobServiceImpl implements JobService {
         }
     }
 
-    @Transactional
-    @Override
-    public void executeAddCustomer(JobExecutionContext context) throws SchedulerException {
-        JobDetail job = context.getJobDetail();
-        log.info(job.getDescription());
-        Long playerId = context.getMergedJobDataMap().getLong("playerId");
-        Player player = playerRepository.findById(playerId).orElse(null);
-        if (player == null) {
-            scheduler.deleteJob(job.getKey());
-        } else {
-            addCustomerAndScheduleExpire(player);
-            scheduler.rescheduleJob(context.getTrigger().getKey(), buildJobTrigger(job, AddCustomerJob.TIME_MILLIS));
-        }
-    }
-
     @Override
     public void executeExpireCustomer(JobExecutionContext context) throws SchedulerException {
         JobDetail job = context.getJobDetail();
@@ -177,6 +178,47 @@ public class JobServiceImpl implements JobService {
         Long customerId = context.getMergedJobDataMap().getLong("customerId");
         customerRepository.findById(customerId).ifPresent(customerRepository::delete);
         scheduler.deleteJob(job.getKey());
+    }
+
+    @Override
+    public void scheduleStaminaRegen(Long playerId) {
+        JobDataMap jobDataMap = new JobDataMap();
+        jobDataMap.put("playerId", playerId);
+        JobDetail jobDetail = JobBuilder.newJob(StaminaRegenJob.class)
+            .withIdentity(UUID.randomUUID().toString(), StaminaRegenJob.buildGroupName(playerId))
+            .withDescription("Regen stamina for player " + playerId)
+            .usingJobData(jobDataMap)
+            .storeDurably()
+            .build();
+        Trigger trigger = buildRoutineJobTrigger(jobDetail);
+        try {
+            scheduler.scheduleJob(jobDetail, trigger);
+        } catch (SchedulerException ex) {
+            throw new IllegalStateException(ex.getMessage());
+        }
+    }
+
+    @Override
+    public void executeStaminaRegen(JobExecutionContext context) throws SchedulerException {
+        JobDetail job = context.getJobDetail();
+        log.info(job.getDescription());
+        Long playerId = context.getMergedJobDataMap().getLong("playerId");
+        Player player = playerRepository.findById(playerId).orElse(null);
+        if (player == null) {
+            scheduler.deleteJob(job.getKey());
+        } else if (player.getStamina() < 100) {
+            player.setStamina(player.getStamina() + Math.min(10, 100 - player.getStamina()));
+            playerRepository.save(player);
+        }
+    }
+
+    private Trigger buildRoutineJobTrigger(JobDetail jobDetail) {
+        return TriggerBuilder.newTrigger()
+            .withIdentity(jobDetail.getKey().getName(), jobDetail.getKey().getGroup())
+            .withDescription(jobDetail.getDescription())
+            .withSchedule(SimpleScheduleBuilder.repeatMinutelyForever(10).withMisfireHandlingInstructionFireNow())
+            .forJob(jobDetail)
+            .build();
     }
 
     private Trigger buildJobTrigger(JobDetail jobDetail, long timeMillis) {

@@ -7,30 +7,33 @@ import com.tumile.salesman.domain.Course;
 import com.tumile.salesman.repository.AirfareRepository;
 import com.tumile.salesman.repository.CityRepository;
 import com.tumile.salesman.repository.CourseRepository;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
 @Component
-public class UpdateFareJob implements CommandLineRunner {
+public class UpdateFareCronJob {
 
     private final AirfareRepository airfareRepository;
     private final CityRepository cityRepository;
     private final CourseRepository courseRepository;
 
-    public UpdateFareJob(AirfareRepository airfareRepository, CityRepository cityRepository,
-                         CourseRepository courseRepository) {
+    public UpdateFareCronJob(AirfareRepository airfareRepository, CityRepository cityRepository,
+                             CourseRepository courseRepository) {
         this.airfareRepository = airfareRepository;
         this.cityRepository = cityRepository;
         this.courseRepository = courseRepository;
     }
 
-    @Transactional
-    @Override
-    public void run(String... args) {
+//    @Override
+//    public void run(String... args) {
+//        updateFare();
+//    }
+
+    @Scheduled(cron = "0 0 0 * * *")
+    public void updateFare() {
         Iterable<Course> courses = courseRepository.findAll();
         for (Course course : courses) {
             City fromCity = cityRepository.findById(course.getId().getFromCityId()).orElseThrow();
@@ -49,6 +52,7 @@ public class UpdateFareJob implements CommandLineRunner {
                 }
             }
             double basePrice = Math.round(50 + course.getDistance() / 1609 * 0.11);
+            System.out.println(basePrice);
             for (Airline airline : airlines) {
                 var id = new Airfare.AirfareId();
                 id.setFromCityId(fromCity.getId());

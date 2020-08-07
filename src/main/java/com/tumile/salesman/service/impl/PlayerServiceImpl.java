@@ -100,6 +100,7 @@ public class PlayerServiceImpl implements PlayerService {
         jobService.addCustomerAndScheduleExpire(player);
         jobService.addCustomerAndScheduleExpire(player);
         jobService.scheduleAddCustomer(player.getId(), AddCustomerJob.TIME_MILLIS);
+        jobService.scheduleStaminaRegen(player.getId());
 
         boolean rememberMe = request.isRememberMe();
         String jwt = tokenProvider.createToken(player.getId(), rememberMe);

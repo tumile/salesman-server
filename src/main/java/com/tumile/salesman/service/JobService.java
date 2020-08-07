@@ -14,7 +14,11 @@ public interface JobService {
 
     void scheduleExpireCustomer(Long playerId, Long customerId, long timeMillis);
 
+    void scheduleStaminaRegen(Long playerId);
+
     void executeAddCustomer(JobExecutionContext context) throws SchedulerException;
 
     void executeExpireCustomer(JobExecutionContext context) throws SchedulerException;
+
+    void executeStaminaRegen(JobExecutionContext context) throws SchedulerException;
 }
