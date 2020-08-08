@@ -102,14 +102,14 @@ public class APIResource {
         return cityService.handleSearch(query);
     }
 
+    @GetMapping("/cities/flights")
+    public List<FlightRes> getFlights(@RequestParam Long cityId1, @RequestParam Long cityId2) {
+        return cityService.handleSearchFlights(cityId1, cityId2);
+    }
+
     @GetMapping("/cities/{cityId}")
     public CityRes getCity(@PathVariable Long cityId) {
         return cityService.handleGet(cityId);
-    }
-
-    @GetMapping("/cities/{cityId1}/{cityId2}/flights")
-    public List<FlightRes> getFlights(@PathVariable Long cityId1, @PathVariable Long cityId2) {
-        return cityService.handleSearchFlights(cityId1, cityId2);
     }
 
 //    @GetMapping("/missions")
