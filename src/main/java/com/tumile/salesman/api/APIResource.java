@@ -103,8 +103,8 @@ public class APIResource {
     }
 
     @GetMapping("/cities/flights")
-    public List<FlightRes> getFlights(@RequestParam Long cityId1, @RequestParam Long cityId2) {
-        return cityService.handleSearchFlights(cityId1, cityId2);
+    public List<FlightRes> getFlights(@RequestParam Long from, @RequestParam Long to) {
+        return cityService.handleSearchFlights(from, to);
     }
 
     @GetMapping("/cities/{cityId}")
