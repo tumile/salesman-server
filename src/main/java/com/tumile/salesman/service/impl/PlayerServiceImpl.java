@@ -6,13 +6,11 @@ import com.tumile.salesman.domain.Player;
 import com.tumile.salesman.repository.CityRepository;
 import com.tumile.salesman.repository.PlayerRepository;
 import com.tumile.salesman.security.jwt.TokenProvider;
-import com.tumile.salesman.service.CityService;
-import com.tumile.salesman.service.JobService;
-import com.tumile.salesman.service.PlayerService;
-import com.tumile.salesman.service.Utils;
+import com.tumile.salesman.service.*;
 import com.tumile.salesman.service.dto.request.LoginReq;
 import com.tumile.salesman.service.dto.request.RegisterReq;
 import com.tumile.salesman.service.dto.request.TravelReq;
+import com.tumile.salesman.service.dto.response.MissionRes;
 import com.tumile.salesman.service.dto.response.PlayerLBRes;
 import com.tumile.salesman.service.dto.response.PlayerRes;
 import com.tumile.salesman.service.dto.response.TokenRes;
@@ -24,7 +22,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,10 +36,12 @@ public class PlayerServiceImpl implements PlayerService {
     private final PasswordEncoder passwordEncoder;
     private final TokenProvider tokenProvider;
     private final S3Service s3Service;
+    private final MissionService missionService;
 
     public PlayerServiceImpl(AuthenticationManagerBuilder authenticationManagerBuilder, CityService cityService,
                              CityRepository cityRepository, JobService jobService, PlayerRepository playerRepository,
-                             PasswordEncoder passwordEncoder, TokenProvider tokenProvider, S3Service s3Service) {
+                             PasswordEncoder passwordEncoder, TokenProvider tokenProvider, S3Service s3Service,
+                             MissionService missionService) {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.cityService = cityService;
         this.cityRepository = cityRepository;
@@ -51,6 +50,7 @@ public class PlayerServiceImpl implements PlayerService {
         this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
         this.s3Service = s3Service;
+        this.missionService = missionService;
     }
 
     @Override
@@ -71,6 +71,11 @@ public class PlayerServiceImpl implements PlayerService {
             .stream()
             .map(PlayerLBRes::fromPlayer)
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MissionRes> handleGetMissions() {
+        return missionService.getMissions(Utils.getPlayerId());
     }
 
     @Override
@@ -96,18 +101,18 @@ public class PlayerServiceImpl implements PlayerService {
         player.setCity(cityRepository.findById(1L).orElse(null));
         playerRepository.save(player);
 
-        jobService.addCustomerAndScheduleExpire(player);
-        jobService.addCustomerAndScheduleExpire(player);
-        jobService.addCustomerAndScheduleExpire(player);
+        jobService.addCustomerAndScheduleExpire(player.getId());
+        jobService.addCustomerAndScheduleExpire(player.getId());
+        jobService.addCustomerAndScheduleExpire(player.getId());
         jobService.scheduleAddCustomer(player.getId(), AddCustomerJob.TIME_MILLIS);
         jobService.scheduleStaminaRegen(player.getId());
+        missionService.initMissions(player);
 
         boolean rememberMe = request.isRememberMe();
         String jwt = tokenProvider.createToken(player.getId(), rememberMe);
         return new TokenRes(jwt);
     }
 
-    @Transactional
     @Override
     public void handleTravel(TravelReq request) {
         Player player = playerRepository.findById(Utils.getPlayerId())
@@ -120,7 +125,9 @@ public class PlayerServiceImpl implements PlayerService {
         double fare = cityService.getAirfare(player.getCity().getId(), city.getId(), request.getAirlineId());
         ensureEnoughMoney(player, fare);
         long duration = (long) cityService.getFlightDuration(player.getCity().getId(), city.getId());
-        jobService.updateJobsAsTimePassed(player, duration);
+
+        jobService.updateJobsAsTimePassed(player.getId(), duration);
+        missionService.updateCityVisitMission(player.getId(), city.getId());
 
         player.setCity(city);
         player.setMoney(player.getMoney() - fare);

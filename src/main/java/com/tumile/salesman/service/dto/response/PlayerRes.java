@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,6 +25,8 @@ public class PlayerRes {
 
     private CitySimpleRes city;
 
+    private List<AchievementRes> achievements;
+
     public static PlayerRes fromPlayer(Player player) {
         PlayerRes res = new PlayerRes();
         res.setId(player.getId());
@@ -30,6 +35,8 @@ public class PlayerRes {
         res.setMoney(player.getMoney());
         res.setStamina(player.getStamina());
         res.setCity(CitySimpleRes.fromCity(player.getCity()));
+        res.setAchievements(player.getAchievements().stream().map(AchievementRes::fromAchievement)
+            .collect(Collectors.toList()));
         return res;
     }
 }

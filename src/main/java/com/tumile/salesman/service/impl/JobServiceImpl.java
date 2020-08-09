@@ -1,5 +1,6 @@
 package com.tumile.salesman.service.impl;
 
+import com.tumile.salesman.api.error.NotFoundException;
 import com.tumile.salesman.domain.City;
 import com.tumile.salesman.domain.Customer;
 import com.tumile.salesman.domain.Player;
@@ -15,7 +16,6 @@ import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -40,10 +40,11 @@ public class JobServiceImpl implements JobService {
         this.scheduler = scheduler;
     }
 
-    @Transactional
     @Override
-    public void addCustomerAndScheduleExpire(Player player) {
-        List<Long> cityIds = player.getCustomers().stream()
+    public void addCustomerAndScheduleExpire(Long playerId) {
+        Player player = playerRepository.findById(playerId)
+            .orElseThrow(() -> new NotFoundException("Player not found"));
+        List<Long> cityIds = customerRepository.findAllByPlayerId(playerId).stream()
             .map(Customer::getCity)
             .map(City::getId)
             .collect(Collectors.toList());
@@ -69,16 +70,14 @@ public class JobServiceImpl implements JobService {
         customer.setCity(city);
         customer.setPlayer(player);
         customerRepository.save(customer);
-        player.getCustomers().add(customer);
         scheduleExpireCustomer(player.getId(), customer.getId(), expireIn);
     }
 
-    @Transactional
     @Override
-    public void updateJobsAsTimePassed(Player player, long timePassedMillis) {
+    public void updateJobsAsTimePassed(Long playerId, long timePassedMillis) {
         try {
             Set<JobKey> expireJobKeys = scheduler
-                .getJobKeys(GroupMatcher.groupEquals(ExpireCustomerJob.buildGroupName(player.getId())));
+                .getJobKeys(GroupMatcher.groupEquals(ExpireCustomerJob.buildGroupName(playerId)));
             for (JobKey key : expireJobKeys) {
                 JobDetail job = scheduler.getJobDetail(key);
                 Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
@@ -100,16 +99,16 @@ public class JobServiceImpl implements JobService {
                 }
             }
             Set<JobKey> addJobKeys = scheduler
-                .getJobKeys(GroupMatcher.groupEquals(AddCustomerJob.buildGroupName(player.getId())));
+                .getJobKeys(GroupMatcher.groupEquals(AddCustomerJob.buildGroupName(playerId)));
             for (JobKey key : addJobKeys) {
                 JobDetail job = scheduler.getJobDetail(key);
                 Trigger trigger = scheduler.getTriggersOfJob(key).get(0);
                 long timeLeft = trigger.getStartTime().getTime() - new Date().getTime() - timePassedMillis;
                 if (timeLeft <= 0) {
-                    addCustomerAndScheduleExpire(player);
+                    addCustomerAndScheduleExpire(playerId);
                     timeLeft = -timeLeft;
                     while (timeLeft >= AddCustomerJob.TIME_MILLIS) {
-                        addCustomerAndScheduleExpire(player);
+                        addCustomerAndScheduleExpire(playerId);
                         timeLeft -= AddCustomerJob.TIME_MILLIS;
                     }
                 }
@@ -138,18 +137,16 @@ public class JobServiceImpl implements JobService {
         }
     }
 
-    @Transactional
     @Override
     public void executeAddCustomer(JobExecutionContext context) throws SchedulerException {
         JobDetail job = context.getJobDetail();
         log.info(job.getDescription());
         Long playerId = context.getMergedJobDataMap().getLong("playerId");
-        Player player = playerRepository.findById(playerId).orElse(null);
-        if (player == null) {
-            scheduler.deleteJob(job.getKey());
-        } else {
-            addCustomerAndScheduleExpire(player);
+        try {
+            addCustomerAndScheduleExpire(playerId);
             scheduler.rescheduleJob(context.getTrigger().getKey(), buildJobTrigger(job, AddCustomerJob.TIME_MILLIS));
+        } catch (NotFoundException ex) {
+            scheduler.deleteJob(job.getKey());
         }
     }
 

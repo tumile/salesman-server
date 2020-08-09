@@ -47,6 +47,11 @@ public class APIResource {
         return playerService.handleGetLeaderboard();
     }
 
+    @GetMapping("/players/missions")
+    public List<MissionRes> getMissions() {
+        return playerService.handleGetMissions();
+    }
+
     @GetMapping("/players/{playerId}")
     public PlayerRes getPlayer(@PathVariable Long playerId) {
         return playerService.handleGet(playerId);
@@ -111,14 +116,4 @@ public class APIResource {
     public CityRes getCity(@PathVariable Long cityId) {
         return cityService.handleGet(cityId);
     }
-
-//    @GetMapping("/missions")
-//    public List<Object> getMissions() {
-//        return playerService.handleGetMissions();
-//    }
-//
-//    @GetMapping("/achievements")
-//    public List<Object> getAchievements() {
-//        return playerService.handleGetAchievements();
-//    }
 }

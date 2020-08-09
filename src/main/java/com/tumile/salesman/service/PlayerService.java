@@ -3,6 +3,7 @@ package com.tumile.salesman.service;
 import com.tumile.salesman.service.dto.request.LoginReq;
 import com.tumile.salesman.service.dto.request.RegisterReq;
 import com.tumile.salesman.service.dto.request.TravelReq;
+import com.tumile.salesman.service.dto.response.MissionRes;
 import com.tumile.salesman.service.dto.response.PlayerLBRes;
 import com.tumile.salesman.service.dto.response.PlayerRes;
 import com.tumile.salesman.service.dto.response.TokenRes;
@@ -14,6 +15,8 @@ public interface PlayerService {
     PlayerRes handleGet();
 
     PlayerRes handleGet(Long playerId);
+
+    List<MissionRes> handleGetMissions();
 
     List<PlayerLBRes> handleGetLeaderboard();
 

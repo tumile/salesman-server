@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS player;
 DROP TABLE IF EXISTS airfare;
 DROP TABLE IF EXISTS airline;
 DROP TABLE IF EXISTS course;
@@ -84,5 +82,30 @@ CREATE TABLE customer
     city_id           INT          NOT NULL,
     player_id         INT          NOT NULL,
     FOREIGN KEY (city_id) REFERENCES city (id),
+    FOREIGN KEY (player_id) REFERENCES player (id)
+);
+
+CREATE TABLE achievement
+(
+    id        INT AUTO_INCREMENT PRIMARY KEY,
+    title     VARCHAR(50)  NOT NULL,
+    tag       VARCHAR(10)  NOT NULL,
+    icon      VARCHAR(100) NOT NULL,
+    player_id INT          NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player (id)
+);
+
+DROP TABLE IF EXISTS mission;
+CREATE TABLE mission
+(
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    title       VARCHAR(50)   NOT NULL,
+    tag         VARCHAR(10)   NOT NULL,
+    icon        VARCHAR(100)  NOT NULL,
+    description VARCHAR(100)  NOT NULL,
+    progress    FLOAT         NOT NULL,
+    finished    BIT           NOT NULL,
+    data        VARCHAR(1000),
+    player_id   INT           NOT NULL,
     FOREIGN KEY (player_id) REFERENCES player (id)
 );

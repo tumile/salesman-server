@@ -40,8 +40,8 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public CityRes handleGet(Long id) {
-        return cityRepository.findById(id).map(CityRes::fromCity).
-            orElseThrow(() -> new NotFoundException("City not found"));
+        return cityRepository.findById(id).map(CityRes::fromCity)
+            .orElseThrow(() -> new NotFoundException("City not found"));
     }
 
     @Override
@@ -52,8 +52,7 @@ public class CityServiceImpl implements CityService {
         Long cityId = playerRepository.findById(Utils.getPlayerId())
             .orElseThrow(() -> new NotFoundException("Player not found"))
             .getCity().getId();
-        return cityRepository.findAllByNameStartsWithAndIdIsNot(query, cityId)
-            .stream()
+        return cityRepository.findAllByNameStartsWithAndIdIsNot(query, cityId).stream()
             .map(CitySimpleRes::fromCity)
             .collect(Collectors.toList());
     }

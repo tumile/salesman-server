@@ -6,6 +6,7 @@ import com.tumile.salesman.domain.Player;
 import com.tumile.salesman.repository.CustomerRepository;
 import com.tumile.salesman.repository.PlayerRepository;
 import com.tumile.salesman.service.CustomerService;
+import com.tumile.salesman.service.MissionService;
 import com.tumile.salesman.service.Utils;
 import com.tumile.salesman.service.dto.response.CustomerRes;
 import com.tumile.salesman.service.dto.response.NegotiateRes;
@@ -21,16 +22,18 @@ public class CustomerServiceImpl implements CustomerService {
     private static final NotFoundException PLAYER_NOT_FOUND = new NotFoundException("Player not found");
     private final CustomerRepository customerRepository;
     private final PlayerRepository playerRepository;
+    private final MissionService missionService;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, PlayerRepository playerRepository) {
+    public CustomerServiceImpl(CustomerRepository customerRepository, PlayerRepository playerRepository,
+                               MissionService missionService) {
         this.customerRepository = customerRepository;
         this.playerRepository = playerRepository;
+        this.missionService = missionService;
     }
 
     @Override
     public List<CustomerRes> handleGetCustomers() {
-        return customerRepository.findAllByPlayerId(Utils.getPlayerId())
-            .stream()
+        return customerRepository.findAllByPlayerId(Utils.getPlayerId()).stream()
             .map(CustomerRes::fromCustomer)
             .collect(Collectors.toList());
     }
@@ -46,6 +49,8 @@ public class CustomerServiceImpl implements CustomerService {
         player.setMoney(player.getMoney() + customer.getPrice());
         playerRepository.save(player);
         customerRepository.deleteById(customerId);
+
+        missionService.updateMoneyMission(player.getId(), customer.getPrice());
     }
 
     @Override

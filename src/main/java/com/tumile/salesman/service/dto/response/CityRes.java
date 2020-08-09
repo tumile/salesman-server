@@ -4,8 +4,7 @@ import com.tumile.salesman.domain.City;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
@@ -20,7 +19,7 @@ public class CityRes {
 
     private Double longitude;
 
-    private Set<POIRes> pointsOfInterest = new HashSet<>();
+    private List<POIRes> pointsOfInterest;
 
     public static CityRes fromCity(City city) {
         CityRes res = new CityRes();
@@ -28,7 +27,7 @@ public class CityRes {
         res.setName(city.getName());
         res.setLatitude(city.getLatitude());
         res.setLongitude(city.getLongitude());
-        res.setPointsOfInterest(city.getPointsOfInterest().stream().map(POIRes::fromPOI).collect(Collectors.toSet()));
+        res.setPointsOfInterest(city.getPointsOfInterest().stream().map(POIRes::fromPOI).collect(Collectors.toList()));
         return res;
     }
 }

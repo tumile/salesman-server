@@ -55,5 +55,5 @@ public class Player {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy = "player")
-    private Set<Customer> customers = new HashSet<>();
+    private Set<Achievement> achievements = new HashSet<>();
 }
