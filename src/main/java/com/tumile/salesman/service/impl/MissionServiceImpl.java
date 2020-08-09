@@ -33,7 +33,7 @@ public class MissionServiceImpl implements MissionService {
         Mission moneyMission = new Mission();
         moneyMission.setTitle("Seasoned salesman");
         moneyMission.setTag("MONEY");
-        moneyMission.setIcon("");
+        moneyMission.setIcon("https://salesman-public.s3.amazonaws.com/medal-seasoned.png");
         moneyMission.setDescription("Reach 10k in total revenue");
         moneyMission.setProgress(1000.0);
         moneyMission.setPlayer(player);
@@ -42,7 +42,7 @@ public class MissionServiceImpl implements MissionService {
         Mission visitMission = new Mission();
         visitMission.setTitle("Road warrior");
         visitMission.setTag("VISIT");
-        visitMission.setIcon("");
+        visitMission.setIcon("https://salesman-public.s3.amazonaws.com/medal-road-warrior.png");
         visitMission.setDescription("Visit all cities");
         visitMission.setProgress(1.0);
         visitMission.setData("1");
@@ -52,7 +52,7 @@ public class MissionServiceImpl implements MissionService {
         Achievement rankAchievement = new Achievement();
         rankAchievement.setTitle("Rookie salesman");
         rankAchievement.setTag("MONEY");
-        rankAchievement.setIcon("");
+        rankAchievement.setIcon("https://salesman-public.s3.amazonaws.com/medal-rookie.png");
         rankAchievement.setPlayer(player);
         achievementRepository.save(rankAchievement);
     }
@@ -80,7 +80,7 @@ public class MissionServiceImpl implements MissionService {
             mission.setFinished(true);
             Achievement achievement = achievementRepository.findByPlayerIdAndTag(playerId, "MONEY");
             achievement.setTitle("Seasoned salesman");
-            achievement.setIcon("");
+            achievement.setIcon("https://salesman-public.s3.amazonaws.com/medal-seasoned.png");
             achievementRepository.save(achievement);
         }
         missionRepository.save(mission);
@@ -103,7 +103,7 @@ public class MissionServiceImpl implements MissionService {
             Achievement achievement = new Achievement();
             achievement.setTitle("Road warrior");
             achievement.setTag("VISIT");
-            achievement.setIcon("");
+            achievement.setIcon("https://salesman-public.s3.amazonaws.com/medal-road-warrior.png");
             achievement.setPlayer(playerRepository.findById(playerId).orElseThrow());
             achievementRepository.save(achievement);
         }

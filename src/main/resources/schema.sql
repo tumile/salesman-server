@@ -95,7 +95,6 @@ CREATE TABLE achievement
     FOREIGN KEY (player_id) REFERENCES player (id)
 );
 
-DROP TABLE IF EXISTS mission;
 CREATE TABLE mission
 (
     id          INT AUTO_INCREMENT PRIMARY KEY,
